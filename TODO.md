@@ -37,3 +37,7 @@ Prompt navigation passed HTTP-based Chromium checks at 375, 768 and 1440px, incl
 - [x] Move the ten-prompt overview from slide/page 15 to slide/page 18 immediately before conclusion 19. Situation, English example and Chinese example become slides/pages 15–17; change their headings from Example 1 to Example. Update the website navigation, prompt-index return links and downloadable PowerPoint to match, preserving the prompt dropdown and bilingual text.
 
 Verified reordered PowerPoint text, all nineteen slide numbers, matching web pages, ten prompt-index return links and responsive dropdown navigation. The latest exported PPT is included in public/downloads.
+
+## Social-preview card update
+
+- [x] Use the supplied HKMA K S Lo College / Tech in Ed artwork as the homepage social-preview image. Preserve the complete 3:2 artwork in a 1200 × 630 px letterboxed JPEG; do not crop its logos. Add public absolute `og:image` and matching Twitter image metadata, plus image dimensions and alt text. Publish the new image filename and verify raw live metadata and image dimensions.
