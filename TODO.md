@@ -25,3 +25,9 @@ The controls use bold SVG arrows in circular badges, a bordered white Previous b
 Source and static website branches were successfully pushed to hkmakslo/tie-261013. GitHub Pages creation returned HTTP 403 Resource not accessible by integration; publication remains pending owner enablement in Repository Settings → Pages. No changes were pushed to the ksloenglish repository.
 
 GitHub Pages was enabled by the owner and returned HTTP 200. Navigation now uses compact padding, 38px arrow badges and 72px desktop / 68px mobile minimum heights (down from 116px / 94px), while preserving labels, wrapping and all destinations. Live exact-file checks are run after publishing this update.
+
+## Prompt-page navigation update
+
+- [x] All ten prompt pages have a compact Previous button returning to the all-ten-prompts page, no sequential Next button, and a top-right dropdown listing all ten prompt titles with the current prompt indicated. Preserve the slide-page navigation and bilingual prompt content, support keyboard and mobile use, and publish to hkmakslo GitHub Pages.
+
+Prompt navigation passed HTTP-based Chromium checks at 375, 768 and 1440px, including all-ten dropdown options, current-page indication, Escape/outside dismissal, prompt switching, index return and operation without JavaScript. Complete existing content checks also passed. Live publishing is verified with scripts/verify_live.py.

@@ -118,3 +118,42 @@
   .page-nav .nav-direction { font-size: 11px; margin-bottom: 3px; }
   .page-nav .nav-title { font-size: 14px; }
 }
+
+/* Prompt pages: return to the index, or choose any task from the top-right. */
+.prompt-page-tools { display:flex; align-items:center; gap:18px; margin-left:auto; }
+.prompt-switcher { position:relative; flex-shrink:0; }
+.prompt-switcher summary {
+  display:flex; align-items:center; justify-content:space-between; gap:15px;
+  min-height:44px; padding:10px 14px; border:1px solid var(--accent-text);
+  border-radius:5px; background:var(--accent-text); color:#fff;
+  cursor:pointer; font-size:13px; font-weight:700; list-style:none;
+}
+.prompt-switcher summary::-webkit-details-marker { display:none; }
+.prompt-switcher summary svg { width:18px; height:18px; transition:transform .18s ease; }
+.prompt-switcher[open] summary svg { transform:rotate(180deg); }
+.prompt-switcher-menu {
+  position:absolute; top:calc(100% + 8px); right:0; z-index:25;
+  width:min(440px,calc(100vw - 48px)); max-height:min(65vh,560px);
+  overflow-y:auto; overscroll-behavior:contain; padding:7px;
+  border:1px solid var(--rule); border-radius:6px; background:var(--paper);
+  box-shadow:0 12px 36px rgba(17,17,17,.18);
+}
+.prompt-switcher-menu ul { list-style:none; padding:0; margin:0; }
+.prompt-switcher-menu a {
+  display:flex; align-items:baseline; gap:12px; padding:12px 11px;
+  text-decoration:none; font-size:14px; line-height:1.4;
+  min-height:44px; border-radius:4px; overflow-wrap:anywhere;
+}
+.prompt-choice-number { flex-shrink:0; color:var(--accent-text); font-weight:700; }
+.prompt-switcher-menu a:hover { background:var(--soft); }
+.prompt-switcher-menu a[aria-current=page] { background:#f3e9e1; font-weight:700; }
+.prompt-switcher-menu a:focus-visible { outline-offset:-2px; }
+.page-nav.prompt-page-nav { grid-template-columns:minmax(0,440px); }
+@media(max-width:620px) {
+  .prompt-detail .page-meta { align-items:flex-start; gap:10px; }
+  .prompt-detail .page-meta > .eyebrow { padding-top:4px; }
+  .prompt-page-tools { flex-direction:column; align-items:flex-end; gap:8px; }
+  .prompt-switcher summary { gap:10px; padding:10px 12px; font-size:12px; }
+  .page-nav.prompt-page-nav { grid-template-columns:minmax(0,1fr); }
+}
+@media print { .prompt-switcher { display:none!important; } }

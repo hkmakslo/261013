@@ -219,6 +219,9 @@ def utility_links(current: str) -> str:
 
 
 def page_navigation(current: str, number: int | None = None, prompt_number: int | None = None) -> str:
+    if prompt_number:
+        left_icon = '<span class="nav-arrow-badge" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" focusable="false"><path d="M27 16H5M14 6L4 16l10 10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+        return f'''<nav class="page-nav prompt-page-nav" aria-label="Prompt navigation"><a class="page-nav-button page-nav-previous" href="{href(current,slide_path(15))}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">All ten prompts</span></span></a></nav>'''
     if number:
         previous = SLIDES[number - 2] if number > 1 else None
         following = SLIDES[number] if number < 19 else None
@@ -230,11 +233,6 @@ def page_navigation(current: str, number: int | None = None, prompt_number: int 
             right_url, right_title = slide_path(following['number']), following['nav']
         else:
             right_url, right_title = slide_path(15), 'Explore the ten prompts'
-    elif prompt_number:
-        left_url = prompt_path(prompt_number - 1) if prompt_number > 1 else slide_path(15)
-        left_title = PROMPT_TITLES[prompt_number - 2] if prompt_number > 1 else 'All ten prompts'
-        right_url = prompt_path(prompt_number + 1) if prompt_number < 10 else slide_path(15)
-        right_title = PROMPT_TITLES[prompt_number] if prompt_number < 10 else 'Back to all prompts'
     else:
         left_url, left_title = slide_path(1), 'Workshop overview'
         right_url, right_title = slide_path(8), 'Create your Blueprint notebook'
@@ -243,10 +241,22 @@ def page_navigation(current: str, number: int | None = None, prompt_number: int 
     return f'''<nav class="page-nav" aria-label="Page navigation"><a class="page-nav-button page-nav-previous" href="{href(current,left_url)}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">{esc(left_title)}</span></span></a><a class="page-nav-button page-nav-next" href="{href(current,right_url)}" data-page-next><span class="nav-copy"><span class="nav-direction">Next</span><span class="nav-title">{esc(right_title)}</span></span>{right_icon}</a></nav>'''
 
 
+def prompt_dropdown(current: str, number: int) -> str:
+    items = []
+    for n, title in enumerate(PROMPT_TITLES, 1):
+        active = ' aria-current="page"' if n == number else ''
+        items.append(f'<li><a href="{href(current,prompt_path(n))}"{active}><span class="prompt-choice-number">{n:02d}</span><span>{esc(title)}</span></a></li>')
+    return '<details class="prompt-switcher"><summary>Choose a prompt<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><nav class="prompt-switcher-menu" aria-label="Choose from all ten prompts"><ul>' + ''.join(items) + '</ul></nav></details>'
+
+
 def layout(current: str, title: str, content: str, number: int | None = None, prompt_number: int | None = None, detail: bool = False) -> str:
     css_version = sha256((ROOT / 'src/styles.css').read_bytes()).hexdigest()[:12]
+    js_version = sha256((ROOT / 'src/app.js').read_bytes()).hexdigest()[:12]
     section = 'Prompt library' if prompt_number else 'Participant companion'
     count = f'Prompt {prompt_number:02d} / 10' if prompt_number else f'Slide {number:02d} / 19' if number else 'Workshop resources'
+    page_tools = f'<span class="page-count">{count}</span>'
+    if prompt_number:
+        page_tools = '<div class="prompt-page-tools">' + page_tools + prompt_dropdown(current,prompt_number) + '</div>'
     description = f'{title} — participant reference for the Gemini Notebook Workshop, HKMA K S Lo College Tech in Ed Task Force.'
     page_title = f'{title} | Gemini Notebook Workshop'
     sharing_tags = ''
@@ -260,11 +270,11 @@ def layout(current: str, title: str, content: str, number: int | None = None, pr
     content = content.replace('<div class="table-wrap"', '<p class="table-hint">Swipe the table to view all four column headings →</p><div class="table-wrap"')
     content = nojs_nav + content
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#f8faf7"><title>{esc(page_title)}</title>{sharing_tags}<link rel="icon" type="image/png" href="{href(current,'assets/task-force-logo.png')}"><link rel="stylesheet" href="{href(current,'assets/styles.css')}?v={css_version}"><script src="{href(current,'assets/app.js')}" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#f8faf7"><title>{esc(page_title)}</title>{sharing_tags}<link rel="icon" type="image/png" href="{href(current,'assets/task-force-logo.png')}"><link rel="stylesheet" href="{href(current,'assets/styles.css')}?v={css_version}"><script src="{href(current,'assets/app.js')}?v={js_version}" defer></script></head>
 <body><a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar"><a class="brand" href="{href(current,slide_path(1))}" aria-label="Workshop overview"><img src="{href(current,'assets/task-force-logo.png')}" alt="Tech in Ed Task Force logo" width="34" height="34"><span class="brand-text">HKMA K S Lo College<span>Tech in Ed Task Force</span></span></a><span class="header-divider" aria-hidden="true"></span><a href="{href(current,slide_path(1))}" aria-label="Gemini Notebook Workshop overview"><img class="wordmark" src="{href(current,'assets/gemini-notebook-logo.svg')}" alt="Gemini Notebook" width="210" height="18"></a><div class="topbar-right"><span class="header-date">13 Oct 2026</span><button type="button" class="menu-button" data-open-menu aria-controls="contents-dialog" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span>Contents</button></div></header>
 <aside class="sidebar" aria-label="Workshop contents"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>Workshop pages</p><label for="sidebar-search" class="skip-link">Search workshop pages</label><input id="sidebar-search" class="nav-search" type="search" data-filter="sidebar-nav" placeholder="Find a page…" aria-label="Search workshop pages">{sidebar_nav}{utility_links(current)}</aside>
-<div class="main-shell"><main id="main" class="main{' prompt-detail' if detail else ''}" tabindex="-1"><div class="page-meta"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>{section}</p><span class="page-count">{count}</span></div>{content}{page_navigation(current,number,prompt_number)}<footer class="site-footer"><span>HKMA K S Lo College Tech in Ed Task Force<br>Gemini Notebook Workshop (Intermediate Level) · 13 Oct 2026</span><span><a href="{href(current,'resources/index.html')}">Downloads & links</a> · <button type="button" class="print-page" data-print>Print this page</button></span></footer></main></div>
+<div class="main-shell"><main id="main" class="main{' prompt-detail' if detail else ''}" tabindex="-1"><div class="page-meta"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>{section}</p>{page_tools}</div>{content}{page_navigation(current,number,prompt_number)}<footer class="site-footer"><span>HKMA K S Lo College Tech in Ed Task Force<br>Gemini Notebook Workshop (Intermediate Level) · 13 Oct 2026</span><span><a href="{href(current,'resources/index.html')}">Downloads & links</a> · <button type="button" class="print-page" data-print>Print this page</button></span></footer></main></div>
 <dialog class="contents-dialog" id="contents-dialog" aria-labelledby="contents-title"><div class="dialog-header"><h2 id="contents-title">Workshop contents</h2><button class="close-button" type="button" data-close-menu aria-label="Close contents">×</button></div><input class="nav-search" id="dialog-search" type="search" data-filter="dialog-nav" placeholder="Find a page…" aria-label="Search contents">{dialog_nav}{utility_links(current)}</dialog><div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 </body></html>'''
 

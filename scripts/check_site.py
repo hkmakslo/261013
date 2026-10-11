@@ -53,8 +53,19 @@ for path in pages:
         assert dest.is_file(), f'Broken link: {path}: {raw}'
     for copy in soup.select('[data-copy]'):
         assert soup.find(id=str(copy['data-copy'])), f'Invalid clipboard target: {path}'
-    required(soup, 'a[data-page-next]')
-    required(soup, 'a[data-page-previous]')
+    previous = required(soup, 'a[data-page-previous]')
+    if path.is_relative_to(SITE / 'prompts'):
+        assert previous['href'] == '../../pages/15/'
+        assert soup.select_one('a[data-page-next]') is None
+        choices = soup.select('.prompt-switcher-menu li a')
+        assert len(choices) == 10
+        for n, choice in enumerate(choices, 1):
+            dest = (path.parent / str(choice['href']) / 'index.html').resolve()
+            assert dest == (SITE / f'prompts/{n:02d}/index.html').resolve()
+        assert len(soup.select('.prompt-switcher-menu a[aria-current=page]')) == 1
+    else:
+        required(soup, 'a[data-page-next]')
+        assert soup.select_one('.prompt-switcher') is None
 
 for slide in slides:
     n = slide['number']
