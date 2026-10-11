@@ -54,6 +54,10 @@ for path in pages:
         assert dest.is_file(), f'Broken link: {path}: {raw}'
     for copy in soup.select('[data-copy]'):
         assert soup.find(id=str(copy['data-copy'])), f'Invalid clipboard target: {path}'
+    footer_text = required(soup, 'footer.site-footer').get_text(' ', strip=True)
+    assert 'Downloads & links' not in footer_text, path
+    assert 'Print this page' not in footer_text, path
+    assert soup.select_one('[data-print]') is None, path
     previous = required(soup, 'a[data-page-previous]')
     if path.is_relative_to(SITE / 'prompts'):
         assert previous['href'] == '../../pages/18/'

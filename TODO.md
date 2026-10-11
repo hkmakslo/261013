@@ -57,3 +57,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Workshop links simplification
 
 - [x] On the Workshop downloads & useful links page, keep only the School Notebook access and Workshop Padlet buttons; remove the four small supplementary links beneath them.
+
+## Footer action cleanup
+
+- [x] Remove the Downloads & links and Print this page actions from the footer of every slide, resource and prompt page.
