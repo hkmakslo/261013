@@ -53,3 +53,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Slide 14 wording update
 
 - [x] Match the supplied Slide 14 reference: “Post your Studio output” on the black first line and “on Padlet.” on the orange second line. Keep the first upload point as “Upload the output or screenshot.” Mirror the page on the website and refresh the downloadable editable PowerPoint.
+
+## Workshop links simplification
+
+- [x] On the Workshop downloads & useful links page, keep only the School Notebook access and Workshop Padlet buttons; remove the four small supplementary links beneath them.

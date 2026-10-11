@@ -111,6 +111,11 @@ assert required(soup10,'h1').get_text(' ',strip=True).startswith('Try Explore. F
 assert '探索' not in required(soup10,'h1').get_text()
 soup13 = BeautifulSoup((SITE/'pages/13/index.html').read_text(),'html.parser')
 assert 'Check one important claim' not in required(soup13,'main').get_text()
+resources = BeautifulSoup((SITE/'resources/index.html').read_text(),'html.parser')
+resources_text = required(resources,'main').get_text(' ',strip=True)
+for removed_link in ['EDB Blueprint & supplement resource page', 'HKDSE assessment framework index', 'EDB English curriculum documents', 'Desmond EdTech teacher playlist']:
+    assert removed_link not in resources_text, removed_link
+assert len(resources.select('.resource-group:last-of-type .button-row a')) == 2
 home = BeautifulSoup((SITE/'index.html').read_text(),'html.parser')
 social_url = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261012-crop.jpg'
 for property_name, expected in [
