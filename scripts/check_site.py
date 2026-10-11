@@ -112,7 +112,7 @@ assert '探索' not in required(soup10,'h1').get_text()
 soup13 = BeautifulSoup((SITE/'pages/13/index.html').read_text(),'html.parser')
 assert 'Check one important claim' not in required(soup13,'main').get_text()
 home = BeautifulSoup((SITE/'index.html').read_text(),'html.parser')
-social_url = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261011.jpg'
+social_url = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261012.jpg'
 for property_name, expected in [
     ('og:image', social_url),
     ('og:image:secure_url', social_url),
@@ -125,6 +125,6 @@ for property_name, expected in [
 for name, expected in [('twitter:card','summary_large_image'), ('twitter:image',social_url)]:
     tag = home.find('meta', attrs={'name': name})
     assert tag and tag.get('content') == expected, name
-with Image.open(SITE/'assets/workshop-social-card-20261011.jpg') as social_card:
+with Image.open(SITE/'assets/workshop-social-card-20261012.jpg') as social_card:
     assert social_card.size == (1200,630)
 print('PASS: 19 faithful slide pages, 10 bilingual prompt pages, resources, all internal links, copy targets, original PDF bytes and downloadable PPT verified.')

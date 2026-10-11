@@ -42,6 +42,10 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 
 - [x] Use the supplied HKMA K S Lo College / Tech in Ed artwork as the homepage social-preview image. Preserve the complete 3:2 artwork in a 1200 × 630 px letterboxed JPEG; do not crop its logos. Add public absolute `og:image` and matching Twitter image metadata, plus image dimensions and alt text. Publish the new image filename and verify raw live metadata and image dimensions.
 
+## Supplied social-preview artwork refresh
+
+- [x] Replace the WhatsApp/Open Graph image with the newly supplied HKMA K S Lo College / Tech in Ed artwork. Preserve the full artwork within a fresh 1200 × 630 px card, publish it at a new public filename to encourage social-preview refresh, and update matching Open Graph and Twitter metadata.
+
 ## Slide 14 wording update
 
 - [x] Match the supplied Slide 14 reference: “Post your Studio output” on the black first line and “on Padlet.” on the orange second line. Keep the first upload point as “Upload the output or screenshot.” Mirror the page on the website and refresh the downloadable editable PowerPoint.

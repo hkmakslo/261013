@@ -264,8 +264,8 @@ def layout(current: str, title: str, content: str, number: int | None = None, pr
     if current == 'index.html':
         page_title = TITLE
         description = 'Workshop overview — participant reference for the Gemini Notebook Workshop on 13 October 2026, HKMA K S Lo College Tech in Ed Task Force.'
-        social_image = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261011.jpg'
-        social_alt = 'Hong Kong Management Association K S Lo College crest and Tech in Ed Task Force logo'
+        social_image = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261012.jpg'
+        social_alt = 'Hong Kong Management Association K S Lo College crest and Tech in Ed Task Force logo on a blue technology-themed background'
         sharing_tags = f'''<meta property="og:type" content="website"><meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="https://hkmakslo.github.io/tie-261013/"><meta property="og:site_name" content="HKMA K S Lo College Tech in Ed Task Force"><meta property="og:image" content="{social_image}"><meta property="og:image:secure_url" content="{social_image}"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(social_alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(page_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{social_image}"><meta name="twitter:image:alt" content="{esc(social_alt)}"><link rel="canonical" href="https://hkmakslo.github.io/tie-261013/">'''
     sidebar_nav = navigation_list(current, number, 'sidebar-nav')
     dialog_nav = navigation_list(current, number, 'dialog-nav')
