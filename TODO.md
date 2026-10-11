@@ -44,4 +44,4 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 
 ## Slide 14 wording update
 
-- [x] Change the Slide 14 and website page 14 heading to “Post your Studio output.” and the first upload point to “Upload the output or screenshot.” Refresh the downloadable editable PowerPoint and preserve the Padlet link.
+- [x] Match the supplied Slide 14 reference: “Post your Studio output” on the black first line and “on Padlet.” on the orange second line. Keep the first upload point as “Upload the output or screenshot.” Mirror the page on the website and refresh the downloadable editable PowerPoint.
