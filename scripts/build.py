@@ -14,6 +14,7 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
 SLIDES = json.loads((ROOT / 'content/slides.json').read_text())
+PROMPT_INDEX_NUMBER = next(s['number'] for s in SLIDES if s['kind'] == 'prompt-index')
 PROMPT_TEXTS = json.loads((ROOT / 'content/prompt-texts.json').read_text())['prompts']
 EXAMPLES = (ROOT / 'content/prompt-examples-source.md').read_text()
 SCHOOL_URL = 'https://kslo.tech/nb-teachers'
@@ -215,13 +216,13 @@ def navigation_list(current: str, current_number: int | None, ident: str) -> str
 
 
 def utility_links(current: str) -> str:
-    return f'''<a class="utility-link" href="{href(current, slide_path(15))}">Ten bilingual prompts →</a><a class="utility-link" href="{href(current,'resources/index.html')}">Workshop downloads & links →</a><a class="utility-link" href="{href(current,'downloads/Gemini-Notebook-Workshop.pptx')}" download>Download PowerPoint ↓</a>'''
+    return f'''<a class="utility-link" href="{href(current, slide_path(PROMPT_INDEX_NUMBER))}">Ten bilingual prompts →</a><a class="utility-link" href="{href(current,'resources/index.html')}">Workshop downloads & links →</a><a class="utility-link" href="{href(current,'downloads/Gemini-Notebook-Workshop.pptx')}" download>Download PowerPoint ↓</a>'''
 
 
 def page_navigation(current: str, number: int | None = None, prompt_number: int | None = None) -> str:
     if prompt_number:
         left_icon = '<span class="nav-arrow-badge" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" focusable="false"><path d="M27 16H5M14 6L4 16l10 10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
-        return f'''<nav class="page-nav prompt-page-nav" aria-label="Prompt navigation"><a class="page-nav-button page-nav-previous" href="{href(current,slide_path(15))}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">All ten prompts</span></span></a></nav>'''
+        return f'''<nav class="page-nav prompt-page-nav" aria-label="Prompt navigation"><a class="page-nav-button page-nav-previous" href="{href(current,slide_path(PROMPT_INDEX_NUMBER))}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">All ten prompts</span></span></a></nav>'''
     if number:
         previous = SLIDES[number - 2] if number > 1 else None
         following = SLIDES[number] if number < 19 else None
@@ -232,7 +233,7 @@ def page_navigation(current: str, number: int | None = None, prompt_number: int 
         if following:
             right_url, right_title = slide_path(following['number']), following['nav']
         else:
-            right_url, right_title = slide_path(15), 'Explore the ten prompts'
+            right_url, right_title = slide_path(PROMPT_INDEX_NUMBER), 'Explore the ten prompts'
     else:
         left_url, left_title = slide_path(1), 'Workshop overview'
         right_url, right_title = slide_path(8), 'Create your Blueprint notebook'
@@ -305,7 +306,7 @@ def source_links(current: str, number: int) -> str:
 def render_prompt(prompt: dict) -> str:
     number = prompt['number']
     current = prompt_path(number)
-    breadcrumbs = f'<nav class="breadcrumbs" aria-label="Breadcrumb"> <a href="{href(current,slide_path(1))}">Workshop</a><span aria-hidden="true">/</span><a href="{href(current,slide_path(15))}">Ten prompts</a><span aria-hidden="true">/</span><span>{number:02d}</span></nav>'
+    breadcrumbs = f'<nav class="breadcrumbs" aria-label="Breadcrumb"> <a href="{href(current,slide_path(1))}">Workshop</a><span aria-hidden="true">/</span><a href="{href(current,slide_path(PROMPT_INDEX_NUMBER))}">Ten prompts</a><span aria-hidden="true">/</span><span>{number:02d}</span></nav>'
     heading = f'<div class="page-heading"><h1>{esc(prompt["title"])}</h1></div>'
     situation = f'<section class="context-section"><h2>Situation</h2><p>{esc(prompt["situation"])}</p></section>'
     sources = f'<section class="context-section"><h2>Sources to add to Notebook</h2><p>{md_inline(prompt["sources"])}</p>{source_links(current,number)}</section>'

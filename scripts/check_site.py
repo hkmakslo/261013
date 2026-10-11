@@ -55,7 +55,7 @@ for path in pages:
         assert soup.find(id=str(copy['data-copy'])), f'Invalid clipboard target: {path}'
     previous = required(soup, 'a[data-page-previous]')
     if path.is_relative_to(SITE / 'prompts'):
-        assert previous['href'] == '../../pages/15/'
+        assert previous['href'] == '../../pages/18/'
         assert soup.select_one('a[data-page-next]') is None
         choices = soup.select('.prompt-switcher-menu li a')
         assert len(choices) == 10
@@ -100,8 +100,8 @@ assert len(manifest['routes']) == 30
 for route in manifest['routes']:
     assert (SITE / (route['path'].lstrip('/')+'index.html')).is_file(), route
 
-soup15 = BeautifulSoup((SITE/'pages/15/index.html').read_text(),'html.parser')
-assert len(soup15.select('#prompt-index li a')) == 10
+soup18 = BeautifulSoup((SITE/'pages/18/index.html').read_text(),'html.parser')
+assert len(soup18.select('#prompt-index li a')) == 10
 soup12 = BeautifulSoup((SITE/'pages/12/index.html').read_text(),'html.parser')
 assert len(soup12.select('table th')) == 4
 assert 'Write in English' not in required(soup12,'main').get_text()

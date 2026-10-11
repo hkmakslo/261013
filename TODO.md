@@ -31,3 +31,9 @@ GitHub Pages was enabled by the owner and returned HTTP 200. Navigation now uses
 - [x] All ten prompt pages have a compact Previous button returning to the all-ten-prompts page, no sequential Next button, and a top-right dropdown listing all ten prompt titles with the current prompt indicated. Preserve the slide-page navigation and bilingual prompt content, support keyboard and mobile use, and publish to hkmakslo GitHub Pages.
 
 Prompt navigation passed HTTP-based Chromium checks at 375, 768 and 1440px, including all-ten dropdown options, current-page indication, Escape/outside dismissal, prompt switching, index return and operation without JavaScript. Complete existing content checks also passed. Live publishing is verified with scripts/verify_live.py.
+
+## Examples before prompt overview
+
+- [x] Move the ten-prompt overview from slide/page 15 to slide/page 18 immediately before conclusion 19. Situation, English example and Chinese example become slides/pages 15–17; change their headings from Example 1 to Example. Update the website navigation, prompt-index return links and downloadable PowerPoint to match, preserving the prompt dropdown and bilingual text.
+
+Verified reordered PowerPoint text, all nineteen slide numbers, matching web pages, ten prompt-index return links and responsive dropdown navigation. The latest exported PPT is included in public/downloads.

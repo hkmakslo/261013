@@ -39,7 +39,7 @@ try:
             page.wait_for_url('**/prompts/05/')
             assert page.locator('[data-page-next]').count() == 0
             page.locator('[data-page-previous]').click()
-            page.wait_for_url('**/pages/15/')
+            page.wait_for_url('**/pages/18/')
             assert page.locator('[data-page-next]').count() == 1
             print(f'{width}px PASS: dropdown fits, dismissal works, prompt links and index return work.', flush=True)
             page.close()
