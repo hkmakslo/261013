@@ -97,10 +97,6 @@ document.querySelectorAll('[data-copy]').forEach(button => {
   });
 });
 
-document.querySelectorAll('[data-print]').forEach(button => {
-  button.addEventListener('click', () => window.print());
-});
-
 document.addEventListener('keydown', event => {
   if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || (dialog && dialog.open)) return;
   const target = event.target;
