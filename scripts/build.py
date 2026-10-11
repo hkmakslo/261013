@@ -296,7 +296,7 @@ def render_prompt(prompt: dict) -> str:
     number = prompt['number']
     current = prompt_path(number)
     breadcrumbs = f'<nav class="breadcrumbs" aria-label="Breadcrumb"> <a href="{href(current,slide_path(1))}">Workshop</a><span aria-hidden="true">/</span><a href="{href(current,slide_path(15))}">Ten prompts</a><span aria-hidden="true">/</span><span>{number:02d}</span></nav>'
-    heading = f'<div class="page-heading"><h1>{esc(prompt["title"])}</h1><p class="chinese-title" lang="zh-Hant">{esc(prompt["zh_title"])}</p></div>'
+    heading = f'<div class="page-heading"><h1>{esc(prompt["title"])}</h1></div>'
     situation = f'<section class="context-section"><h2>Situation</h2><p>{esc(prompt["situation"])}</p></section>'
     sources = f'<section class="context-section"><h2>Sources to add to Notebook</h2><p>{md_inline(prompt["sources"])}</p>{source_links(current,number)}</section>'
     if prompt['extra']:
