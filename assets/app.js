@@ -110,3 +110,18 @@ document.addEventListener('keydown', event => {
   const link = document.querySelector(`a[data-page-${direction}]`);
   if (link) { event.preventDefault(); window.location.assign(link.href); }
 });
+
+const promptSwitcher = document.querySelector('.prompt-switcher');
+if (promptSwitcher) {
+  document.addEventListener('click', event => {
+    if (event.target instanceof Node && !promptSwitcher.contains(event.target)) {
+      promptSwitcher.open = false;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && promptSwitcher.open) {
+      promptSwitcher.open = false;
+      promptSwitcher.querySelector('summary')?.focus();
+    }
+  });
+}
