@@ -46,6 +46,10 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 
 - [x] Replace the WhatsApp/Open Graph image with the newly supplied HKMA K S Lo College / Tech in Ed artwork. Preserve the full artwork within a fresh 1200 × 630 px card, publish it at a new public filename to encourage social-preview refresh, and update matching Open Graph and Twitter metadata.
 
+## Full-bleed WhatsApp preview crop
+
+- [x] Crop the newly supplied 3:2 artwork centrally to the 1.91:1 WhatsApp/Open Graph ratio, so no white letterbox bars appear at the sides. Keep both logos intact, publish the cropped card at a fresh filename, and update all social-image metadata.
+
 ## Slide 14 wording update
 
 - [x] Match the supplied Slide 14 reference: “Post your Studio output” on the black first line and “on Padlet.” on the orange second line. Keep the first upload point as “Upload the output or screenshot.” Mirror the page on the website and refresh the downloadable editable PowerPoint.
