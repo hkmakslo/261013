@@ -287,7 +287,7 @@ def render_slide(slide: dict) -> str:
     cover = slide['kind'] == 'cover'
     accent_class = 'subtitle' if cover else 'accent'
     chinese = ' lang="zh-Hant"' if slide['kind'] == 'chinese-example' else ''
-    title = f'''<div class="page-heading">{'<p class="eyebrow">Continuing professional development</p>' if cover else ''}<h1>{esc(slide['title'])}<span class="{accent_class}"{chinese}>{esc(slide['accent'])}</span></h1></div>'''
+    title = f'''<div class="page-heading">{'<p class="eyebrow">HKMA K S LO COLLEGE</p>' if cover else ''}<h1>{esc(slide['title'])}<span class="{accent_class}"{chinese}>{esc(slide['accent'])}</span></h1></div>'''
     return layout(current, slide['nav'], title + '<div class="content">' + slide_body(slide, current) + '</div>', slide['number'])
 
 

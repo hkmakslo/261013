@@ -61,3 +61,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Footer action cleanup
 
 - [x] Remove the Downloads & links and Print this page actions from the footer of every slide, resource and prompt page.
+
+## Cover label update
+
+- [x] Replace the cover label “CONTINUING PROFESSIONAL DEVELOPMENT” with “HKMA K S LO COLLEGE” in both the workshop PowerPoint and the matching participant website cover.

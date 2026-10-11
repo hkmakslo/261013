@@ -121,6 +121,7 @@ for removed_link in ['EDB Blueprint & supplement resource page', 'HKDSE assessme
     assert removed_link not in resources_text, removed_link
 assert len(resources.select('.resource-group:last-of-type .button-row a')) == 2
 home = BeautifulSoup((SITE/'index.html').read_text(),'html.parser')
+assert required(home, '.page-heading .eyebrow').get_text(' ', strip=True) == 'HKMA K S LO COLLEGE'
 social_url = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261012-crop.jpg'
 for property_name, expected in [
     ('og:image', social_url),
