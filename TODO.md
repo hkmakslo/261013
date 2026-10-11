@@ -20,6 +20,8 @@ The controls use bold SVG arrows in circular badges, a bordered white Previous b
 
 ## Independent hkmakslo publication
 
-- [ ] Publish the current site to public hkmakslo/tie-261013 and verify all live pages and downloads. Preserve the old ksloenglish repository, site and Manus binding. Future updates must be pushed to this independent repository explicitly.
+- [x] Publish the current site to public hkmakslo/tie-261013 and verify all live pages and downloads. Preserve the old ksloenglish repository, site and Manus binding. Future updates must be pushed to this independent repository explicitly.
 
 Source and static website branches were successfully pushed to hkmakslo/tie-261013. GitHub Pages creation returned HTTP 403 Resource not accessible by integration; publication remains pending owner enablement in Repository Settings → Pages. No changes were pushed to the ksloenglish repository.
+
+GitHub Pages was enabled by the owner and returned HTTP 200. Navigation now uses compact padding, 38px arrow badges and 72px desktop / 68px mobile minimum heights (down from 116px / 94px), while preserving labels, wrapping and all destinations. Live exact-file checks are run after publishing this update.
