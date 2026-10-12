@@ -18,19 +18,19 @@
     },
     {
       "path": "/pages/05/",
-      "title": "School access"
-    },
-    {
-      "path": "/pages/06/",
       "title": "Enterprise vs retail"
     },
     {
-      "path": "/pages/07/",
+      "path": "/pages/06/",
       "title": "Data safety"
     },
     {
-      "path": "/pages/08/",
+      "path": "/pages/07/",
       "title": "Feature rollouts"
+    },
+    {
+      "path": "/pages/08/",
+      "title": "School access"
     },
     {
       "path": "/pages/09/",
