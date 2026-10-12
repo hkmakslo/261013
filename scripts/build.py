@@ -289,6 +289,9 @@ def slide_body(slide: dict, current: str) -> str:
     if kind == 'format':
         columns = ''.join(f'<th scope="col">{esc(col)}</th>' for col in slide['columns'])
         return f'''<p class="resource-intro">{esc(slide['note'])}</p><hr class="section-rule"><div class="format-example vague"><p><strong>Vague:</strong> “{esc(slide['vague'])}”</p></div><div class="format-example"><p><span class="format-label">Clear:</span> {esc(slide['clear'])}</p></div><div class="table-wrap" role="region" aria-label="Four-column table headings" tabindex="0"><table class="format-table"><thead><tr>{columns}</tr></thead></table></div>'''
+    if kind == 'blueprint-table':
+        introduction = f'<p class="resource-intro">{esc(slide["instruction"])}</p><hr class="section-rule">'
+        return introduction + prompt_box(current, slide['prompt_en']) + prompt_box(current, slide['prompt_zh'], True)
     if kind == 'practice':
         steps = ''.join(f'<section class="practice-step"><div class="big-step" aria-hidden="true">{i:02d}</div><h2>{esc(step["title"])}</h2>' + ''.join(f'<p>{esc(line)}</p>' for line in step['lines']) + '</section>' for i, step in enumerate(slide['steps'], 1))
         return '<div class="practice-steps">' + steps + '</div>' + notes(slide)

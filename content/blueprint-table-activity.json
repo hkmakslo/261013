@@ -1,0 +1,14 @@
+{
+  "number": 14,
+  "id": "blueprint_table",
+  "title": "Four Key Focuses.",
+  "accent": "Ten Strategies.",
+  "nav": "Try a Blueprint table",
+  "kind": "blueprint-table",
+  "participant_action": true,
+  "instruction": "Select both Blueprint PDFs in Chat. Try either prompt below.",
+  "columns": ["Key focus", "Strategy", "Suggested teacher action", "Citation"],
+  "columns_zh": ["發展重點", "推行策略", "建議教師行動", "出處"],
+  "prompt_en": "Summarise the Blueprint’s Four Key Focuses and Ten Strategies for secondary-school teachers. Use a four-column table: Key focus; Strategy; Suggested teacher action; Citation. Include all ten strategies, grouped by focus, one row per strategy. Keep cells brief and distinguish suggestions from official requirements. Write in English.",
+  "prompt_zh": "請為中學教師整理《藍圖》的「四大重點•十大策略」。用四欄表格：發展重點、推行策略、建議教師行動、出處。按重點分組，每項策略一行，共十行。內容簡潔，分清建議與官方要求。請以繁體中文回答。"
+}

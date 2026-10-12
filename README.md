@@ -1,6 +1,6 @@
 # Gemini Notebook Workshop — Participant Companion
 
-Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The web companion contains 31 sequenced workshop pages, including eight supplied Studio-output comparison pages and four video-comparison pages, plus ten bilingual prompt detail pages. The downloadable PowerPoint is the matching 31-slide export.
+Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The web companion contains 33 sequenced workshop pages, including eight supplied Studio-output comparison pages and four video-comparison pages, plus ten bilingual prompt detail pages. The downloadable PowerPoint is the matching 33-slide export.
 
 ## Structure
 

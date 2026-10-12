@@ -208,6 +208,30 @@
   },
   {
     "number": 14,
+    "id": "blueprint_table",
+    "title": "Four Key Focuses.",
+    "accent": "Ten Strategies.",
+    "nav": "Try a Blueprint table",
+    "kind": "blueprint-table",
+    "participant_action": true,
+    "instruction": "Select both Blueprint PDFs in Chat. Try either prompt below.",
+    "columns": [
+      "Key focus",
+      "Strategy",
+      "Suggested teacher action",
+      "Citation"
+    ],
+    "columns_zh": [
+      "發展重點",
+      "推行策略",
+      "建議教師行動",
+      "出處"
+    ],
+    "prompt_en": "Summarise the Blueprint’s Four Key Focuses and Ten Strategies for secondary-school teachers. Use a four-column table: Key focus; Strategy; Suggested teacher action; Citation. Include all ten strategies, grouped by focus, one row per strategy. Keep cells brief and distinguish suggestions from official requirements. Write in English.",
+    "prompt_zh": "請為中學教師整理《藍圖》的「四大重點•十大策略」。用四欄表格：發展重點、推行策略、建議教師行動、出處。按重點分組，每項策略一行，共十行。內容簡潔，分清建議與官方要求。請以繁體中文回答。"
+  },
+  {
+    "number": 15,
     "title": "Hands-on: generate,",
     "accent": "customise, compare.",
     "kind": "practice",
@@ -240,7 +264,7 @@
     "participant_action": true
   },
   {
-    "number": 15,
+    "number": 16,
     "id": "info_default",
     "title": "Studio example",
     "accent": "Infographic: default output.",
@@ -267,7 +291,7 @@
     "callout": "What would you keep, remove or emphasise?"
   },
   {
-    "number": 16,
+    "number": 17,
     "id": "info_prompt",
     "title": "Studio example",
     "accent": "Infographic: custom prompt & settings.",
@@ -288,7 +312,7 @@
     ]
   },
   {
-    "number": 17,
+    "number": 18,
     "id": "info_custom",
     "title": "Studio example",
     "accent": "Infographic: narrowed student focus.",
@@ -315,7 +339,7 @@
     "callout": "More suitable for the purpose—not automatically more accurate."
   },
   {
-    "number": 18,
+    "number": 19,
     "id": "info_detail",
     "title": "Studio example",
     "accent": "Infographic: readable detail.",
@@ -336,7 +360,7 @@
     "callout": "Which change helps your intended audience most?"
   },
   {
-    "number": 19,
+    "number": 20,
     "id": "deck_default",
     "title": "Studio example",
     "accent": "Slide deck: default output.",
@@ -367,7 +391,7 @@
     "callout": "What does an English teacher need most?"
   },
   {
-    "number": 20,
+    "number": 21,
     "id": "deck_prompt",
     "title": "Studio example",
     "accent": "Slide deck: custom prompt.",
@@ -386,7 +410,7 @@
     ]
   },
   {
-    "number": 21,
+    "number": 22,
     "id": "deck_custom",
     "title": "Studio example",
     "accent": "Slide deck: English-teacher focus.",
@@ -413,7 +437,7 @@
     "callout": "Clearer purpose—not a guaranteed slide count."
   },
   {
-    "number": 22,
+    "number": 23,
     "id": "deck_detail",
     "title": "Studio example",
     "accent": "Slide deck: readable detail.",
@@ -429,7 +453,7 @@
     "draft_note": "Supplied AI-generated draft. Check policy claims, figures and dates against the sources before use."
   },
   {
-    "number": 23,
+    "number": 24,
     "id": "video_default",
     "title": "Video overview:",
     "accent": "default output.",
@@ -447,7 +471,7 @@
     "callout": "What would you change for your colleagues?"
   },
   {
-    "number": 24,
+    "number": 25,
     "id": "video_prompt",
     "title": "Video overview:",
     "accent": "the custom prompt.",
@@ -464,7 +488,7 @@
     ]
   },
   {
-    "number": 25,
+    "number": 26,
     "id": "video_custom",
     "title": "Video overview:",
     "accent": "wording is not the voice.",
@@ -498,7 +522,7 @@
     ]
   },
   {
-    "number": 26,
+    "number": 27,
     "id": "video_cantonese",
     "title": "Quick workaround:",
     "accent": "Cantonese with HeyGen.",
@@ -527,7 +551,7 @@
     "tip": "For slide-based videos, audio-only translation may be enough; lip sync is only relevant to visible speakers."
   },
   {
-    "number": 27,
+    "number": 28,
     "title": "Post your Studio output",
     "accent": "on Padlet.",
     "kind": "padlet",
@@ -540,7 +564,7 @@
     "participant_action": true
   },
   {
-    "number": 28,
+    "number": 29,
     "title": "Example",
     "accent": "Check S6 English reading materials.",
     "kind": "context",
@@ -553,28 +577,28 @@
     ]
   },
   {
-    "number": 29,
+    "number": 30,
     "title": "Example",
     "accent": "English prompt",
     "kind": "english-example",
     "nav": "Example: English prompt"
   },
   {
-    "number": 30,
+    "number": 31,
     "title": "Example",
     "accent": "繁體中文提示詞",
     "kind": "chinese-example",
     "nav": "Example: Chinese prompt"
   },
   {
-    "number": 31,
+    "number": 32,
     "title": "Ten useful prompts",
     "accent": "for teachers.",
     "kind": "prompt-index",
     "nav": "Ten useful prompts"
   },
   {
-    "number": 32,
+    "number": 33,
     "title": "Q&A.",
     "accent": "What will you try next week?",
     "kind": "bullets",

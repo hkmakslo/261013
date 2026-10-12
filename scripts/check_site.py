@@ -17,7 +17,7 @@ slides = json.loads((ROOT / 'content/slides.json').read_text())
 slide_numbers = [slide['number'] for slide in slides]
 assert slide_numbers == list(range(1, len(slides) + 1)), 'Slide numbers must be continuous.'
 slide_count = len(slides)
-assert slide_count == 32, slide_count
+assert slide_count == 33, slide_count
 prompt_count = len(texts)
 prompt_index_number = next(slide['number'] for slide in slides if slide['kind'] == 'prompt-index')
 pages = list(SITE.rglob('index.html'))
@@ -114,7 +114,7 @@ for index, slide in enumerate(slides):
         assert required(soup, '.try-it-helper').get_text(' ', strip=True) == 'On your computer'
         assert required(soup, '.try-it-badge svg').get('aria-hidden') == 'true'
 
-assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 11, 14, 27]
+assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 11, 14, 15, 28]
 
 for number, text in enumerate(texts, 1):
     soup = BeautifulSoup((SITE / f'prompts/{number:02d}/index.html').read_text(), 'html.parser')
@@ -187,8 +187,8 @@ assert 'Write in English.' not in required(deck_prompt_soup, '#prompt-en').get_t
 
 video_slides = {slide['id']: slide for slide in slides if slide['kind'] == 'video-example'}
 assert list(video_slides) == ['video_default', 'video_prompt', 'video_custom', 'video_cantonese']
-assert prompt_index_number == 31
-assert slides[-1]['number'] == 32
+assert prompt_index_number == 32
+assert slides[-1]['number'] == 33
 expected_videos = {
     'video_default': ('yDD8U8tmnos', 'https://youtu.be/yDD8U8tmnos', 'video-examples/default-poster-16x9.jpg'),
     'video_custom': ('m6ULGcDufjI', 'https://youtu.be/m6ULGcDufjI', 'video-examples/custom-poster-16x9.jpg'),
@@ -269,6 +269,20 @@ for expected in ['Our school version', '8 Studio tools', 'Retail screenshot', '9
 assert 'studio-retail.png' in str(required(retail_soup, 'a.shot').get('href'))
 format_soup = soup_for_slide_kind('format')
 assert len(format_soup.select('table th')) == 4
+blueprint_activity = slides[13]
+assert blueprint_activity['kind'] == 'blueprint-table'
+assert slides[12]['kind'] == 'format' and slides[14]['kind'] == 'practice'
+blueprint_soup = soup_for_slide_kind('blueprint-table')
+for field, code_id in [('prompt_en', 'prompt-en'), ('prompt_zh', 'prompt-zh-Hant')]:
+    assert required(blueprint_soup, '#' + code_id).get_text() == blueprint_activity[field]
+assert blueprint_activity['prompt_en'].endswith('Write in English.')
+assert blueprint_activity['prompt_zh'].endswith('請以繁體中文回答。')
+assert len(blueprint_activity['columns']) == len(blueprint_activity['columns_zh']) == 4
+for heading in blueprint_activity['columns']:
+    assert heading in blueprint_activity['prompt_en']
+for heading in blueprint_activity['columns_zh']:
+    assert heading in blueprint_activity['prompt_zh']
+assert len(blueprint_soup.select('[data-copy]')) == 2
 grounding_soup = BeautifulSoup(slide_page(2).read_text(), 'html.parser')
 assert len(grounding_soup.select('.content ol.numbered li')) == 4
 assert 'Source grounding reduces hallucination risk.' in required(grounding_soup, '.content').get_text(' ', strip=True)
