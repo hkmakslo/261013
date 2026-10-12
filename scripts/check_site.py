@@ -17,6 +17,7 @@ slides = json.loads((ROOT / 'content/slides.json').read_text())
 slide_numbers = [slide['number'] for slide in slides]
 assert slide_numbers == list(range(1, len(slides) + 1)), 'Slide numbers must be continuous.'
 slide_count = len(slides)
+assert slide_count == 31, slide_count
 prompt_count = len(texts)
 prompt_index_number = next(slide['number'] for slide in slides if slide['kind'] == 'prompt-index')
 pages = list(SITE.rglob('index.html'))
@@ -175,6 +176,75 @@ deck_prompt_soup = BeautifulSoup(slide_page(deck_prompt['number']).read_text(), 
 assert required(deck_prompt_soup, '#prompt-en').get_text() == 'Only focus on information that is relevant to English teachers.'
 assert 'Write in English.' not in required(info_prompt_soup, '#prompt-en').get_text()
 assert 'Write in English.' not in required(deck_prompt_soup, '#prompt-en').get_text()
+
+video_slides = {slide['id']: slide for slide in slides if slide['kind'] == 'video-example'}
+assert list(video_slides) == ['video_default', 'video_prompt', 'video_custom', 'video_cantonese']
+assert prompt_index_number == 30
+assert slides[-1]['number'] == 31
+expected_videos = {
+    'video_default': ('yDD8U8tmnos', 'https://youtu.be/yDD8U8tmnos', 'video-examples/default-poster-16x9.jpg'),
+    'video_custom': ('m6ULGcDufjI', 'https://youtu.be/m6ULGcDufjI', 'video-examples/custom-poster-16x9.jpg'),
+    'video_cantonese': ('2n8ZwRiJ5SE', 'https://youtu.be/2n8ZwRiJ5SE', 'video-examples/cantonese-poster-16x9.jpg'),
+}
+assert len(expected_videos) == 3
+for video_id, (youtube_id, youtube_url, poster) in expected_videos.items():
+    slide = video_slides[video_id]
+    assert slide['youtube_id'] == youtube_id
+    assert slide['youtube_url'] == youtube_url
+    assert slide['poster'] == poster
+    assert (SITE / 'assets' / poster).is_file(), poster
+    path = slide_page(slide['number'])
+    source = path.read_text()
+    soup = BeautifulSoup(source, 'html.parser')
+    frame = required(soup, f'.video-frame[data-youtube-id="{youtube_id}"]')
+    assert frame.select_one('iframe') is None, video_id
+    poster_image = required(frame, 'img.video-poster')
+    assert poster in str(poster_image.get('src'))
+    play = required(frame, 'button[data-youtube-play]')
+    assert play.get('type') == 'button'
+    assert play.get('aria-label') == f'Play {slide["title"]} {slide["accent"]} on YouTube'
+    fallback = required(soup, '.video-fallback a.button')
+    assert fallback.get('href') == youtube_url
+    assert fallback.get('target') == '_blank'
+    assert 'noopener' in str(fallback.get('rel'))
+    assert '<noscript><p class="video-nojs">' in source
+    assert youtube_url in source
+    assert 'youtube-nocookie.com/embed/' not in source
+
+video_prompt = video_slides['video_prompt']
+video_prompt_soup = BeautifulSoup(slide_page(video_prompt['number']).read_text(), 'html.parser')
+exact_video_prompt = '用香港廣東話，解釋中文科老師需要注意的地方。'
+assert required(video_prompt_soup, '#prompt-zh-Hant').get_text() == exact_video_prompt
+assert 'Write in English.' not in required(video_prompt_soup, '#prompt-zh-Hant').get_text()
+assert '請以繁體中文回答。' not in required(video_prompt_soup, '#prompt-zh-Hant').get_text()
+prompt_text = required(video_prompt_soup, 'main').get_text(' ', strip=True)
+assert 'Chinese subject teachers' in prompt_text
+assert 'Hong Kong Cantonese' in prompt_text
+prompt_screenshot = required(video_prompt_soup, 'a.shot')
+assert 'video-examples/custom-prompt.jpeg' in str(prompt_screenshot.get('href'))
+
+video_custom_soup = BeautifulSoup(slide_page(video_slides['video_custom']['number']).read_text(), 'html.parser')
+video_custom_text = required(video_custom_soup, 'main').get_text(' ', strip=True)
+assert 'AI識寫文，仲使乜中文老師？' in video_custom_text
+assert 'Cantonese wording ≠ Cantonese narration.' in video_custom_text
+assert 'Observed in this sample. It does not establish whether Notebook supports Cantonese narration more generally.' in video_custom_text
+assert required(video_custom_soup, '.video-secondary-links a').get('href') == 'https://youtu.be/m6ULGcDufjI?t=29'
+
+video_cantonese_soup = BeautifulSoup(slide_page(video_slides['video_cantonese']['number']).read_text(), 'html.parser')
+video_cantonese_text = required(video_cantonese_soup, 'main').get_text(' ', strip=True)
+for workflow_step in video_slides['video_cantonese']['workflow']:
+    assert workflow_step in video_cantonese_text
+assert required(video_cantonese_soup, '.video-tip').get_text(' ', strip=True) == 'Practical tip For slide-based videos, audio-only translation may be enough; lip sync is only relevant to visible speakers.'
+assert 'school-approved, non-sensitive content' in video_cantonese_text
+assert required(video_cantonese_soup, '.video-source a').get('href') == video_slides['video_cantonese']['service_help_url']
+
+app_source = (ROOT / 'src/app.js').read_text()
+assert "document.querySelectorAll('[data-youtube-id]')" in app_source
+assert "if (!playButton || !/^[A-Za-z0-9_-]{11}$/.test(videoId)) return;" in app_source
+assert 'https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1' in app_source
+assert "iframe.setAttribute('allowfullscreen', '');" in app_source
+assert "iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');" in app_source
+assert 'no-referrer' not in app_source
 
 manifest = json.loads((SITE / 'manus-routes.json').read_text())
 assert len(manifest['routes']) == slide_count + prompt_count + 1

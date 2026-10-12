@@ -208,6 +208,60 @@ def studio_example(slide: dict, current: str) -> str:
     return copy + prompt + settings + f'<div class="{visual_class}">{figures}</div>' + downloads + caution
 
 
+def video_player(slide: dict, current: str) -> str:
+    """Render a local poster first; JavaScript creates the YouTube iframe only on request."""
+    video_title = f'{slide["title"]} {slide["accent"]}'
+    frame = f'''<div class="video-frame" data-youtube-id="{esc(slide["youtube_id"])}" data-youtube-title="{esc(video_title)}">
+<img class="video-poster" src="{href(current, "assets/" + slide["poster"])}" alt="{esc(slide["poster_alt"])}" loading="lazy">
+<button class="video-play-button" type="button" data-youtube-play aria-label="Play {esc(video_title)} on YouTube"><span class="video-play-icon" aria-hidden="true">▶</span><span>Play video</span></button>
+</div>'''
+    fallback = button(current, slide['youtube_url'], 'Watch on YouTube', external=True, secondary=True)
+    nojs = f'<noscript><p class="video-nojs">Video playback is available on <a href="{esc(slide["youtube_url"])}" target="_blank" rel="noopener noreferrer">YouTube<span aria-hidden="true"> ↗</span></a>.</p></noscript>'
+    return f'<section class="video-player" aria-label="{esc(video_title)}">{frame}<div class="button-row video-fallback">{fallback}</div>{nojs}</section>'
+
+
+def video_example(slide: dict, current: str) -> str:
+    """Render compact, inspectable video comparisons without preloading YouTube."""
+    summary = f'<p class="example-intro">{esc(slide["summary"])}</p>' if slide.get('summary') else ''
+    details = []
+    if slide.get('audience'):
+        details.append(f'<div><dt>Audience</dt><dd>{esc(slide["audience"])}</dd></div>')
+    if slide.get('speech_request'):
+        details.append(f'<div><dt>Requested spoken language</dt><dd>{esc(slide["speech_request"])}</dd></div>')
+    metadata = f'<dl class="video-details">{"".join(details)}</dl>' if details else ''
+    quote = f'<blockquote class="video-quote" lang="zh-Hant">{esc(slide["quote"])}</blockquote>' if slide.get('quote') else ''
+    overview = f'<div class="video-example-copy">{summary}{metadata}{quote}</div>'
+    player = video_player(slide, current) if slide.get('youtube_id') else ''
+    prompt = ''
+    if slide.get('prompt'):
+        prompt = prompt_box(
+            current,
+            slide['prompt'],
+            chinese=True,
+            label='Exact prompt entered',
+            subtitle='Verbatim historical text from the supplied Studio screenshot',
+        )
+    images = ''.join(shot(current, image['file'], image['alt']) for image in slide.get('images', []))
+    screenshot = f'<div class="video-screenshot">{images}</div>' if images else ''
+    points = ''
+    if slide.get('points'):
+        points = '<ul class="large-bullets video-points">' + ''.join(f'<li>{esc(point)}</li>' for point in slide['points']) + '</ul>'
+    workflow = list_numbered(slide['workflow']) if slide.get('workflow') else ''
+    service = ''
+    if slide.get('service_url'):
+        service = f'<div class="button-row">{button(current, slide["service_url"], slide["service_label"], external=True, secondary=True)}</div>'
+    secondary_links = ''.join(ext_link(link['url'], link['label']) for link in slide.get('secondary_links', []))
+    secondary = f'<p class="video-secondary-links">{secondary_links}</p>' if secondary_links else ''
+    source = ''
+    if slide.get('service_help_url'):
+        language_help = ext_link(slide['service_help_url'], 'HeyGen’s supported video-translation languages')
+        workflow_help = ext_link(slide['workflow_help_url'], slide['workflow_help_label'])
+        source = f'<p class="video-source">HeyGen lists Chinese (Cantonese - Traditional) among its supported translation languages. {language_help} · {workflow_help}</p>'
+    tip = f'<details class="video-tip"><summary>Practical tip</summary><p>{esc(slide["tip"])}</p></details>' if slide.get('tip') else ''
+    callout = f'<p class="video-callout">{esc(slide["callout"])}</p>' if slide.get('callout') else ''
+    return overview + player + prompt + screenshot + points + workflow + secondary + service + source + tip + callout + notes(slide)
+
+
 def slide_body(slide: dict, current: str) -> str:
     kind = slide['kind']
     if kind == 'cover':
@@ -243,6 +297,8 @@ def slide_body(slide: dict, current: str) -> str:
         return prompt_index(current)
     if kind == 'studio-example':
         return studio_example(slide, current)
+    if kind == 'video-example':
+        return video_example(slide, current)
     if kind == 'context':
         sources = ''.join(f'<li>{esc(source)}</li>' for source in slide['sources'])
         return f'''<section class="context-section"><h2>Situation</h2><p>{esc(slide['situation'])}</p></section><section class="context-section"><h2>Sources to add to Notebook</h2><ul class="source-items">{sources}</ul><div class="source-links">{ext_link(ENGLISH_URL,'EDB curriculum documents')}{ext_link(HKEAA_URL,'HKEAA assessment frameworks')}</div></section><div class="button-row">{button(current,prompt_path(1),'Open the complete bilingual example')}</div>'''

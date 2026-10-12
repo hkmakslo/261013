@@ -97,6 +97,25 @@ document.querySelectorAll('[data-copy]').forEach(button => {
   });
 });
 
+document.querySelectorAll('[data-youtube-id]').forEach(player => {
+  const playButton = player.querySelector('[data-youtube-play]');
+  const videoId = player.dataset.youtubeId || '';
+  const videoTitle = player.dataset.youtubeTitle || 'Workshop video';
+  if (!playButton || !/^[A-Za-z0-9_-]{11}$/.test(videoId)) return;
+  playButton.addEventListener('click', () => {
+    playButton.disabled = true;
+    player.setAttribute('aria-busy', 'true');
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1`;
+    iframe.title = videoTitle;
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    player.replaceChildren(iframe);
+    player.removeAttribute('aria-busy');
+  }, { once: true });
+});
+
 document.addEventListener('keydown', event => {
   if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || (dialog && dialog.open)) return;
   const target = event.target;

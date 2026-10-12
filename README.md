@@ -1,6 +1,6 @@
 # Gemini Notebook Workshop — Participant Companion
 
-Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The web companion contains 27 sequenced workshop pages, including eight supplied Studio-output comparison pages, plus ten bilingual prompt detail pages. The downloadable PowerPoint is the matching 27-slide export.
+Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The web companion contains 31 sequenced workshop pages, including eight supplied Studio-output comparison pages and four video-comparison pages, plus ten bilingual prompt detail pages. The downloadable PowerPoint is the matching 31-slide export.
 
 ## Structure
 
@@ -9,7 +9,7 @@ Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026
 - `content/prompt-examples-source.md`: situations and source-selection guidance for all ten examples.
 - `src/styles.css` and `src/app.js`: responsive Swiss Minimal design and progressive enhancements.
 - `scripts/build.py`: dependency-free static HTML generator, producing `site/`.
-- `public/assets/`: supplied logos, screenshots and compressed WebP/JPEG Studio display images.
+- `public/assets/`: supplied logos, screenshots, local video posters and compressed WebP/JPEG Studio display images.
 - `public/downloads/`: supplied Blueprint PDFs, presentation, bilingual prompt handouts and byte-preserved original Studio outputs.
 
 ## Build and preview
@@ -19,7 +19,7 @@ python3 scripts/build.py
 python3 -m http.server 3000 --bind 0.0.0.0 --directory site
 ```
 
-Python 3.10+ is sufficient. No Node packages, database, AI service or login are needed. Page contents are delivered as static HTML and remain readable without JavaScript. JavaScript enhances the contents dialog, filtering, copying, keyboard shortcuts and printing.
+Python 3.10+ is sufficient. No Node packages, database, AI service or login are needed. Page contents are delivered as static HTML and remain readable without JavaScript. JavaScript enhances the contents dialog, filtering, copying, keyboard shortcuts, deferred YouTube playback and printing. The video pages show local posters until a participant explicitly selects playback; a prominent YouTube link remains available without JavaScript.
 
 ## GitHub Pages
 

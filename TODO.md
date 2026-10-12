@@ -81,3 +81,8 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Presenter-credit typography
 
 - [x] Make the website’s “Presented by Ken Kum” larger and responsive, with subtle emphasis on the name, while preserving its secondary hierarchy, muted colour and clear gap below it. Publish to the existing hkmakslo GitHub Pages site; do not alter the PowerPoint.
+
+## Video overview examples
+
+- [x] Add four slides after the slide-deck examples: default YouTube video, exact supplied custom prompt, custom output with the observed Mandarin-versus-Cantonese limitation, and the supplied HeyGen Cantonese workaround. Preserve all school branding and existing presenter typography. Use brief excerpts rather than whole videos to retain hands-on and Q&A time.
+- [x] Match the website to the expanded deck, with responsive playable YouTube videos, external playback fallbacks, the supplied screenshots, updated sequential navigation, prompt-index links and the current PowerPoint download. Show that the language limitation is observed in this sample, not a universal product claim. Explain HeyGen as a separate service and avoid sending sensitive material without approval.

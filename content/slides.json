@@ -401,6 +401,104 @@
   },
   {
     "number": 22,
+    "id": "video_default",
+    "title": "Video overview:",
+    "accent": "default output.",
+    "kind": "video-example",
+    "nav": "Video: default output",
+    "summary": "Start with the default version.",
+    "youtube_id": "yDD8U8tmnos",
+    "youtube_url": "https://youtu.be/yDD8U8tmnos",
+    "poster": "video-examples/default-poster-16x9.jpg",
+    "poster_alt": "Local video thumbnail for the default Notebook video output.",
+    "points": [
+      "Play the opening 20–30 seconds.",
+      "Notice the audience, focus and spoken language."
+    ],
+    "callout": "What would you change for your colleagues?"
+  },
+  {
+    "number": 23,
+    "id": "video_prompt",
+    "title": "Video overview:",
+    "accent": "the custom prompt.",
+    "kind": "video-example",
+    "nav": "Video: custom prompt",
+    "audience": "Chinese subject teachers",
+    "speech_request": "Hong Kong Cantonese",
+    "prompt": "用香港廣東話，解釋中文科老師需要注意的地方。",
+    "images": [
+      {
+        "file": "video-examples/custom-prompt.jpeg",
+        "alt": "Custom Studio video prompt screenshot showing the exact Chinese prompt for Chinese subject teachers in Hong Kong Cantonese."
+      }
+    ]
+  },
+  {
+    "number": 24,
+    "id": "video_custom",
+    "title": "Video overview:",
+    "accent": "wording is not the voice.",
+    "kind": "video-example",
+    "nav": "Video: wording and voice",
+    "summary": "In Ken’s sample, the narration is still Mandarin.",
+    "youtube_id": "m6ULGcDufjI",
+    "youtube_url": "https://youtu.be/m6ULGcDufjI",
+    "poster": "video-examples/custom-poster-16x9.jpg",
+    "poster_alt": "Local video thumbnail for Ken’s custom prompt sample.",
+    "quote": "AI識寫文，仲使乜中文老師？",
+    "images": [
+      {
+        "file": "video-examples/custom-language.webp",
+        "alt": "Provided screenshot from Ken’s custom-language video sample."
+      }
+    ],
+    "points": [
+      "The wording sounds like Cantonese.",
+      "The voice does not."
+    ],
+    "callout": "Cantonese wording ≠ Cantonese narration.",
+    "notes": [
+      "Observed in this sample. It does not establish whether Notebook supports Cantonese narration more generally."
+    ],
+    "secondary_links": [
+      {
+        "url": "https://youtu.be/m6ULGcDufjI?t=29",
+        "label": "Jump to the wording example (~0:29)"
+      }
+    ]
+  },
+  {
+    "number": 25,
+    "id": "video_cantonese",
+    "title": "Quick workaround:",
+    "accent": "Cantonese with HeyGen.",
+    "kind": "video-example",
+    "nav": "Video: Cantonese with HeyGen",
+    "summary": "Ken translated the video and found the result satisfactory.",
+    "youtube_id": "2n8ZwRiJ5SE",
+    "youtube_url": "https://youtu.be/2n8ZwRiJ5SE",
+    "poster": "video-examples/cantonese-poster-16x9.jpg",
+    "poster_alt": "Local video thumbnail for the Cantonese HeyGen translation sample.",
+    "workflow": [
+      "Download the Notebook video.",
+      "Translate it into Cantonese in HeyGen.",
+      "Listen, check and share the reviewed version."
+    ],
+    "service_url": "https://www.heygen.com/translate",
+    "service_label": "Open HeyGen Translate",
+    "notes": [
+      "HeyGen is a separate service, not Notebook Studio.",
+      "Use only school-approved, non-sensitive content.",
+      "Review meaning and pronunciation before sharing."
+    ],
+    "service_help_url": "https://help.heygen.com/en/articles/11391941-video-translation-languages-we-support",
+    "workflow_help_url": "https://help.heygen.com/en/articles/10029081-how-to-get-started-with-video-translation",
+    "workflow_help_label": "HeyGen video-translation workflow guidance",
+    "tip": "For slide-based videos, audio-only translation may be enough; lip sync is only relevant to visible speakers."
+  },
+  {
+    "number": 26,
     "title": "Post your Studio output",
     "accent": "on Padlet.",
     "kind": "padlet",
@@ -412,7 +510,7 @@
     "link": "https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd"
   },
   {
-    "number": 23,
+    "number": 27,
     "title": "Example",
     "accent": "Check S6 English reading materials.",
     "kind": "context",
@@ -425,28 +523,28 @@
     ]
   },
   {
-    "number": 24,
+    "number": 28,
     "title": "Example",
     "accent": "English prompt",
     "kind": "english-example",
     "nav": "Example: English prompt"
   },
   {
-    "number": 25,
+    "number": 29,
     "title": "Example",
     "accent": "繁體中文提示詞",
     "kind": "chinese-example",
     "nav": "Example: Chinese prompt"
   },
   {
-    "number": 26,
+    "number": 30,
     "title": "Ten useful prompts",
     "accent": "for teachers.",
     "kind": "prompt-index",
     "nav": "Ten useful prompts"
   },
   {
-    "number": 27,
+    "number": 31,
     "title": "Q&A.",
     "accent": "What will you try next week?",
     "kind": "bullets",
