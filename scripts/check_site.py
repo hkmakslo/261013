@@ -264,7 +264,7 @@ assert len(format_soup.select('table th')) == 4
 grounding_soup = BeautifulSoup(slide_page(2).read_text(), 'html.parser')
 assert len(grounding_soup.select('.content ol.numbered li')) == 4
 assert 'Source grounding reduces hallucination risk.' in required(grounding_soup, '.content').get_text(' ', strip=True)
-assert 'Fewer made-up answers—not error-free. Check important claims.' in required(grounding_soup, '.content').get_text(' ', strip=True)
+assert 'Fewer made-up answers' not in required(grounding_soup, '.content').get_text(' ', strip=True)
 assert [slide['nav'] for slide in slides[4:8]] == ['Enterprise vs retail', 'Data safety', 'Feature rollouts', 'School access']
 assert 'Flashcards, Quizzes' in required(soup_for_slide_kind('studio'), '.content').get_text(' ', strip=True)
 assert 'Write in English' not in required(format_soup, 'main').get_text()

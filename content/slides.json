@@ -22,8 +22,7 @@
       "Shows citations you can check.",
       "Turns sources into different formats.",
       "Source grounding reduces hallucination risk."
-    ],
-    "note": "Fewer made-up answers—not error-free. Check important claims."
+    ]
   },
   {
     "number": 3,

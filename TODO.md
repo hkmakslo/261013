@@ -102,3 +102,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Grounding, Studio spacing and access order
 
 - [x] Add a qualified hallucination-reduction point to Slide 2; leave clear breathing space below Flashcards, Quizzes on Slide 3; move Use our school route after Why do versions feel different. Mirror content and ordering on the participant website, refresh the PowerPoint download, and verify the publication.
+
+## Slide 2 clean four-point layout
+
+- [x] Remove the remark beneath point 04 on Slide 2 and redistribute the four points with balanced line heights and spacing. Mirror the removal on website page 2 and refresh the downloadable PowerPoint.
