@@ -47,6 +47,30 @@
   },
   {
     "number": 4,
+    "id": "studio_retail",
+    "title": "Our version",
+    "accent": "vs retail.",
+    "kind": "studio-retail",
+    "nav": "Studio: our version vs retail",
+    "groups": [
+      {
+        "title": "Our school version",
+        "count": "8 Studio tools",
+        "text": "The tools on the previous slide."
+      },
+      {
+        "title": "Retail screenshot",
+        "count": "9 Studio tools",
+        "text": "Same eight + Data table."
+      }
+    ],
+    "image": "studio-retail.png",
+    "notes": [
+      "Compare the interfaces shown—not every account."
+    ]
+  },
+  {
+    "number": 5,
     "title": "Use our",
     "accent": "school route",
     "kind": "access",
@@ -59,7 +83,7 @@
     "link": "https://kslo.tech/nb-teachers"
   },
   {
-    "number": 5,
+    "number": 6,
     "title": "Enterprise is a different service—",
     "accent": "not just ‘paid retail’.",
     "kind": "numbered",
@@ -72,7 +96,7 @@
     "note": "Personal / retail ≠ Workspace / Education ≠ Cloud Enterprise"
   },
   {
-    "number": 6,
+    "number": 7,
     "title": "Safer does not mean",
     "accent": "‘upload anything’.",
     "kind": "bullets",
@@ -88,7 +112,7 @@
     ]
   },
   {
-    "number": 7,
+    "number": 8,
     "title": "Why do versions",
     "accent": "feel different?",
     "kind": "bullets",
@@ -104,7 +128,7 @@
     ]
   },
   {
-    "number": 8,
+    "number": 9,
     "title": "Create a new notebook.",
     "accent": "Add the workshop documents.",
     "kind": "setup",
@@ -126,7 +150,7 @@
     ]
   },
   {
-    "number": 9,
+    "number": 10,
     "title": "Better instructions.",
     "accent": "Better answers.",
     "kind": "numbered",
@@ -140,7 +164,7 @@
     "note": "For whom? Do what? In what format? With what limits?"
   },
   {
-    "number": 10,
+    "number": 11,
     "title": "Try Explore.",
     "accent": "Find more relevant sources.",
     "kind": "explore-activity",
@@ -153,7 +177,7 @@
     "image": "explore-blueprint.png"
   },
   {
-    "number": 11,
+    "number": 12,
     "title": "Explore sources",
     "accent": "What specific sources are required?",
     "kind": "comparison",
@@ -163,7 +187,7 @@
     "image": "explore-digital-education.png"
   },
   {
-    "number": 12,
+    "number": 13,
     "title": "Tell chat how",
     "accent": "to organise the answer.",
     "kind": "format",
@@ -179,7 +203,7 @@
     ]
   },
   {
-    "number": 13,
+    "number": 14,
     "title": "Hands-on: generate,",
     "accent": "customise, compare.",
     "kind": "practice",
@@ -211,7 +235,7 @@
     "note": "Keep the Studio tool, selected sources and output language the same."
   },
   {
-    "number": 14,
+    "number": 15,
     "id": "info_default",
     "title": "Studio example",
     "accent": "Infographic: default output.",
@@ -238,7 +262,7 @@
     "callout": "What would you keep, remove or emphasise?"
   },
   {
-    "number": 15,
+    "number": 16,
     "id": "info_prompt",
     "title": "Studio example",
     "accent": "Infographic: custom prompt & settings.",
@@ -259,7 +283,7 @@
     ]
   },
   {
-    "number": 16,
+    "number": 17,
     "id": "info_custom",
     "title": "Studio example",
     "accent": "Infographic: narrowed student focus.",
@@ -286,7 +310,7 @@
     "callout": "More suitable for the purpose—not automatically more accurate."
   },
   {
-    "number": 17,
+    "number": 18,
     "id": "info_detail",
     "title": "Studio example",
     "accent": "Infographic: readable detail.",
@@ -307,7 +331,7 @@
     "callout": "Which change helps your intended audience most?"
   },
   {
-    "number": 18,
+    "number": 19,
     "id": "deck_default",
     "title": "Studio example",
     "accent": "Slide deck: default output.",
@@ -338,7 +362,7 @@
     "callout": "What does an English teacher need most?"
   },
   {
-    "number": 19,
+    "number": 20,
     "id": "deck_prompt",
     "title": "Studio example",
     "accent": "Slide deck: custom prompt.",
@@ -357,7 +381,7 @@
     ]
   },
   {
-    "number": 20,
+    "number": 21,
     "id": "deck_custom",
     "title": "Studio example",
     "accent": "Slide deck: English-teacher focus.",
@@ -384,7 +408,7 @@
     "callout": "Clearer purpose—not a guaranteed slide count."
   },
   {
-    "number": 21,
+    "number": 22,
     "id": "deck_detail",
     "title": "Studio example",
     "accent": "Slide deck: readable detail.",
@@ -400,7 +424,7 @@
     "draft_note": "Supplied AI-generated draft. Check policy claims, figures and dates against the sources before use."
   },
   {
-    "number": 22,
+    "number": 23,
     "id": "video_default",
     "title": "Video overview:",
     "accent": "default output.",
@@ -418,7 +442,7 @@
     "callout": "What would you change for your colleagues?"
   },
   {
-    "number": 23,
+    "number": 24,
     "id": "video_prompt",
     "title": "Video overview:",
     "accent": "the custom prompt.",
@@ -435,7 +459,7 @@
     ]
   },
   {
-    "number": 24,
+    "number": 25,
     "id": "video_custom",
     "title": "Video overview:",
     "accent": "wording is not the voice.",
@@ -469,7 +493,7 @@
     ]
   },
   {
-    "number": 25,
+    "number": 26,
     "id": "video_cantonese",
     "title": "Quick workaround:",
     "accent": "Cantonese with HeyGen.",
@@ -498,7 +522,7 @@
     "tip": "For slide-based videos, audio-only translation may be enough; lip sync is only relevant to visible speakers."
   },
   {
-    "number": 26,
+    "number": 27,
     "title": "Post your Studio output",
     "accent": "on Padlet.",
     "kind": "padlet",
@@ -510,7 +534,7 @@
     "link": "https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd"
   },
   {
-    "number": 27,
+    "number": 28,
     "title": "Example",
     "accent": "Check S6 English reading materials.",
     "kind": "context",
@@ -523,28 +547,28 @@
     ]
   },
   {
-    "number": 28,
+    "number": 29,
     "title": "Example",
     "accent": "English prompt",
     "kind": "english-example",
     "nav": "Example: English prompt"
   },
   {
-    "number": 29,
+    "number": 30,
     "title": "Example",
     "accent": "繁體中文提示詞",
     "kind": "chinese-example",
     "nav": "Example: Chinese prompt"
   },
   {
-    "number": 30,
+    "number": 31,
     "title": "Ten useful prompts",
     "accent": "for teachers.",
     "kind": "prompt-index",
     "nav": "Ten useful prompts"
   },
   {
-    "number": 31,
+    "number": 32,
     "title": "Q&A.",
     "accent": "What will you try next week?",
     "kind": "bullets",

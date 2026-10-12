@@ -17,7 +17,7 @@ slides = json.loads((ROOT / 'content/slides.json').read_text())
 slide_numbers = [slide['number'] for slide in slides]
 assert slide_numbers == list(range(1, len(slides) + 1)), 'Slide numbers must be continuous.'
 slide_count = len(slides)
-assert slide_count == 31, slide_count
+assert slide_count == 32, slide_count
 prompt_count = len(texts)
 prompt_index_number = next(slide['number'] for slide in slides if slide['kind'] == 'prompt-index')
 pages = list(SITE.rglob('index.html'))
@@ -179,8 +179,8 @@ assert 'Write in English.' not in required(deck_prompt_soup, '#prompt-en').get_t
 
 video_slides = {slide['id']: slide for slide in slides if slide['kind'] == 'video-example'}
 assert list(video_slides) == ['video_default', 'video_prompt', 'video_custom', 'video_cantonese']
-assert prompt_index_number == 30
-assert slides[-1]['number'] == 31
+assert prompt_index_number == 31
+assert slides[-1]['number'] == 32
 expected_videos = {
     'video_default': ('yDD8U8tmnos', 'https://youtu.be/yDD8U8tmnos', 'video-examples/default-poster-16x9.jpg'),
     'video_custom': ('m6ULGcDufjI', 'https://youtu.be/m6ULGcDufjI', 'video-examples/custom-poster-16x9.jpg'),
@@ -253,6 +253,12 @@ for route in manifest['routes']:
 
 prompt_index_soup = soup_for_slide_kind('prompt-index')
 assert len(prompt_index_soup.select('#prompt-index li a')) == prompt_count
+retail_soup = soup_for_slide_kind('studio-retail')
+assert slides[3]['kind'] == 'studio-retail'
+retail_text = required(retail_soup, 'main').get_text(' ', strip=True)
+for expected in ['Our school version', '8 Studio tools', 'Retail screenshot', '9 Studio tools', 'Same eight + Data table.', 'Compare the interfaces shown—not every account.']:
+    assert expected in retail_text, expected
+assert 'studio-retail.png' in str(required(retail_soup, 'a.shot').get('href'))
 format_soup = soup_for_slide_kind('format')
 assert len(format_soup.select('table th')) == 4
 assert 'Write in English' not in required(format_soup, 'main').get_text()

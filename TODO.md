@@ -90,3 +90,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Cantonese workflow introduction
 
 - [x] Replace Slide 25’s introductory sentence with “To create a video in Cantonese:” and match website page 25 and its downloadable PowerPoint, retaining the existing workflow and video links.
+
+## Studio retail comparison
+
+- [x] Insert a screenshot-based comparison after Slide 3: school deployment shows eight Studio tools; the supplied retail screenshot shows the same eight plus Data table. Do not generalise this screenshot to all accounts. Preserve the Swiss Minimal design and school branding. Renumber subsequent slides, sync the website and prompt-index links, refresh the PowerPoint download and verify publication.

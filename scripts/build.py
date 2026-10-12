@@ -273,6 +273,9 @@ def slide_body(slide: dict, current: str) -> str:
     if kind == 'studio':
         groups = ''.join(f'<section class="studio-group"><h2>{esc(g["title"])}</h2><p>{esc(g["text"])}</p></section>' for g in slide['groups'])
         return '<div class="split"><div class="studio-groups">' + groups + '</div>' + shot(current, slide['image'], 'Eight Studio tools available in the school Enterprise account') + '</div>'
+    if kind == 'studio-retail':
+        groups = ''.join(f'<section class="studio-group"><h2>{esc(g["title"])}</h2><p><strong>{esc(g["count"])}</strong></p><p>{esc(g["text"])}</p></section>' for g in slide['groups'])
+        return '<div class="split"><div class="studio-groups">' + groups + '</div>' + shot(current, slide['image'], 'Supplied retail Studio screenshot showing nine tools, including Data table') + '</div>' + notes(slide)
     if kind == 'access':
         return f'''<p><a class="access-url" href="{SCHOOL_URL}" target="_blank" rel="noopener noreferrer">kslo.tech/nb-teachers</a></p>{list_numbered(slide['points'], True)}<div class="button-row">{button(current,SCHOOL_URL,'Open the school access page',external=True)}</div>'''
     if kind == 'setup':
