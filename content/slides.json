@@ -1,21 +1,460 @@
 [
-  {"number":1,"title":"Gemini Notebook Workshop","accent":"(Intermediate Level)","kind":"cover","nav":"Workshop overview","points":["Make outputs fit your lesson.","Use your sources as evidence.","Keep the teacher in control."]},
-  {"number":2,"title":"What makes","accent":"Gemini Notebook different?","kind":"numbered","nav":"What makes Notebook different","points":["Works with the sources you provide.","Shows citations you can check.","Turns sources into different formats."]},
-  {"number":3,"title":"Eight Studio tools","accent":"in our version","kind":"studio","nav":"Eight Studio tools","groups":[{"title":"Read","text":"Reports, Mind Maps"},{"title":"See / hear","text":"Slides, Infographics, Audio, Video"},{"title":"Check understanding","text":"Flashcards, Quizzes"}],"image":"studio.png"},
-  {"number":4,"title":"Use our","accent":"school route","kind":"access","nav":"School access","points":["Open kslo.tech/nb-teachers.","Use the school’s link—not a retail tutorial link.","Sign in with your school apps email account."],"link":"https://kslo.tech/nb-teachers"},
-  {"number":5,"title":"Enterprise is a different service—","accent":"not just ‘paid retail’.","kind":"numbered","nav":"Enterprise vs retail","points":["School-managed access and sharing.","Google Cloud data protections.","Features can differ by version and region."],"note":"Personal / retail ≠ Workspace / Education ≠ Cloud Enterprise"},
-  {"number":6,"title":"Safer does not mean","accent":"‘upload anything’.","kind":"bullets","nav":"Data safety","points":["Use approved, non-sensitive sources.","Check sharing and citations.","Review before teaching or grading."],"notes":["Cloud terms: no model training or fine-tuning without customer permission or instruction.","School policy, privacy duties and teacher judgement still apply."]},
-  {"number":7,"title":"Why do versions","accent":"feel different?","kind":"bullets","nav":"Feature rollouts","points":["Features and rollouts can differ.","Some new features reach the retail version first.","The Enterprise version may receive these features later."],"label":"Unofficial explanation:","notes":["Features may undergo additional stability testing before Enterprise release."]},
-  {"number":8,"title":"Create a new notebook.","accent":"Add the workshop documents.","kind":"setup","nav":"Create your notebook","points":["Create a new notebook.","Name it: Digital Education Blueprint","Upload both PDFs. Wait until the sources are ready."],"downloads":[{"title":"Download Chinese version","file":"DigitalEducationBlueprint(Chinese).pdf"},{"title":"Download English version","file":"DigitalEducationBlueprint(English).pdf"}]},
-  {"number":9,"title":"Better instructions.","accent":"Better answers.","kind":"numbered","nav":"Better instructions","points":["Select only relevant sources.","Set a short teacher instruction in Chat settings.","State audience, task, format—and ask for evidence.","Check, then refine."],"note":"For whom? Do what? In what format? With what limits?"},
-  {"number":10,"title":"Try Explore.","accent":"Find more relevant sources.","kind":"explore-activity","nav":"Try Explore","points":["In your Blueprint notebook: Sources (來源) → Explore (探索).","Search for guidance related to the Blueprint. Be specific.","Review the results; add 1–2 relevant, trustworthy sources."],"image":"explore-blueprint.png"},
-  {"number":11,"title":"Explore sources","accent":"What specific sources are required?","kind":"comparison","nav":"Make source searches specific","broad":"Government documents on digital education","specific":"Hong Kong government documents on digital education","image":"explore-digital-education.png"},
-  {"number":12,"title":"Tell chat how","accent":"to organise the answer.","kind":"format","nav":"Specify the answer format","note":"Point form: how many? · Table: column count + names · Steps: numbering","vague":"Summarise this in a table.","clear":"Use a four-column table: Key point; Document statement; Teacher implication; Citation. Keep cells brief.","columns":["Key point","Document statement","Teacher implication","Citation"]},
-  {"number":13,"title":"Hands-on: generate,","accent":"customise, compare.","kind":"practice","nav":"Generate, customise, compare","steps":[{"title":"Generate A","lines":["Without customisation.","Keep it as Version A."]},{"title":"Customise B","lines":["Open ⋮ → Customise / 自訂.","Specify audience and focus.","Generate Version B."]},{"title":"Compare A & B","lines":["More relevant? Clearer?","More useful for teaching?"]}],"note":"Keep the Studio tool, selected sources and output language the same."},
-  {"number":14,"title":"Post your Studio output","accent":"on Padlet.","kind":"padlet","nav":"Post Studio output on Padlet","points":["Upload the output or screenshot.","Briefly describe its purpose and what changed."],"link":"https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd"},
-  {"number":15,"title":"Example","accent":"Check S6 English reading materials.","kind":"context","nav":"Example: situation & sources","situation":"Before planning S6 revision, an English teacher wants to know whether the school’s reading-comprehension notes address the skills identified in the selected official guidance.","sources":["English Language Curriculum and Assessment Guide (Secondary 4 - 6)","English Language Assessment Framework for HKDSE","The related reading notes"]},
-  {"number":16,"title":"Example","accent":"English prompt","kind":"english-example","nav":"Example: English prompt"},
-  {"number":17,"title":"Example","accent":"繁體中文提示詞","kind":"chinese-example","nav":"Example: Chinese prompt"},
-  {"number":18,"title":"Ten useful prompts","accent":"for teachers.","kind":"prompt-index","nav":"Ten useful prompts"},
-  {"number":19,"title":"Q&A.","accent":"What will you try next week?","kind":"bullets","nav":"Q&A & next steps","points":["One teaching task.","One improvement to your instructions.","One Studio function that you will put to work."]}
+  {
+    "number": 1,
+    "title": "Gemini Notebook Workshop",
+    "accent": "(Intermediate Level)",
+    "kind": "cover",
+    "nav": "Workshop overview",
+    "points": [
+      "Make outputs fit your lesson.",
+      "Use your sources as evidence.",
+      "Keep the teacher in control."
+    ]
+  },
+  {
+    "number": 2,
+    "title": "What makes",
+    "accent": "Gemini Notebook different?",
+    "kind": "numbered",
+    "nav": "What makes Notebook different",
+    "points": [
+      "Works with the sources you provide.",
+      "Shows citations you can check.",
+      "Turns sources into different formats."
+    ]
+  },
+  {
+    "number": 3,
+    "title": "Eight Studio tools",
+    "accent": "in our version",
+    "kind": "studio",
+    "nav": "Eight Studio tools",
+    "groups": [
+      {
+        "title": "Read",
+        "text": "Reports, Mind Maps"
+      },
+      {
+        "title": "See / hear",
+        "text": "Slides, Infographics, Audio, Video"
+      },
+      {
+        "title": "Check understanding",
+        "text": "Flashcards, Quizzes"
+      }
+    ],
+    "image": "studio.png"
+  },
+  {
+    "number": 4,
+    "title": "Use our",
+    "accent": "school route",
+    "kind": "access",
+    "nav": "School access",
+    "points": [
+      "Open kslo.tech/nb-teachers.",
+      "Use the school’s link—not a retail tutorial link.",
+      "Sign in with your school apps email account."
+    ],
+    "link": "https://kslo.tech/nb-teachers"
+  },
+  {
+    "number": 5,
+    "title": "Enterprise is a different service—",
+    "accent": "not just ‘paid retail’.",
+    "kind": "numbered",
+    "nav": "Enterprise vs retail",
+    "points": [
+      "School-managed access and sharing.",
+      "Google Cloud data protections.",
+      "Features can differ by version and region."
+    ],
+    "note": "Personal / retail ≠ Workspace / Education ≠ Cloud Enterprise"
+  },
+  {
+    "number": 6,
+    "title": "Safer does not mean",
+    "accent": "‘upload anything’.",
+    "kind": "bullets",
+    "nav": "Data safety",
+    "points": [
+      "Use approved, non-sensitive sources.",
+      "Check sharing and citations.",
+      "Review before teaching or grading."
+    ],
+    "notes": [
+      "Cloud terms: no model training or fine-tuning without customer permission or instruction.",
+      "School policy, privacy duties and teacher judgement still apply."
+    ]
+  },
+  {
+    "number": 7,
+    "title": "Why do versions",
+    "accent": "feel different?",
+    "kind": "bullets",
+    "nav": "Feature rollouts",
+    "points": [
+      "Features and rollouts can differ.",
+      "Some new features reach the retail version first.",
+      "The Enterprise version may receive these features later."
+    ],
+    "label": "Unofficial explanation:",
+    "notes": [
+      "Features may undergo additional stability testing before Enterprise release."
+    ]
+  },
+  {
+    "number": 8,
+    "title": "Create a new notebook.",
+    "accent": "Add the workshop documents.",
+    "kind": "setup",
+    "nav": "Create your notebook",
+    "points": [
+      "Create a new notebook.",
+      "Name it: Digital Education Blueprint",
+      "Upload both PDFs. Wait until the sources are ready."
+    ],
+    "downloads": [
+      {
+        "title": "Download Chinese version",
+        "file": "DigitalEducationBlueprint(Chinese).pdf"
+      },
+      {
+        "title": "Download English version",
+        "file": "DigitalEducationBlueprint(English).pdf"
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "title": "Better instructions.",
+    "accent": "Better answers.",
+    "kind": "numbered",
+    "nav": "Better instructions",
+    "points": [
+      "Select only relevant sources.",
+      "Set a short teacher instruction in Chat settings.",
+      "State audience, task, format—and ask for evidence.",
+      "Check, then refine."
+    ],
+    "note": "For whom? Do what? In what format? With what limits?"
+  },
+  {
+    "number": 10,
+    "title": "Try Explore.",
+    "accent": "Find more relevant sources.",
+    "kind": "explore-activity",
+    "nav": "Try Explore",
+    "points": [
+      "In your Blueprint notebook: Sources (來源) → Explore (探索).",
+      "Search for guidance related to the Blueprint. Be specific.",
+      "Review the results; add 1–2 relevant, trustworthy sources."
+    ],
+    "image": "explore-blueprint.png"
+  },
+  {
+    "number": 11,
+    "title": "Explore sources",
+    "accent": "What specific sources are required?",
+    "kind": "comparison",
+    "nav": "Make source searches specific",
+    "broad": "Government documents on digital education",
+    "specific": "Hong Kong government documents on digital education",
+    "image": "explore-digital-education.png"
+  },
+  {
+    "number": 12,
+    "title": "Tell chat how",
+    "accent": "to organise the answer.",
+    "kind": "format",
+    "nav": "Specify the answer format",
+    "note": "Point form: how many? · Table: column count + names · Steps: numbering",
+    "vague": "Summarise this in a table.",
+    "clear": "Use a four-column table: Key point; Document statement; Teacher implication; Citation. Keep cells brief.",
+    "columns": [
+      "Key point",
+      "Document statement",
+      "Teacher implication",
+      "Citation"
+    ]
+  },
+  {
+    "number": 13,
+    "title": "Hands-on: generate,",
+    "accent": "customise, compare.",
+    "kind": "practice",
+    "nav": "Generate, customise, compare",
+    "steps": [
+      {
+        "title": "Generate A",
+        "lines": [
+          "Without customisation.",
+          "Keep it as Version A."
+        ]
+      },
+      {
+        "title": "Customise B",
+        "lines": [
+          "Open ⋮ → Customise / 自訂.",
+          "Specify audience and focus.",
+          "Generate Version B."
+        ]
+      },
+      {
+        "title": "Compare A & B",
+        "lines": [
+          "More relevant? Clearer?",
+          "More useful for teaching?"
+        ]
+      }
+    ],
+    "note": "Keep the Studio tool, selected sources and output language the same."
+  },
+  {
+    "number": 14,
+    "id": "info_default",
+    "title": "Studio example",
+    "accent": "Infographic: default output.",
+    "kind": "studio-example",
+    "nav": "Infographic: default",
+    "summary": "A broad overview of the Blueprint.",
+    "images": [
+      {
+        "file": "studio-examples/info-default.webp",
+        "alt": "Default AI-generated Digital Education Blueprint infographic showing school, teacher and student themes."
+      }
+    ],
+    "downloads": [
+      {
+        "title": "Download original infographic PNG",
+        "file": "studio-infographic-default-original.png",
+        "label": "Original supplied output · PNG"
+      }
+    ],
+    "paragraphs": [
+      "School planning, teacher training and student literacy appear together.",
+      "Useful for a general introduction—but is everything relevant to your audience?"
+    ],
+    "callout": "What would you keep, remove or emphasise?"
+  },
+  {
+    "number": 15,
+    "id": "info_prompt",
+    "title": "Studio example",
+    "accent": "Infographic: custom prompt & settings.",
+    "kind": "studio-example",
+    "nav": "Infographic: custom prompt",
+    "summary": "This example changes both content focus and visual settings.",
+    "prompt": "Focus on information that is relevant to students",
+    "settings": [
+      "Layout: Portrait (9:16)",
+      "Detail: Low",
+      "Style: Anime"
+    ],
+    "images": [
+      {
+        "file": "studio-examples/info-prompt.jpeg",
+        "alt": "Original Studio infographic customisation screenshot showing the exact prompt and Portrait, Low and Anime selected."
+      }
+    ]
+  },
+  {
+    "number": 16,
+    "id": "info_custom",
+    "title": "Studio example",
+    "accent": "Infographic: narrowed student focus.",
+    "kind": "studio-example",
+    "nav": "Infographic: student focus",
+    "summary": "A different audience. A different visual.",
+    "images": [
+      {
+        "file": "studio-examples/info-custom.webp",
+        "alt": "Custom AI-generated student-focused Anime-style infographic about AI and digital literacy."
+      }
+    ],
+    "downloads": [
+      {
+        "title": "Download original infographic PNG",
+        "file": "studio-infographic-custom-original.png",
+        "label": "Original supplied output · PNG"
+      }
+    ],
+    "paragraphs": [
+      "Student learning, digital literacy and wellbeing take centre stage.",
+      "Portrait layout and anime illustrations replace the broad square overview."
+    ],
+    "callout": "More suitable for the purpose—not automatically more accurate."
+  },
+  {
+    "number": 17,
+    "id": "info_detail",
+    "title": "Studio example",
+    "accent": "Infographic: readable detail.",
+    "kind": "studio-example",
+    "nav": "Infographic: detail",
+    "summary": "Notice what has changed.",
+    "images": [
+      {
+        "file": "studio-examples/info-custom-detail.webp",
+        "alt": "Top two sections of the custom student-focused Anime-style infographic."
+      }
+    ],
+    "paragraphs": [
+      "Focus: student learning rather than whole-school planning.",
+      "Style: anime visuals and a darker technology theme.",
+      "Density: fewer, more focused sections."
+    ],
+    "callout": "Which change helps your intended audience most?"
+  },
+  {
+    "number": 18,
+    "id": "deck_default",
+    "title": "Studio example",
+    "accent": "Slide deck: default output.",
+    "kind": "studio-example",
+    "nav": "Slide deck: default",
+    "summary": "A general introduction to the Digital Education Blueprint.",
+    "images": [
+      {
+        "file": "studio-examples/deck-default-cover.webp",
+        "alt": "Cover of the default AI-generated slide deck titled Blueprint for the Smart Era."
+      },
+      {
+        "file": "studio-examples/deck-default-overview.webp",
+        "alt": "Representative overview page from the default AI-generated slide deck."
+      }
+    ],
+    "downloads": [
+      {
+        "title": "Download original 18-page deck PDF",
+        "file": "studio-deck-default-original.pdf",
+        "label": "Original supplied output · PDF · 18 pages"
+      }
+    ],
+    "badge": "18 slides",
+    "paragraphs": [
+      "The deck covers a wider policy story, not a particular subject department."
+    ],
+    "callout": "What does an English teacher need most?"
+  },
+  {
+    "number": 19,
+    "id": "deck_prompt",
+    "title": "Studio example",
+    "accent": "Slide deck: custom prompt.",
+    "kind": "studio-example",
+    "nav": "Slide deck: custom prompt",
+    "summary": "One short sentence names the audience and narrows the scope.",
+    "prompt": "Only focus on information that is relevant to English teachers.",
+    "images": [
+      {
+        "file": "studio-examples/deck-prompt.jpeg",
+        "alt": "Original Studio custom deck screenshot showing the exact prompt for English teachers."
+      }
+    ],
+    "paragraphs": [
+      "Change “English teachers” to your subject or role."
+    ]
+  },
+  {
+    "number": 20,
+    "id": "deck_custom",
+    "title": "Studio example",
+    "accent": "Slide deck: English-teacher focus.",
+    "kind": "studio-example",
+    "nav": "Slide deck: English focus",
+    "summary": "The title now speaks directly to English teachers.",
+    "images": [
+      {
+        "file": "studio-examples/deck-custom-cover.webp",
+        "alt": "Cover of the custom AI-generated slide deck titled The Augmented English Classroom."
+      }
+    ],
+    "downloads": [
+      {
+        "title": "Download original 11-page deck PDF",
+        "file": "studio-deck-custom-original.pdf",
+        "label": "Original supplied output · PDF · 11 pages"
+      }
+    ],
+    "badge": "11 slides",
+    "paragraphs": [
+      "In this sample, a shorter deck focuses on language-teaching implications."
+    ],
+    "callout": "Clearer purpose—not a guaranteed slide count."
+  },
+  {
+    "number": 21,
+    "id": "deck_detail",
+    "title": "Studio example",
+    "accent": "Slide deck: readable detail.",
+    "kind": "studio-example",
+    "nav": "Slide deck: detail",
+    "summary": "English-department focus: professional development, curriculum and resources.",
+    "images": [
+      {
+        "file": "studio-examples/deck-custom-detail.webp",
+        "alt": "Custom deck page 3 showing English department professional development, curriculum integration and resource deployment."
+      }
+    ],
+    "draft_note": "Supplied AI-generated draft. Check policy claims, figures and dates against the sources before use."
+  },
+  {
+    "number": 22,
+    "title": "Post your Studio output",
+    "accent": "on Padlet.",
+    "kind": "padlet",
+    "nav": "Post Studio output on Padlet",
+    "points": [
+      "Upload the output or screenshot.",
+      "Briefly describe its purpose and what changed."
+    ],
+    "link": "https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd"
+  },
+  {
+    "number": 23,
+    "title": "Example",
+    "accent": "Check S6 English reading materials.",
+    "kind": "context",
+    "nav": "Example: situation & sources",
+    "situation": "Before planning S6 revision, an English teacher wants to know whether the school’s reading-comprehension notes address the skills identified in the selected official guidance.",
+    "sources": [
+      "English Language Curriculum and Assessment Guide (Secondary 4 - 6)",
+      "English Language Assessment Framework for HKDSE",
+      "The related reading notes"
+    ]
+  },
+  {
+    "number": 24,
+    "title": "Example",
+    "accent": "English prompt",
+    "kind": "english-example",
+    "nav": "Example: English prompt"
+  },
+  {
+    "number": 25,
+    "title": "Example",
+    "accent": "繁體中文提示詞",
+    "kind": "chinese-example",
+    "nav": "Example: Chinese prompt"
+  },
+  {
+    "number": 26,
+    "title": "Ten useful prompts",
+    "accent": "for teachers.",
+    "kind": "prompt-index",
+    "nav": "Ten useful prompts"
+  },
+  {
+    "number": 27,
+    "title": "Q&A.",
+    "accent": "What will you try next week?",
+    "kind": "bullets",
+    "nav": "Q&A & next steps",
+    "points": [
+      "One teaching task.",
+      "One improvement to your instructions.",
+      "One Studio function that you will put to work."
+    ]
+  }
 ]

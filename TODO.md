@@ -65,3 +65,15 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Cover label update
 
 - [x] Replace the cover label “CONTINUING PROFESSIONAL DEVELOPMENT” with “HKMA K S LO COLLEGE” in both the workshop PowerPoint and the matching participant website cover.
+
+## Presenter and Studio examples
+
+- [x] Add “Presented by Ken Kum” discreetly below the cover subtitle, preserving the established title hierarchy and branding.
+- [x] Insert eight website pages after Slide 13: infographic default, exact custom prompt/settings, customised output, readable close-up; followed by slide-deck default, exact custom prompt, customised output, readable content-page example. Retain the supplied generated outputs as examples, not independently verified policy statements.
+- [x] Renumber subsequent website pages; keep the conclusion last. Provide responsive full-size visuals and byte-preserved original output downloads. Update prompt-index returns and data-driven navigation/count checks, while preserving social metadata and footer cleanup.
+- [x] Replace the downloadable PowerPoint with the matching exported 27-slide file; the automated check derives and verifies its count from slide data.
+- [ ] Parent follow-up: publish and verify the final exported presentation/site version.
+
+## School crest branding
+
+- [x] Replace the Tech in Ed logo with the supplied school crest on all slides and website header/favicon/branding, retaining the Task Force name and Gemini Notebook wordmark. Remove the obsolete orange rounded slide-logo frame. Preserve the latest presenter-credit spacing and the eight new Studio example pages. Use school-only sharing artwork so the removed logo is not the website preview image.

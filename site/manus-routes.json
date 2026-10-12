@@ -54,26 +54,58 @@
     },
     {
       "path": "/pages/14/",
-      "title": "Post Studio output on Padlet"
+      "title": "Infographic: default"
     },
     {
       "path": "/pages/15/",
-      "title": "Example: situation & sources"
+      "title": "Infographic: custom prompt"
     },
     {
       "path": "/pages/16/",
-      "title": "Example: English prompt"
+      "title": "Infographic: student focus"
     },
     {
       "path": "/pages/17/",
-      "title": "Example: Chinese prompt"
+      "title": "Infographic: detail"
     },
     {
       "path": "/pages/18/",
-      "title": "Ten useful prompts"
+      "title": "Slide deck: default"
     },
     {
       "path": "/pages/19/",
+      "title": "Slide deck: custom prompt"
+    },
+    {
+      "path": "/pages/20/",
+      "title": "Slide deck: English focus"
+    },
+    {
+      "path": "/pages/21/",
+      "title": "Slide deck: detail"
+    },
+    {
+      "path": "/pages/22/",
+      "title": "Post Studio output on Padlet"
+    },
+    {
+      "path": "/pages/23/",
+      "title": "Example: situation & sources"
+    },
+    {
+      "path": "/pages/24/",
+      "title": "Example: English prompt"
+    },
+    {
+      "path": "/pages/25/",
+      "title": "Example: Chinese prompt"
+    },
+    {
+      "path": "/pages/26/",
+      "title": "Ten useful prompts"
+    },
+    {
+      "path": "/pages/27/",
       "title": "Q&A & next steps"
     },
     {

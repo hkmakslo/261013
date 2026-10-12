@@ -41,10 +41,15 @@ while True:
     time.sleep(15)
 
 paths = [str(p.relative_to(SITE)) for p in SITE.rglob('index.html')]
-paths += ['assets/app.js','assets/styles.css','assets/gemini-notebook-logo.svg','assets/task-force-logo.png',
+paths += ['assets/app.js','assets/styles.css','assets/gemini-notebook-logo.svg','assets/school-logo.png',
           'assets/studio.png','assets/explore-blueprint.png','assets/explore-digital-education.png',
           'downloads/DigitalEducationBlueprint(Chinese).pdf','downloads/DigitalEducationBlueprint(English).pdf',
           'downloads/Gemini-Notebook-Workshop.pptx','downloads/teacher-prompt-handout.md','downloads/hong-kong-prompt-examples.md']
+
+paths += [str(p.relative_to(SITE)) for p in (SITE/'assets/studio-examples').rglob('*') if p.is_file()]
+paths += [str(p.relative_to(SITE)) for p in (SITE/'downloads').glob('studio-*') if p.is_file()]
+paths += ['assets/workshop-social-school-20261012.jpg','manus-routes.json']
+paths = list(dict.fromkeys(paths))
 
 def check(path: str) -> dict:
     remote = fetch(path)
@@ -54,7 +59,7 @@ def check(path: str) -> dict:
 
 with ThreadPoolExecutor(max_workers=6) as pool:
     results = list(pool.map(check,paths))
-report = {'base_url':BASE,'verified_files':len(results),'slide_pages':19,'bilingual_prompt_pages':10,'results':results}
+report = {'base_url':BASE,'verified_files':len(results),'slide_pages':len(json.loads((ROOT/'content/slides.json').read_text())),'bilingual_prompt_pages':10,'results':results}
 (ROOT/'qa').mkdir(exist_ok=True)
 (ROOT/'qa/published-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(f'LIVE VERIFIED: {BASE} — {len(results)} pages/assets/downloads exactly match the approved local files.',flush=True)

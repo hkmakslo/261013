@@ -1,6 +1,6 @@
 # Gemini Notebook Workshop — Participant Companion
 
-Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The site follows the latest 19-slide PowerPoint and adds ten bilingual prompt detail pages.
+Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The web companion contains 27 sequenced workshop pages, including eight supplied Studio-output comparison pages, plus ten bilingual prompt detail pages. The downloadable PowerPoint is the matching 27-slide export.
 
 ## Structure
 
@@ -9,8 +9,8 @@ Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026
 - `content/prompt-examples-source.md`: situations and source-selection guidance for all ten examples.
 - `src/styles.css` and `src/app.js`: responsive Swiss Minimal design and progressive enhancements.
 - `scripts/build.py`: dependency-free static HTML generator, producing `site/`.
-- `public/assets/`: supplied logos and screenshots.
-- `public/downloads/`: supplied Blueprint PDFs, presentation and bilingual prompt handouts.
+- `public/assets/`: supplied logos, screenshots and compressed WebP/JPEG Studio display images.
+- `public/downloads/`: supplied Blueprint PDFs, presentation, bilingual prompt handouts and byte-preserved original Studio outputs.
 
 ## Build and preview
 
@@ -35,7 +35,7 @@ python3 scripts/verify_live.py
 
 The public site includes only the approved workshop content and supplied public documents, not a private Notebook link, student work or sign-in credentials. Official reference links direct participants to the applicable documents; teachers must add their own subject notes where indicated.
 
-The original PPT is not modified by this project. Prompt examples are source-aware workshop adaptations, not official EDB or HKEAA instructions or a guarantee of AI accuracy.
+The original PPT is not modified by this project. The supplied Studio outputs are AI-generated drafts for comparison, not independently verified policy: figures, dates, mandates, strategies, funding and curriculum claims within them must be checked against original sources. Prompt examples are source-aware workshop adaptations, not official EDB or HKEAA instructions or a guarantee of AI accuracy.
 
 ## Independent publication
 

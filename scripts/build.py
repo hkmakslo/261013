@@ -10,10 +10,14 @@ import re
 import shutil
 from pathlib import Path
 from urllib.parse import quote
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
 SLIDES = json.loads((ROOT / 'content/slides.json').read_text())
+SLIDE_NUMBERS = [slide['number'] for slide in SLIDES]
+assert SLIDE_NUMBERS == list(range(1, len(SLIDES) + 1)), 'Slide numbers must be continuous.'
+SLIDE_BY_NUMBER = {slide['number']: slide for slide in SLIDES}
 PROMPT_INDEX_NUMBER = next(s['number'] for s in SLIDES if s['kind'] == 'prompt-index')
 PROMPT_TEXTS = json.loads((ROOT / 'content/prompt-texts.json').read_text())['prompts']
 EXAMPLES = (ROOT / 'content/prompt-examples-source.md').read_text()
@@ -38,6 +42,16 @@ PROMPT_TITLES = [
 SUBJECTS = ['English · S6', 'History · S6', 'Biology · S4', 'Economics · S5',
             'Mathematics · S6', 'English · fictional response', 'Biology · draft audit',
             'EDB · Digital Education Blueprint', 'EDB · AI teaching guide', 'EDB · document comparison']
+
+
+def presentation_slide_count() -> int:
+    """Read the supplied PowerPoint as-is; this builder never edits it."""
+    presentation = ROOT / 'public/downloads/Gemini-Notebook-Workshop.pptx'
+    with ZipFile(presentation) as archive:
+        return len([name for name in archive.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml', name)])
+
+
+PRESENTATION_SLIDE_COUNT = presentation_slide_count()
 
 
 def esc(value: object) -> str:
@@ -112,13 +126,13 @@ def resource(current: str, title: str, filename: str, label: str | None = None) 
     return f'<a class="resource-link" href="{href(current, "downloads/" + filename)}" download><span><span class="resource-title">{esc(title)}</span><span class="resource-file">{esc(label or filename)}</span></span><span class="resource-arrow" aria-hidden="true">↓</span></a>'
 
 
-def prompt_box(current: str, text: str, chinese: bool = False, suffix: str = '') -> str:
-    language = '繁體中文提示詞' if chinese else 'English prompt'
+def prompt_box(current: str, text: str, chinese: bool = False, suffix: str = '', label: str | None = None, subtitle: str = 'Markdown / plain-text prompt') -> str:
+    language = label or ('繁體中文提示詞' if chinese else 'English prompt')
     lang = 'zh-Hant' if chinese else 'en'
     code_id = f'prompt-{lang}{suffix}'
     copy_label = 'Copy Traditional Chinese prompt' if chinese else 'Copy English prompt'
     return f'''<section class="prompt-box" aria-labelledby="label-{code_id}">
-<div class="prompt-toolbar"><h2 id="label-{code_id}" lang="{lang}">{language}<span class="box-subtitle" lang="en">Markdown / plain-text prompt</span></h2><button type="button" class="copy-button" data-copy="{code_id}" data-copy-label="{copy_label}" aria-label="{copy_label}">Copy prompt</button></div>
+<div class="prompt-toolbar"><h2 id="label-{code_id}" lang="{lang}">{esc(language)}<span class="box-subtitle" lang="en">{esc(subtitle)}</span></h2><button type="button" class="copy-button" data-copy="{code_id}" data-copy-label="{copy_label}" aria-label="{copy_label}">Copy prompt</button></div>
 <pre lang="{lang}"><code id="{code_id}">{esc(text)}</code></pre>
 </section>'''
 
@@ -147,7 +161,7 @@ def parse_prompt_metadata() -> list[dict]:
             'subject': SUBJECTS[number - 1],
             **PROMPT_TEXTS[number - 1],
         })
-    assert len(results) == 10
+    assert len(results) == len(PROMPT_TEXTS)
     return results
 
 
@@ -161,6 +175,37 @@ def prompt_index(current: str) -> str:
         search = ' '.join([prompt['title'], prompt['zh_title'], prompt['example_title'], prompt['subject']])
         rows.append(f'''<li data-search-item data-search="{esc(search)}"><a href="{href(current, prompt_path(number))}"><span class="prompt-number">{number:02d}</span><span><span class="prompt-name">{esc(prompt['title'])}</span><span class="prompt-subject">{esc(prompt['subject'])}</span></span></a></li>''')
     return f'''<div class="prompt-search"><label for="prompt-search">Find a teaching task</label><input id="prompt-search" class="nav-search" type="search" placeholder="Search tasks, subjects or 中文…" data-filter="prompt-index" autocomplete="off"></div><ul class="prompt-index" id="prompt-index">{''.join(rows)}</ul><p class="no-results" hidden data-empty-for="prompt-index" role="status">No matching prompts. Try another subject or task.</p>'''
+
+
+def studio_example(slide: dict, current: str) -> str:
+    """Render supplied Studio outputs as clearly labelled comparison drafts."""
+    badge = f'<p class="example-badge">{esc(slide["badge"])}</p>' if slide.get('badge') else ''
+    summary = f'<p class="example-intro">{esc(slide["summary"])}</p>'
+    paragraphs = ''.join(f'<p>{esc(paragraph)}</p>' for paragraph in slide.get('paragraphs', []))
+    callout = f'<p class="example-callout">{esc(slide["callout"])}</p>' if slide.get('callout') else ''
+    copy = f'<div class="example-copy">{badge}{summary}{paragraphs}{callout}</div>'
+    prompt = ''
+    if slide.get('prompt'):
+        prompt = prompt_box(
+            current,
+            slide['prompt'],
+            label='Exact prompt entered',
+            subtitle='Verbatim text from the supplied Studio screenshot',
+        )
+    settings = ''
+    if slide.get('settings'):
+        rows = ''.join(f'<li>{esc(setting)}</li>' for setting in slide['settings'])
+        settings = f'<section class="settings-card" aria-labelledby="settings-{esc(slide["id"])}"><h2 id="settings-{esc(slide["id"])}">Selected settings</h2><ul>{rows}</ul></section>'
+    figures = ''.join(shot(current, image['file'], image['alt']) for image in slide.get('images', []))
+    visual_class = 'example-gallery example-gallery-pair' if len(slide.get('images', [])) > 1 else 'example-gallery'
+    downloads = ''
+    if slide.get('downloads'):
+        links = ''.join(resource(current, item['title'], item['file'], item.get('label')) for item in slide['downloads'])
+        downloads = f'<section class="resource-list studio-downloads" aria-label="Original supplied Studio output downloads">{links}</section>'
+    draft_note = slide.get('draft_note')
+    caution_text = draft_note or 'Supplied AI-generated draft — not independently verified policy. Verify any figures, dates, mandates, strategies, funding or curriculum claims shown in the output against the original sources before using them.'
+    caution = f'<aside class="note ai-draft-note"><p>{esc(caution_text)}</p></aside>'
+    return copy + prompt + settings + f'<div class="{visual_class}">{figures}</div>' + downloads + caution
 
 
 def slide_body(slide: dict, current: str) -> str:
@@ -196,6 +241,8 @@ def slide_body(slide: dict, current: str) -> str:
         return f'<div class="split"><div>{points}<div class="button-row">{button(current,PADLET_URL,"Open workshop Padlet",external=True)}</div></div>{qr}</div>'
     if kind == 'prompt-index':
         return prompt_index(current)
+    if kind == 'studio-example':
+        return studio_example(slide, current)
     if kind == 'context':
         sources = ''.join(f'<li>{esc(source)}</li>' for source in slide['sources'])
         return f'''<section class="context-section"><h2>Situation</h2><p>{esc(slide['situation'])}</p></section><section class="context-section"><h2>Sources to add to Notebook</h2><ul class="source-items">{sources}</ul><div class="source-links">{ext_link(ENGLISH_URL,'EDB curriculum documents')}{ext_link(HKEAA_URL,'HKEAA assessment frameworks')}</div></section><div class="button-row">{button(current,prompt_path(1),'Open the complete bilingual example')}</div>'''
@@ -216,16 +263,17 @@ def navigation_list(current: str, current_number: int | None, ident: str) -> str
 
 
 def utility_links(current: str) -> str:
-    return f'''<a class="utility-link" href="{href(current, slide_path(PROMPT_INDEX_NUMBER))}">Ten bilingual prompts →</a><a class="utility-link" href="{href(current,'resources/index.html')}">Workshop downloads & links →</a><a class="utility-link" href="{href(current,'downloads/Gemini-Notebook-Workshop.pptx')}" download>Download PowerPoint ↓</a>'''
+    return f'''<a class="utility-link" href="{href(current, slide_path(PROMPT_INDEX_NUMBER))}">{len(PROMPTS)} bilingual prompts →</a><a class="utility-link" href="{href(current,'resources/index.html')}">Workshop downloads & links →</a><a class="utility-link" href="{href(current,'downloads/Gemini-Notebook-Workshop.pptx')}" download>Download PowerPoint ↓</a>'''
 
 
 def page_navigation(current: str, number: int | None = None, prompt_number: int | None = None) -> str:
     if prompt_number:
         left_icon = '<span class="nav-arrow-badge" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" focusable="false"><path d="M27 16H5M14 6L4 16l10 10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
-        return f'''<nav class="page-nav prompt-page-nav" aria-label="Prompt navigation"><a class="page-nav-button page-nav-previous" href="{href(current,slide_path(PROMPT_INDEX_NUMBER))}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">All ten prompts</span></span></a></nav>'''
+        return f'''<nav class="page-nav prompt-page-nav" aria-label="Prompt navigation"><a class="page-nav-button page-nav-previous" href="{href(current,slide_path(PROMPT_INDEX_NUMBER))}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">All {len(PROMPTS)} prompts</span></span></a></nav>'''
     if number:
-        previous = SLIDES[number - 2] if number > 1 else None
-        following = SLIDES[number] if number < 19 else None
+        slide_index = SLIDE_NUMBERS.index(number)
+        previous = SLIDES[slide_index - 1] if slide_index else None
+        following = SLIDES[slide_index + 1] if slide_index + 1 < len(SLIDES) else None
         if previous:
             left_url, left_title = slide_path(previous['number']), previous['nav']
         else:
@@ -233,10 +281,12 @@ def page_navigation(current: str, number: int | None = None, prompt_number: int 
         if following:
             right_url, right_title = slide_path(following['number']), following['nav']
         else:
-            right_url, right_title = slide_path(PROMPT_INDEX_NUMBER), 'Explore the ten prompts'
+            right_url, right_title = slide_path(PROMPT_INDEX_NUMBER), f'Explore the {len(PROMPTS)} prompts'
     else:
-        left_url, left_title = slide_path(1), 'Workshop overview'
-        right_url, right_title = slide_path(8), 'Create your Blueprint notebook'
+        first_slide = SLIDES[0]
+        setup_slide = next(slide for slide in SLIDES if slide['kind'] == 'setup')
+        left_url, left_title = slide_path(first_slide['number']), first_slide['nav']
+        right_url, right_title = slide_path(setup_slide['number']), setup_slide['nav']
     left_icon = '<span class="nav-arrow-badge" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" focusable="false"><path d="M27 16H5M14 6L4 16l10 10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
     right_icon = '<span class="nav-arrow-badge" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" focusable="false"><path d="M5 16h22M18 6l10 10-10 10" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
     return f'''<nav class="page-nav" aria-label="Page navigation"><a class="page-nav-button page-nav-previous" href="{href(current,left_url)}" data-page-previous>{left_icon}<span class="nav-copy"><span class="nav-direction">Previous</span><span class="nav-title">{esc(left_title)}</span></span></a><a class="page-nav-button page-nav-next" href="{href(current,right_url)}" data-page-next><span class="nav-copy"><span class="nav-direction">Next</span><span class="nav-title">{esc(right_title)}</span></span>{right_icon}</a></nav>'''
@@ -247,14 +297,14 @@ def prompt_dropdown(current: str, number: int) -> str:
     for n, title in enumerate(PROMPT_TITLES, 1):
         active = ' aria-current="page"' if n == number else ''
         items.append(f'<li><a href="{href(current,prompt_path(n))}"{active}><span class="prompt-choice-number">{n:02d}</span><span>{esc(title)}</span></a></li>')
-    return '<details class="prompt-switcher"><summary>Choose a prompt<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><nav class="prompt-switcher-menu" aria-label="Choose from all ten prompts"><ul>' + ''.join(items) + '</ul></nav></details>'
+    return f'<details class="prompt-switcher"><summary>Choose a prompt<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><nav class="prompt-switcher-menu" aria-label="Choose from all {len(PROMPTS)} prompts"><ul>' + ''.join(items) + '</ul></nav></details>'
 
 
 def layout(current: str, title: str, content: str, number: int | None = None, prompt_number: int | None = None, detail: bool = False) -> str:
     css_version = sha256((ROOT / 'src/styles.css').read_bytes()).hexdigest()[:12]
     js_version = sha256((ROOT / 'src/app.js').read_bytes()).hexdigest()[:12]
     section = 'Prompt library' if prompt_number else 'Participant companion'
-    count = f'Prompt {prompt_number:02d} / 10' if prompt_number else f'Slide {number:02d} / 19' if number else 'Workshop resources'
+    count = f'Prompt {prompt_number:02d} / {len(PROMPTS)}' if prompt_number else f'Slide {number:02d} / {len(SLIDES)}' if number else 'Workshop resources'
     page_tools = f'<span class="page-count">{count}</span>'
     if prompt_number:
         page_tools = '<div class="prompt-page-tools">' + page_tools + prompt_dropdown(current,prompt_number) + '</div>'
@@ -264,8 +314,8 @@ def layout(current: str, title: str, content: str, number: int | None = None, pr
     if current == 'index.html':
         page_title = TITLE
         description = 'Workshop overview — participant reference for the Gemini Notebook Workshop on 13 October 2026, HKMA K S Lo College Tech in Ed Task Force.'
-        social_image = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-card-20261012-crop.jpg'
-        social_alt = 'Hong Kong Management Association K S Lo College crest and Tech in Ed Task Force logo on a blue technology-themed background'
+        social_image = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-school-20261012.jpg'
+        social_alt = 'HKMA K S Lo College school crest on an off-white background'
         sharing_tags = f'''<meta property="og:type" content="website"><meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="https://hkmakslo.github.io/tie-261013/"><meta property="og:site_name" content="HKMA K S Lo College Tech in Ed Task Force"><meta property="og:image" content="{social_image}"><meta property="og:image:secure_url" content="{social_image}"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(social_alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(page_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{social_image}"><meta name="twitter:image:alt" content="{esc(social_alt)}"><link rel="canonical" href="https://hkmakslo.github.io/tie-261013/">'''
     sidebar_nav = navigation_list(current, number, 'sidebar-nav')
     dialog_nav = navigation_list(current, number, 'dialog-nav')
@@ -273,9 +323,9 @@ def layout(current: str, title: str, content: str, number: int | None = None, pr
     content = content.replace('<div class="table-wrap"', '<p class="table-hint">Swipe the table to view all four column headings →</p><div class="table-wrap"')
     content = nojs_nav + content
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#f8faf7"><title>{esc(page_title)}</title>{sharing_tags}<link rel="icon" type="image/png" href="{href(current,'assets/task-force-logo.png')}"><link rel="stylesheet" href="{href(current,'assets/styles.css')}?v={css_version}"><script src="{href(current,'assets/app.js')}?v={js_version}" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{esc(description)}"><meta name="theme-color" content="#f8faf7"><title>{esc(page_title)}</title>{sharing_tags}<link rel="icon" type="image/png" href="{href(current,'assets/school-logo.png')}"><link rel="stylesheet" href="{href(current,'assets/styles.css')}?v={css_version}"><script src="{href(current,'assets/app.js')}?v={js_version}" defer></script></head>
 <body><a class="skip-link" href="#main">Skip to content</a>
-<header class="topbar"><a class="brand" href="{href(current,slide_path(1))}" aria-label="Workshop overview"><img src="{href(current,'assets/task-force-logo.png')}" alt="Tech in Ed Task Force logo" width="34" height="34"><span class="brand-text">HKMA K S Lo College<span>Tech in Ed Task Force</span></span></a><span class="header-divider" aria-hidden="true"></span><a href="{href(current,slide_path(1))}" aria-label="Gemini Notebook Workshop overview"><img class="wordmark" src="{href(current,'assets/gemini-notebook-logo.svg')}" alt="Gemini Notebook" width="210" height="18"></a><div class="topbar-right"><span class="header-date">13 Oct 2026</span><button type="button" class="menu-button" data-open-menu aria-controls="contents-dialog" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span>Contents</button></div></header>
+<header class="topbar"><a class="brand" href="{href(current,slide_path(1))}" aria-label="Workshop overview"><img src="{href(current,'assets/school-logo.png')}" alt="HKMA K S Lo College school crest" width="34" height="34"><span class="brand-text">HKMA K S Lo College<span>Tech in Ed Task Force</span></span></a><span class="header-divider" aria-hidden="true"></span><a href="{href(current,slide_path(1))}" aria-label="Gemini Notebook Workshop overview"><img class="wordmark" src="{href(current,'assets/gemini-notebook-logo.svg')}" alt="Gemini Notebook" width="210" height="18"></a><div class="topbar-right"><span class="header-date">13 Oct 2026</span><button type="button" class="menu-button" data-open-menu aria-controls="contents-dialog" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span>Contents</button></div></header>
 <aside class="sidebar" aria-label="Workshop contents"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>Workshop pages</p><label for="sidebar-search" class="skip-link">Search workshop pages</label><input id="sidebar-search" class="nav-search" type="search" data-filter="sidebar-nav" placeholder="Find a page…" aria-label="Search workshop pages">{sidebar_nav}{utility_links(current)}</aside>
 	<div class="main-shell"><main id="main" class="main{' prompt-detail' if detail else ''}" tabindex="-1"><div class="page-meta"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>{section}</p>{page_tools}</div>{content}{page_navigation(current,number,prompt_number)}<footer class="site-footer"><span>HKMA K S Lo College Tech in Ed Task Force<br>Gemini Notebook Workshop (Intermediate Level) · 13 Oct 2026</span></footer></main></div>
 <dialog class="contents-dialog" id="contents-dialog" aria-labelledby="contents-title"><div class="dialog-header"><h2 id="contents-title">Workshop contents</h2><button class="close-button" type="button" data-close-menu aria-label="Close contents">×</button></div><input class="nav-search" id="dialog-search" type="search" data-filter="dialog-nav" placeholder="Find a page…" aria-label="Search contents">{dialog_nav}{utility_links(current)}</dialog><div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
@@ -287,7 +337,9 @@ def render_slide(slide: dict) -> str:
     cover = slide['kind'] == 'cover'
     accent_class = 'subtitle' if cover else 'accent'
     chinese = ' lang="zh-Hant"' if slide['kind'] == 'chinese-example' else ''
-    title = f'''<div class="page-heading">{'<p class="eyebrow">HKMA K S LO COLLEGE</p>' if cover else ''}<h1>{esc(slide['title'])}<span class="{accent_class}"{chinese}>{esc(slide['accent'])}</span></h1></div>'''
+    presenter = '<p class="presenter-credit">Presented by Ken Kum</p>' if cover else ''
+    heading_class = 'page-heading cover-heading' if cover else 'page-heading'
+    title = f'''<div class="{heading_class}">{'<p class="eyebrow">HKMA K S LO COLLEGE</p>' if cover else ''}<h1>{esc(slide['title'])}<span class="{accent_class}"{chinese}>{esc(slide['accent'])}</span></h1>{presenter}</div>'''
     return layout(current, slide['nav'], title + '<div class="content">' + slide_body(slide, current) + '</div>', slide['number'])
 
 
@@ -330,7 +382,7 @@ def render_resources() -> str:
     current = 'resources/index.html'
     heading = '<div class="page-heading"><h1>Workshop downloads<span class="accent">& useful links.</span></h1></div><p class="resource-intro">Keep the documents, presentation and prompts close at hand while you follow the workshop.</p>'
     documents = '<section class="resource-group"><h2>Digital Education Blueprint</h2><div class="resource-list">' + resource(current,'Chinese Blueprint','DigitalEducationBlueprint(Chinese).pdf') + resource(current,'English Blueprint','DigitalEducationBlueprint(English).pdf') + '</div></section>'
-    handouts = '<section class="resource-group"><h2>Presentation & prompt resources</h2><div class="resource-list">' + resource(current,'Workshop PowerPoint','Gemini-Notebook-Workshop.pptx','Editable PowerPoint · 19 slides') + resource(current,'Ten bilingual templates and examples','teacher-prompt-handout.md','Markdown handout · English & Traditional Chinese') + resource(current,'Ten worked examples','hong-kong-prompt-examples.md','Markdown examples companion') + '</div></section>'
+    handouts = '<section class="resource-group"><h2>Presentation & prompt resources</h2><div class="resource-list">' + resource(current,'Workshop PowerPoint','Gemini-Notebook-Workshop.pptx',f'Editable PowerPoint · current supplied file: {PRESENTATION_SLIDE_COUNT} slides') + resource(current,'Ten bilingual templates and examples','teacher-prompt-handout.md','Markdown handout · English & Traditional Chinese') + resource(current,'Ten worked examples','hong-kong-prompt-examples.md','Markdown examples companion') + '</div></section>'
     links = '<section class="resource-group"><h2>Workshop links</h2><div class="button-row">' + button(current,SCHOOL_URL,'School Notebook access',external=True) + button(current,PADLET_URL,'Workshop Padlet',external=True,secondary=True) + '</div></section>'
     return layout(current,'Workshop downloads & useful links',heading + documents + handouts + links)
 
