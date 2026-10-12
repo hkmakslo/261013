@@ -398,8 +398,11 @@ def render_slide(slide: dict) -> str:
     chinese = ' lang="zh-Hant"' if slide['kind'] == 'chinese-example' else ''
     presenter = '<p class="presenter-credit">Presented by <strong>Ken Kum</strong></p>' if cover else ''
     heading_class = 'page-heading cover-heading' if cover else 'page-heading'
+    action_cue = ''
+    if slide.get('participant_action'):
+        action_cue = '<div class="participant-action"><span class="try-it-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="16" height="12" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 15 2 20h20l-2-5M9 20h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Try it Out!</span><span class="try-it-helper">On your computer</span></div>'
     title = f'''<div class="{heading_class}">{'<p class="eyebrow">HKMA K S LO COLLEGE</p>' if cover else ''}<h1>{esc(slide['title'])}<span class="{accent_class}"{chinese}>{esc(slide['accent'])}</span></h1>{presenter}</div>'''
-    return layout(current, slide['nav'], title + '<div class="content">' + slide_body(slide, current) + '</div>', slide['number'])
+    return layout(current, slide['nav'], action_cue + title + '<div class="content">' + slide_body(slide, current) + '</div>', slide['number'])
 
 
 def source_links(current: str, number: int) -> str:

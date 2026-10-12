@@ -107,6 +107,14 @@ for index, slide in enumerate(slides):
     expected_following = slide_page(slides[index + 1]['number']) if index + 1 < slide_count else slide_page(prompt_index_number)
     assert local_target(path, str(following['href'])) == expected_following.resolve(), (slide['number'], 'next')
     assert f'Slide {slide["number"]:02d} / {slide_count}' in main_text, slide['number']
+    action_badge = soup.select_one('.participant-action')
+    assert bool(action_badge) == bool(slide.get('participant_action')), slide['number']
+    if action_badge:
+        assert required(soup, '.try-it-badge').get_text(' ', strip=True) == 'Try it Out!'
+        assert required(soup, '.try-it-helper').get_text(' ', strip=True) == 'On your computer'
+        assert required(soup, '.try-it-badge svg').get('aria-hidden') == 'true'
+
+assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 11, 14, 27]
 
 for number, text in enumerate(texts, 1):
     soup = BeautifulSoup((SITE / f'prompts/{number:02d}/index.html').read_text(), 'html.parser')

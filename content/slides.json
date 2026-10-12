@@ -126,7 +126,8 @@
       "Use the school’s link—not a retail tutorial link.",
       "Sign in with your school apps email account."
     ],
-    "link": "https://kslo.tech/nb-teachers"
+    "link": "https://kslo.tech/nb-teachers",
+    "participant_action": true
   },
   {
     "number": 9,
@@ -148,7 +149,8 @@
         "title": "Download English version",
         "file": "DigitalEducationBlueprint(English).pdf"
       }
-    ]
+    ],
+    "participant_action": true
   },
   {
     "number": 10,
@@ -175,7 +177,8 @@
       "Search for guidance related to the Blueprint. Be specific.",
       "Review the results; add 1–2 relevant, trustworthy sources."
     ],
-    "image": "explore-blueprint.png"
+    "image": "explore-blueprint.png",
+    "participant_action": true
   },
   {
     "number": 12,
@@ -233,7 +236,8 @@
         ]
       }
     ],
-    "note": "Keep the Studio tool, selected sources and output language the same."
+    "note": "Keep the Studio tool, selected sources and output language the same.",
+    "participant_action": true
   },
   {
     "number": 15,
@@ -532,7 +536,8 @@
       "Upload the output or screenshot.",
       "Briefly describe its purpose and what changed."
     ],
-    "link": "https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd"
+    "link": "https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd",
+    "participant_action": true
   },
   {
     "number": 28,
