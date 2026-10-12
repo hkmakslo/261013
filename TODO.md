@@ -117,4 +117,4 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 
 ## Simplified Ten Strategies exercise
 
-- [ ] Respect the user’s three-column revision to Slide 14: Strategy, Suggested teacher action, Citation. Remove Four Key Focuses and grouping from the activity title and prompts, use ten simple strategy rows, tidy bilingual typography with a clear bottom gap, and synchronize website page 14 and its PowerPoint download.
+- [x] Respect the user’s three-column revision to Slide 14: Strategy, Suggested teacher action, Citation. Remove Four Key Focuses and grouping from the activity title and prompts, use ten simple strategy rows, tidy bilingual typography with a clear bottom gap, and synchronize website page 14 and its PowerPoint download.
