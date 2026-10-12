@@ -20,8 +20,10 @@
     "points": [
       "Works with the sources you provide.",
       "Shows citations you can check.",
-      "Turns sources into different formats."
-    ]
+      "Turns sources into different formats.",
+      "Source grounding reduces hallucination risk."
+    ],
+    "note": "Fewer made-up answers—not error-free. Check important claims."
   },
   {
     "number": 3,
@@ -71,19 +73,6 @@
   },
   {
     "number": 5,
-    "title": "Use our",
-    "accent": "school route",
-    "kind": "access",
-    "nav": "School access",
-    "points": [
-      "Open kslo.tech/nb-teachers.",
-      "Use the school’s link—not a retail tutorial link.",
-      "Sign in with your school apps email account."
-    ],
-    "link": "https://kslo.tech/nb-teachers"
-  },
-  {
-    "number": 6,
     "title": "Enterprise is a different service—",
     "accent": "not just ‘paid retail’.",
     "kind": "numbered",
@@ -96,7 +85,7 @@
     "note": "Personal / retail ≠ Workspace / Education ≠ Cloud Enterprise"
   },
   {
-    "number": 7,
+    "number": 6,
     "title": "Safer does not mean",
     "accent": "‘upload anything’.",
     "kind": "bullets",
@@ -112,7 +101,7 @@
     ]
   },
   {
-    "number": 8,
+    "number": 7,
     "title": "Why do versions",
     "accent": "feel different?",
     "kind": "bullets",
@@ -126,6 +115,19 @@
     "notes": [
       "Features may undergo additional stability testing before Enterprise release."
     ]
+  },
+  {
+    "number": 8,
+    "title": "Use our",
+    "accent": "school route",
+    "kind": "access",
+    "nav": "School access",
+    "points": [
+      "Open kslo.tech/nb-teachers.",
+      "Use the school’s link—not a retail tutorial link.",
+      "Sign in with your school apps email account."
+    ],
+    "link": "https://kslo.tech/nb-teachers"
   },
   {
     "number": 9,

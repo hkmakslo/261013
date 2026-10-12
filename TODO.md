@@ -98,3 +98,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Retail-interface caption
 
 - [x] Change the Slide 4 screenshot caption to “The interface of the retail version.”, mirror it on page 4 and refresh the website PowerPoint download.
+
+## Grounding, Studio spacing and access order
+
+- [x] Add a qualified hallucination-reduction point to Slide 2; leave clear breathing space below Flashcards, Quizzes on Slide 3; move Use our school route after Why do versions feel different. Mirror content and ordering on the participant website, refresh the PowerPoint download, and verify the publication.
