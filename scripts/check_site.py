@@ -277,7 +277,12 @@ for field, code_id in [('prompt_en', 'prompt-en'), ('prompt_zh', 'prompt-zh-Hant
     assert required(blueprint_soup, '#' + code_id).get_text() == blueprint_activity[field]
 assert blueprint_activity['prompt_en'].endswith('Write in English.')
 assert blueprint_activity['prompt_zh'].endswith('請以繁體中文回答。')
-assert len(blueprint_activity['columns']) == len(blueprint_activity['columns_zh']) == 4
+assert len(blueprint_activity['columns']) == len(blueprint_activity['columns_zh']) == 3
+assert blueprint_activity['columns'] == ['Strategy', 'Suggested teacher action', 'Citation']
+assert 'Four Key Focuses' not in blueprint_soup.get_text()
+assert '四大重點' not in blueprint_soup.get_text()
+assert 'grouped by focus' not in blueprint_activity['prompt_en']
+assert 'One clear table.' in blueprint_soup.get_text()
 for heading in blueprint_activity['columns']:
     assert heading in blueprint_activity['prompt_en']
 for heading in blueprint_activity['columns_zh']:

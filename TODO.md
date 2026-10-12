@@ -114,3 +114,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Blueprint table-format practice
 
 - [x] Insert a Try it Out! activity immediately after Slide 13 (new Slide 14): use the selected English and Chinese Digital Education Blueprint PDFs to summarise the Four Key Focuses and Ten Strategies in a four-column table, with one row per strategy. Columns: Key focus; Strategy; Suggested teacher action; Citation. Show concise English followed by Traditional Chinese on the same slide, distinguish document facts from teacher suggestions, and preserve the established action badge, logos, fonts and layout. Mirror the copyable bilingual activity on the website, renumber subsequent slides/pages and navigation, retain the ten-prompt library, refresh the PowerPoint download and verify live publication.
+
+## Simplified Ten Strategies exercise
+
+- [ ] Respect the user’s three-column revision to Slide 14: Strategy, Suggested teacher action, Citation. Remove Four Key Focuses and grouping from the activity title and prompts, use ten simple strategy rows, tidy bilingual typography with a clear bottom gap, and synchronize website page 14 and its PowerPoint download.
