@@ -77,3 +77,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## School crest branding
 
 - [x] Replace the Tech in Ed logo with the supplied school crest on all slides and website header/favicon/branding, retaining the Task Force name and Gemini Notebook wordmark. Remove the obsolete orange rounded slide-logo frame. Preserve the latest presenter-credit spacing and the eight new Studio example pages. Use school-only sharing artwork so the removed logo is not the website preview image.
+
+## Presenter-credit typography
+
+- [x] Make the website’s “Presented by Ken Kum” larger and responsive, with subtle emphasis on the name, while preserving its secondary hierarchy, muted colour and clear gap below it. Publish to the existing hkmakslo GitHub Pages site; do not alter the PowerPoint.

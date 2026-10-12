@@ -159,7 +159,8 @@
 @media print { .prompt-switcher { display:none!important; } }
 
 /* Supplied Studio outputs: readable, inspectable examples rather than policy evidence. */
-.presenter-credit{margin:15px 0 0;font-size:13px;color:var(--muted);letter-spacing:.01em}
+.presenter-credit{margin:20px 0 0;font-size:clamp(1.125rem,1.7vw,1.5rem);line-height:1.45;color:var(--muted);letter-spacing:-.01em;font-weight:400}
+.presenter-credit strong{font-weight:700;color:var(--ink)}
 .cover-heading{margin-bottom:clamp(2rem,3vw,2.5rem)}
 .cover-heading + .content .hero-tag{margin-top:0}
 .example-copy{max-width:820px}
@@ -181,7 +182,7 @@
 .studio-downloads .resource-title{color:var(--accent-text)}
 .ai-draft-note{max-width:980px}
 @media(max-width:760px){
-  .presenter-credit{font-size:12px;margin-top:12px}
+  .presenter-credit{margin-top:18px}
   .example-intro{font-size:1.15rem;margin-bottom:23px}
   .example-badge{margin-bottom:14px}
   .example-copy .example-intro + p{margin-top:-7px}
