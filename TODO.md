@@ -109,4 +109,4 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 
 ## Participant action cues
 
-- [ ] Add a consistent orange “Try it Out!” badge with a computer icon and “On your computer” helper to Slides 8, 9, 11, 14 and 27 (school access, notebook creation, Explore, Studio comparison and Padlet posting). Keep existing slide titles, logos, content and ordering intact. Mirror the cue on the corresponding responsive website pages and refresh the PowerPoint download; do not label demonstration-only examples as hands-on steps.
+- [x] Add a consistent orange “Try it Out!” badge with a computer icon and “On your computer” helper to Slides 8, 9, 11, 14 and 27 (school access, notebook creation, Explore, Studio comparison and Padlet posting). Keep existing slide titles, logos, content and ordering intact. Mirror the cue on the corresponding responsive website pages and refresh the PowerPoint download; do not label demonstration-only examples as hands-on steps.
