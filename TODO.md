@@ -94,3 +94,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Studio retail comparison
 
 - [x] Insert a screenshot-based comparison after Slide 3: school deployment shows eight Studio tools; the supplied retail screenshot shows the same eight plus Data table. Do not generalise this screenshot to all accounts. Preserve the Swiss Minimal design and school branding. Renumber subsequent slides, sync the website and prompt-index links, refresh the PowerPoint download and verify publication.
+
+## Retail-interface caption
+
+- [x] Change the Slide 4 screenshot caption to “The interface of the retail version.”, mirror it on page 4 and refresh the website PowerPoint download.

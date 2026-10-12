@@ -256,7 +256,7 @@ assert len(prompt_index_soup.select('#prompt-index li a')) == prompt_count
 retail_soup = soup_for_slide_kind('studio-retail')
 assert slides[3]['kind'] == 'studio-retail'
 retail_text = required(retail_soup, 'main').get_text(' ', strip=True)
-for expected in ['Our school version', '8 Studio tools', 'Retail screenshot', '9 Studio tools', 'Same eight + Data table.', 'Compare the interfaces shown—not every account.']:
+for expected in ['Our school version', '8 Studio tools', 'Retail screenshot', '9 Studio tools', 'Same eight + Data table.', 'The interface of the retail version.']:
     assert expected in retail_text, expected
 assert 'studio-retail.png' in str(required(retail_soup, 'a.shot').get('href'))
 format_soup = soup_for_slide_kind('format')
