@@ -128,3 +128,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 - [x] Remove the photo caption from Slide 15 and matching website page, while retaining the enlargeable sample image. Add the visible, clickable HeyGen home URL https://www.heygen.com to Slide 28 and its website page, retaining the existing translation link. Replace Slide 29’s second point with “Briefly describe the prompt you used to customise this output.” in both formats. Preserve the 34-slide sequence and existing branding, refresh the PowerPoint download, and publish and verify the hkmakslo GitHub Pages site.
 
 The 34-slide deck passed Slides validation and exported PowerPoint text/hyperlink checks. All 45 website pages passed content, navigation and download checks; live verification confirmed exact bytes for 73 pages/assets/downloads, including pages 15, 28, 29 and the refreshed PowerPoint. Published source commit: e99feff; Pages commit: 3e0d2ad.
+
+## Page 27 neutral sample wording
+
+- [ ] Sync website Page 27’s introduction to Slide 27: “In this sample, the narration is still Mandarin.” Remove the separate quote “AI識寫文，仲使乜中文老師？” from the web page, preserve the existing video/screenshot and language limitation, and publish to the established hkmakslo GitHub Pages site. No PowerPoint change is requested.

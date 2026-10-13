@@ -233,7 +233,10 @@ assert 'video-examples/custom-prompt.jpeg' in str(prompt_screenshot.get('href'))
 
 video_custom_soup = BeautifulSoup(slide_page(video_slides['video_custom']['number']).read_text(), 'html.parser')
 video_custom_text = required(video_custom_soup, 'main').get_text(' ', strip=True)
-assert 'AI識寫文，仲使乜中文老師？' in video_custom_text
+assert 'In this sample, the narration is still Mandarin.' in video_custom_text
+assert 'In Ken' not in video_custom_text
+assert 'AI識寫文，仲使乜中文老師？' not in video_custom_text
+assert video_custom_soup.select_one('.video-quote') is None
 assert 'Cantonese wording ≠ Cantonese narration.' in video_custom_text
 assert 'Observed in this sample. It does not establish whether Notebook supports Cantonese narration more generally.' in video_custom_text
 assert required(video_custom_soup, '.video-secondary-links a').get('href') == 'https://youtu.be/m6ULGcDufjI?t=29'

@@ -503,16 +503,15 @@
     "accent": "wording is not the voice.",
     "kind": "video-example",
     "nav": "Video: wording and voice",
-    "summary": "In Ken’s sample, the narration is still Mandarin.",
+    "summary": "In this sample, the narration is still Mandarin.",
     "youtube_id": "m6ULGcDufjI",
     "youtube_url": "https://youtu.be/m6ULGcDufjI",
     "poster": "video-examples/custom-poster-16x9.jpg",
-    "poster_alt": "Local video thumbnail for Ken’s custom prompt sample.",
-    "quote": "AI識寫文，仲使乜中文老師？",
+    "poster_alt": "Local video thumbnail for the custom prompt sample.",
     "images": [
       {
         "file": "video-examples/custom-language.webp",
-        "alt": "Provided screenshot from Ken’s custom-language video sample."
+        "alt": "Provided screenshot from the custom-language video sample."
       }
     ],
     "points": [
