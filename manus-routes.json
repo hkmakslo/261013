@@ -42,23 +42,23 @@
     },
     {
       "path": "/pages/11/",
-      "title": "Try Explore"
-    },
-    {
-      "path": "/pages/12/",
-      "title": "Make source searches specific"
-    },
-    {
-      "path": "/pages/13/",
       "title": "Specify the answer format"
     },
     {
-      "path": "/pages/14/",
+      "path": "/pages/12/",
       "title": "Try a Blueprint strategies table"
     },
     {
-      "path": "/pages/15/",
+      "path": "/pages/13/",
       "title": "Blueprint table: sample output"
+    },
+    {
+      "path": "/pages/14/",
+      "title": "Try Explore"
+    },
+    {
+      "path": "/pages/15/",
+      "title": "Make source searches specific"
     },
     {
       "path": "/pages/16/",
