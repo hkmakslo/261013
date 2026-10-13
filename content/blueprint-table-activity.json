@@ -1,14 +1,14 @@
 {
   "number": 14,
   "id": "blueprint_table",
-  "title": "Ten Strategies.",
+  "title": "The Blueprint’s strategies.",
   "accent": "One clear table.",
-  "nav": "Try a Ten Strategies table",
+  "nav": "Try a Blueprint strategies table",
   "kind": "blueprint-table",
   "participant_action": true,
   "instruction": "Select both Blueprint PDFs. Copy either prompt into Chat.",
-  "columns": ["Strategy", "Suggested teacher action", "Citation"],
-  "columns_zh": ["推行策略", "建議教師行動", "出處"],
-  "prompt_en": "Summarise the Blueprint’s Ten Strategies for secondary-school teachers in a three-column table: Strategy; Suggested teacher action; Citation. Use one row per strategy (ten rows). Keep cells brief and distinguish suggestions from official requirements. Write in English.",
-  "prompt_zh": "請為中學教師整理《藍圖》的「十大策略」，用三欄表格：推行策略、建議教師行動、出處。每項策略一行，共十行。內容簡潔，分清建議與官方要求。請以繁體中文回答。"
+  "columns": ["Strategy", "Suggested teacher action", "Examples"],
+  "columns_zh": ["推行策略", "建議教師行動", "例子"],
+  "prompt_en": "Summarise the Blueprint’s strategies for secondary-school teachers. Use a three-column table: Strategy; Suggested teacher action; Examples. Keep cells brief. If the information is not mentioned, write 'not mentioned'. Write in English.",
+  "prompt_zh": "請為中學教師整理《藍圖》的策略，用三欄表格：推行策略、建議教師行動、例子。內容簡潔。如資料未有提及，請寫「未提及」。請以繁體中文回答。"
 }

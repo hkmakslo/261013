@@ -118,3 +118,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Simplified Ten Strategies exercise
 
 - [x] Respect the user’s three-column revision to Slide 14: Strategy, Suggested teacher action, Citation. Remove Four Key Focuses and grouping from the activity title and prompts, use ten simple strategy rows, tidy bilingual typography with a clear bottom gap, and synchronize website page 14 and its PowerPoint download.
+
+## Blueprint strategies prompt and sample output
+
+- [ ] Replace Slide 14’s English prompt with the exact user-provided wording, translate it into Traditional Chinese, and mirror both prompts on website page 14. Use Strategy, Suggested teacher action, Examples as the three columns, with 'not mentioned' / '未提及' for missing information. Insert one new sample-output slide immediately after Slide 14 using the supplied screenshot, add its matching responsive web page with an enlargeable image, renumber all subsequent slides and navigation, and publish the refreshed PowerPoint download.
