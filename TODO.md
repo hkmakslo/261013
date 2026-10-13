@@ -122,3 +122,7 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 ## Blueprint strategies prompt and sample output
 
 - [x] Replace Slide 14’s English prompt with the exact user-provided wording, translate it into Traditional Chinese, and mirror both prompts on website page 14. Use Strategy, Suggested teacher action, Examples as the three columns, with 'not mentioned' / '未提及' for missing information. Insert one new sample-output slide immediately after Slide 14 using the supplied screenshot, add its matching responsive web page with an enlargeable image, renumber all subsequent slides and navigation, and publish the refreshed PowerPoint download.
+
+## Caption, HeyGen home link and Padlet prompt description
+
+- [ ] Remove the photo caption from Slide 15 and matching website page, while retaining the enlargeable sample image. Add the visible, clickable HeyGen home URL https://www.heygen.com to Slide 28 and its website page, retaining the existing translation link. Replace Slide 29’s second point with “Briefly describe the prompt you used to customise this output.” in both formats. Preserve the 34-slide sequence and existing branding, refresh the PowerPoint download, and publish and verify the hkmakslo GitHub Pages site.

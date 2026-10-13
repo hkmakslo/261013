@@ -117,9 +117,10 @@ def notes(slide: dict) -> str:
     return '<aside class="note">' + ''.join(text) + '</aside>' if text else ''
 
 
-def shot(current: str, filename: str, alt: str) -> str:
+def shot(current: str, filename: str, alt: str, show_hint: bool = True) -> str:
     src = href(current, 'assets/' + filename)
-    return f'<figure style="margin:0"><a class="shot" href="{src}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size screenshot: {esc(alt)}"><img src="{src}" alt="{esc(alt)}" loading="lazy"></a><figcaption class="image-hint">Click or tap the screenshot to view it full size.</figcaption></figure>'
+    hint = '<figcaption class="image-hint">Click or tap the screenshot to view it full size.</figcaption>' if show_hint else ''
+    return f'<figure style="margin:0"><a class="shot" href="{src}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size screenshot: {esc(alt)}"><img src="{src}" alt="{esc(alt)}" loading="lazy"></a>{hint}</figure>'
 
 
 def resource(current: str, title: str, filename: str, label: str | None = None) -> str:
@@ -249,7 +250,8 @@ def video_example(slide: dict, current: str) -> str:
     workflow = list_numbered(slide['workflow']) if slide.get('workflow') else ''
     service = ''
     if slide.get('service_url'):
-        service = f'<div class="button-row">{button(current, slide["service_url"], slide["service_label"], external=True, secondary=True)}</div>'
+        home = button(current, slide['home_url'], slide['home_label'], external=True, secondary=True) if slide.get('home_url') else ''
+        service = f'<div class="button-row">{home}{button(current, slide["service_url"], slide["service_label"], external=True, secondary=True)}</div>'
     secondary_links = ''.join(ext_link(link['url'], link['label']) for link in slide.get('secondary_links', []))
     secondary = f'<p class="video-secondary-links">{secondary_links}</p>' if secondary_links else ''
     source = ''
@@ -294,7 +296,7 @@ def slide_body(slide: dict, current: str) -> str:
         return introduction + prompt_box(current, slide['prompt_en']) + prompt_box(current, slide['prompt_zh'], True)
     if kind == 'blueprint-sample':
         introduction = f'<p class="resource-intro">{esc(slide["summary"])}</p><hr class="section-rule">'
-        return introduction + shot(current, slide['image'], slide['image_alt'])
+        return introduction + shot(current, slide['image'], slide['image_alt'], show_hint=False)
     if kind == 'practice':
         steps = ''.join(f'<section class="practice-step"><div class="big-step" aria-hidden="true">{i:02d}</div><h2>{esc(step["title"])}</h2>' + ''.join(f'<p>{esc(line)}</p>' for line in step['lines']) + '</section>' for i, step in enumerate(slide['steps'], 1))
         return '<div class="practice-steps">' + steps + '</div>' + notes(slide)

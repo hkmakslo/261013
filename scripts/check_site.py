@@ -245,6 +245,8 @@ for workflow_step in video_slides['video_cantonese']['workflow']:
 assert required(video_cantonese_soup, '.video-tip').get_text(' ', strip=True) == 'Practical tip For slide-based videos, audio-only translation may be enough; lip sync is only relevant to visible speakers.'
 assert 'school-approved, non-sensitive content' in video_cantonese_text
 assert required(video_cantonese_soup, '.video-source a').get('href') == video_slides['video_cantonese']['service_help_url']
+assert required(video_cantonese_soup, 'a[href="https://www.heygen.com"]').get_text(' ', strip=True).startswith('HeyGen: https://www.heygen.com')
+assert video_cantonese_soup.select_one('a[href="https://www.heygen.com/translate"]')
 
 app_source = (ROOT / 'src/app.js').read_text()
 assert "document.querySelectorAll('[data-youtube-id]')" in app_source
@@ -293,6 +295,10 @@ assert len(blueprint_soup.select('[data-copy]')) == 2
 sample_soup = soup_for_slide_kind('blueprint-sample')
 assert 'blueprint-examples/notebook-table-sample.png' in str(required(sample_soup, 'a.shot')['href'])
 assert sha256((SITE / 'assets/blueprint-examples/notebook-table-sample.png').read_bytes()).digest() == sha256(Path('/home/ubuntu/upload/pasted_file_aLpIFQ_image.png').read_bytes()).digest()
+assert not sample_soup.select('figcaption, .image-hint')
+padlet_soup = soup_for_slide_kind('padlet')
+assert required(padlet_soup, '.large-bullets li:nth-child(2)').get_text() == 'Briefly describe the prompt you used to customise this output.'
+assert 'Briefly describe its purpose and what changed.' not in padlet_soup.get_text()
 grounding_soup = BeautifulSoup(slide_page(2).read_text(), 'html.parser')
 assert len(grounding_soup.select('.content ol.numbered li')) == 4
 assert 'Source grounding reduces hallucination risk.' in required(grounding_soup, '.content').get_text(' ', strip=True)

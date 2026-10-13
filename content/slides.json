@@ -549,6 +549,8 @@
     ],
     "service_url": "https://www.heygen.com/translate",
     "service_label": "Open HeyGen Translate",
+    "home_url": "https://www.heygen.com",
+    "home_label": "HeyGen: https://www.heygen.com",
     "notes": [
       "HeyGen is a separate service, not Notebook Studio.",
       "Use only school-approved, non-sensitive content.",
@@ -567,7 +569,7 @@
     "nav": "Post Studio output on Padlet",
     "points": [
       "Upload the output or screenshot.",
-      "Briefly describe its purpose and what changed."
+      "Briefly describe the prompt you used to customise this output."
     ],
     "link": "https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd",
     "participant_action": true
