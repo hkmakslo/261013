@@ -134,3 +134,7 @@ The 34-slide deck passed Slides validation and exported PowerPoint text/hyperlin
 - [x] Sync website Page 27’s introduction to Slide 27: “In this sample, the narration is still Mandarin.” Remove the separate quote “AI識寫文，仲使乜中文老師？” from the web page, preserve the existing video/screenshot and language limitation, and publish to the established hkmakslo GitHub Pages site. No PowerPoint change is requested.
 
 All site checks passed. Live verification confirmed Page 27 and 73 pages/assets/downloads exactly match the published files. Source commit: 4379c9c; Pages commit: 0c7c78d.
+
+## Explore before Studio hands-on
+
+- [ ] Move the former Slides 11 and 12, in that order, immediately before the hands-on Slide 16. The resulting sequence is 11 Chat format, 12 Blueprint prompt, 13 sample output, 14 Try Explore, 15 specific source searches, 16 hands-on. Add “Choose a Studio tool and customise its output for your teaching needs.” as a prominent instruction on Slide 16 and its matching website page. Preserve all 34 slides, prior revisions and branding; synchronize page order, navigation, footer numbers, route titles and the exported PowerPoint download, then publish and verify the website.

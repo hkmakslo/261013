@@ -298,8 +298,9 @@ def slide_body(slide: dict, current: str) -> str:
         introduction = f'<p class="resource-intro">{esc(slide["summary"])}</p><hr class="section-rule">'
         return introduction + shot(current, slide['image'], slide['image_alt'], show_hint=False)
     if kind == 'practice':
+        introduction = f'<p class="resource-intro studio-instruction">{esc(slide["instruction"])}</p><hr class="section-rule">'
         steps = ''.join(f'<section class="practice-step"><div class="big-step" aria-hidden="true">{i:02d}</div><h2>{esc(step["title"])}</h2>' + ''.join(f'<p>{esc(line)}</p>' for line in step['lines']) + '</section>' for i, step in enumerate(slide['steps'], 1))
-        return '<div class="practice-steps">' + steps + '</div>' + notes(slide)
+        return introduction + '<div class="practice-steps">' + steps + '</div>' + notes(slide)
     if kind == 'padlet':
         points = '<ul class="large-bullets">' + ''.join(f'<li>{esc(p)}</li>' for p in slide['points']) + '</ul>'
         qr = f'<div class="qr-area"><a href="{PADLET_URL}" target="_blank" rel="noopener noreferrer" aria-label="Open workshop Padlet"><img src="{href(current,"assets/padlet-qr.png")}" alt="QR code for the workshop Padlet"></a><p class="image-hint">Scan with another device, or use the button.</p></div>'

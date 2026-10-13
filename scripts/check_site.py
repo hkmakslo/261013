@@ -114,7 +114,7 @@ for index, slide in enumerate(slides):
         assert required(soup, '.try-it-helper').get_text(' ', strip=True) == 'On your computer'
         assert required(soup, '.try-it-badge svg').get('aria-hidden') == 'true'
 
-assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 11, 14, 16, 29]
+assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 12, 14, 16, 29]
 
 for number, text in enumerate(texts, 1):
     soup = BeautifulSoup((SITE / f'prompts/{number:02d}/index.html').read_text(), 'html.parser')
@@ -274,9 +274,9 @@ for expected in ['Our school version', '8 Studio tools', 'Retail screenshot', '9
 assert 'studio-retail.png' in str(required(retail_soup, 'a.shot').get('href'))
 format_soup = soup_for_slide_kind('format')
 assert len(format_soup.select('table th')) == 4
-blueprint_activity = slides[13]
+blueprint_activity = slides[11]
 assert blueprint_activity['kind'] == 'blueprint-table'
-assert slides[12]['kind'] == 'format' and slides[14]['kind'] == 'blueprint-sample' and slides[15]['kind'] == 'practice'
+assert [slide['kind'] for slide in slides[10:16]] == ['format', 'blueprint-table', 'blueprint-sample', 'explore-activity', 'comparison', 'practice']
 blueprint_soup = soup_for_slide_kind('blueprint-table')
 for field, code_id in [('prompt_en', 'prompt-en'), ('prompt_zh', 'prompt-zh-Hant')]:
     assert required(blueprint_soup, '#' + code_id).get_text() == blueprint_activity[field]
@@ -313,6 +313,7 @@ explore_soup = soup_for_slide_kind('explore-activity')
 assert required(explore_soup, 'h1').get_text(' ', strip=True).startswith('Try Explore. Find more relevant sources.')
 assert '探索' not in required(explore_soup, 'h1').get_text()
 practice_soup = soup_for_slide_kind('practice')
+assert required(practice_soup, '.studio-instruction').get_text() == 'Choose a Studio tool and customise its output for your teaching needs.'
 assert 'Check one important claim' not in required(practice_soup, 'main').get_text()
 resources = BeautifulSoup((SITE / 'resources/index.html').read_text(), 'html.parser')
 resources_text = required(resources, 'main').get_text(' ', strip=True)

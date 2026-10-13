@@ -168,30 +168,6 @@
   },
   {
     "number": 11,
-    "title": "Try Explore.",
-    "accent": "Find more relevant sources.",
-    "kind": "explore-activity",
-    "nav": "Try Explore",
-    "points": [
-      "In your Blueprint notebook: Sources (來源) → Explore (探索).",
-      "Search for guidance related to the Blueprint. Be specific.",
-      "Review the results; add 1–2 relevant, trustworthy sources."
-    ],
-    "image": "explore-blueprint.png",
-    "participant_action": true
-  },
-  {
-    "number": 12,
-    "title": "Explore sources",
-    "accent": "What specific sources are required?",
-    "kind": "comparison",
-    "nav": "Make source searches specific",
-    "broad": "Government documents on digital education",
-    "specific": "Hong Kong government documents on digital education",
-    "image": "explore-digital-education.png"
-  },
-  {
-    "number": 13,
     "title": "Tell chat how",
     "accent": "to organise the answer.",
     "kind": "format",
@@ -207,7 +183,7 @@
     ]
   },
   {
-    "number": 14,
+    "number": 12,
     "id": "blueprint_table",
     "title": "The Blueprint’s strategies.",
     "accent": "One clear table.",
@@ -229,7 +205,7 @@
     "prompt_zh": "請為中學教師整理《藍圖》的策略，用三欄表格：推行策略、建議教師行動、例子。內容簡潔。如資料未有提及，請寫「未提及」。請以繁體中文回答。"
   },
   {
-    "number": 15,
+    "number": 13,
     "id": "blueprint_sample",
     "title": "Notebook sample output.",
     "accent": "Three columns in action.",
@@ -240,11 +216,36 @@
     "image_alt": "Supplied Notebook response to the strategies prompt, showing Strategy, Suggested Teacher Action and Examples columns."
   },
   {
+    "number": 14,
+    "title": "Try Explore.",
+    "accent": "Find more relevant sources.",
+    "kind": "explore-activity",
+    "nav": "Try Explore",
+    "points": [
+      "In your Blueprint notebook: Sources (來源) → Explore (探索).",
+      "Search for guidance related to the Blueprint. Be specific.",
+      "Review the results; add 1–2 relevant, trustworthy sources."
+    ],
+    "image": "explore-blueprint.png",
+    "participant_action": true
+  },
+  {
+    "number": 15,
+    "title": "Explore sources",
+    "accent": "What specific sources are required?",
+    "kind": "comparison",
+    "nav": "Make source searches specific",
+    "broad": "Government documents on digital education",
+    "specific": "Hong Kong government documents on digital education",
+    "image": "explore-digital-education.png"
+  },
+  {
     "number": 16,
     "title": "Hands-on: generate,",
     "accent": "customise, compare.",
     "kind": "practice",
     "nav": "Generate, customise, compare",
+    "instruction": "Choose a Studio tool and customise its output for your teaching needs.",
     "steps": [
       {
         "title": "Generate A",
