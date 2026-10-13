@@ -217,20 +217,6 @@
   },
   {
     "number": 14,
-    "title": "Try Explore.",
-    "accent": "Find more relevant sources.",
-    "kind": "explore-activity",
-    "nav": "Try Explore",
-    "points": [
-      "In your Blueprint notebook: Sources (來源) → Explore (探索).",
-      "Search for guidance related to the Blueprint. Be specific.",
-      "Review the results; add 1–2 relevant, trustworthy sources."
-    ],
-    "image": "explore-blueprint.png",
-    "participant_action": true
-  },
-  {
-    "number": 15,
     "id": "note_to_source",
     "title": "Save a response.",
     "accent": "Reuse it as a source.",
@@ -253,6 +239,20 @@
         "alt": "Supplied screenshot showing 轉換為來源資料 (Convert to source) in a saved note’s three-dot menu."
       }
     ]
+  },
+  {
+    "number": 15,
+    "title": "Try Explore.",
+    "accent": "Find more relevant sources.",
+    "kind": "explore-activity",
+    "nav": "Try Explore",
+    "points": [
+      "In your Blueprint notebook: Sources (來源) → Explore (探索).",
+      "Search for guidance related to the Blueprint. Be specific.",
+      "Review the results; add 1–2 relevant, trustworthy sources."
+    ],
+    "image": "explore-blueprint.png",
+    "participant_action": true
   },
   {
     "number": 16,

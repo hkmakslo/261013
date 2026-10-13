@@ -280,7 +280,7 @@ format_soup = soup_for_slide_kind('format')
 assert len(format_soup.select('table th')) == 4
 blueprint_activity = slides[11]
 assert blueprint_activity['kind'] == 'blueprint-table'
-assert [slide['kind'] for slide in slides[10:17]] == ['format', 'blueprint-table', 'blueprint-sample', 'explore-activity', 'note-to-source', 'comparison', 'practice']
+assert [slide['kind'] for slide in slides[10:17]] == ['format', 'blueprint-table', 'blueprint-sample', 'note-to-source', 'explore-activity', 'comparison', 'practice']
 note_soup = soup_for_slide_kind('note-to-source')
 assert required(note_soup, 'h1').get_text(' ', strip=True) == 'Save a response. Reuse it as a source.'
 assert len(note_soup.select('.content ol.numbered li')) == 3
