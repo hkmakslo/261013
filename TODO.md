@@ -163,4 +163,6 @@ Slide 15 was validated, exported and visually checked as a complete slide. The t
 
 ## Place Try Explore directly before the source-search explanation
 
-- [ ] Move the current Slide 14, Try Explore, immediately before the current Slide 16, Explore sources. The saved-response activity becomes Slide 14, Try Explore becomes Slide 15, and Explore sources remains Slide 16. Preserve all other content, the refined screenshots and 35-slide count. Synchronize the website’s page order, displayed numbers, navigation and routes, refresh the downloadable PowerPoint, then publish and verify the live site.
+- [x] Move the current Slide 14, Try Explore, immediately before the current Slide 16, Explore sources. The saved-response activity becomes Slide 14, Try Explore becomes Slide 15, and Explore sources remains Slide 16. Preserve all other content, the refined screenshots and 35-slide count. Synchronize the website’s page order, displayed numbers, navigation and routes, refresh the downloadable PowerPoint, then publish and verify the live site.
+
+Slides validation, all 35 exported footer numbers, the new 14–16 sequence and website navigation/content checks passed. Live verification confirmed exact bytes for 77 pages/assets/downloads, including the refreshed PowerPoint. Source commit: a4e2a27; Pages commit: 325cae5.
