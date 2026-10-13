@@ -17,7 +17,7 @@ slides = json.loads((ROOT / 'content/slides.json').read_text())
 slide_numbers = [slide['number'] for slide in slides]
 assert slide_numbers == list(range(1, len(slides) + 1)), 'Slide numbers must be continuous.'
 slide_count = len(slides)
-assert slide_count == 34, slide_count
+assert slide_count == 35, slide_count
 prompt_count = len(texts)
 prompt_index_number = next(slide['number'] for slide in slides if slide['kind'] == 'prompt-index')
 pages = list(SITE.rglob('index.html'))
@@ -76,6 +76,9 @@ for path in pages:
     for copy in soup.select('[data-copy]'):
         assert soup.find(id=str(copy['data-copy'])), f'Invalid clipboard target: {path}'
     footer_text = required(soup, 'footer.site-footer').get_text(' ', strip=True)
+    assert 'Gemini Notebook Workshop (Advanced Level)' in footer_text, path
+    assert 'intermediate' not in soup.get_text(' ', strip=True).lower(), path
+    assert not any('intermediate' in str(tag.get('content', '')).lower() for tag in soup.select('meta[content]')), path
     assert 'Downloads & links' not in footer_text, path
     assert 'Print this page' not in footer_text, path
     assert soup.select_one('[data-print]') is None, path
@@ -114,7 +117,7 @@ for index, slide in enumerate(slides):
         assert required(soup, '.try-it-helper').get_text(' ', strip=True) == 'On your computer'
         assert required(soup, '.try-it-badge svg').get('aria-hidden') == 'true'
 
-assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 12, 14, 16, 29]
+assert [slide['number'] for slide in slides if slide.get('participant_action')] == [8, 9, 12, 14, 15, 17, 30]
 
 for number, text in enumerate(texts, 1):
     soup = BeautifulSoup((SITE / f'prompts/{number:02d}/index.html').read_text(), 'html.parser')
@@ -187,8 +190,9 @@ assert 'Write in English.' not in required(deck_prompt_soup, '#prompt-en').get_t
 
 video_slides = {slide['id']: slide for slide in slides if slide['kind'] == 'video-example'}
 assert list(video_slides) == ['video_default', 'video_prompt', 'video_custom', 'video_cantonese']
-assert prompt_index_number == 33
-assert slides[-1]['number'] == 34
+assert prompt_index_number == 31
+assert [slide['kind'] for slide in slides[29:35]] == ['padlet', 'prompt-index', 'context', 'english-example', 'chinese-example', 'bullets']
+assert slides[-1]['number'] == 35
 expected_videos = {
     'video_default': ('yDD8U8tmnos', 'https://youtu.be/yDD8U8tmnos', 'video-examples/default-poster-16x9.jpg'),
     'video_custom': ('m6ULGcDufjI', 'https://youtu.be/m6ULGcDufjI', 'video-examples/custom-poster-16x9.jpg'),
@@ -276,7 +280,16 @@ format_soup = soup_for_slide_kind('format')
 assert len(format_soup.select('table th')) == 4
 blueprint_activity = slides[11]
 assert blueprint_activity['kind'] == 'blueprint-table'
-assert [slide['kind'] for slide in slides[10:16]] == ['format', 'blueprint-table', 'blueprint-sample', 'explore-activity', 'comparison', 'practice']
+assert [slide['kind'] for slide in slides[10:17]] == ['format', 'blueprint-table', 'blueprint-sample', 'explore-activity', 'note-to-source', 'comparison', 'practice']
+note_soup = soup_for_slide_kind('note-to-source')
+assert required(note_soup, 'h1').get_text(' ', strip=True) == 'Save a response. Reuse it as a source.'
+assert len(note_soup.select('.content ol.numbered li')) == 3
+assert len(note_soup.select('a.shot')) == 2
+assert '儲存至記事' in required(note_soup, '.note-ui-labels').get_text()
+assert '轉換為來源資料' in required(note_soup, '.note-ui-labels').get_text()
+for filename, original in [('save-to-note.png', 'pasted_file_pFnMAC_image.png'), ('convert-to-source.png', 'pasted_file_YM0vX7_image.png')]:
+    assert sha256((SITE / 'assets/note-examples' / filename).read_bytes()).digest() == sha256((Path('/home/ubuntu/upload') / original).read_bytes()).digest()
+    assert any(filename in str(link.get('href')) and link.get('target') == '_blank' for link in note_soup.select('a.shot'))
 blueprint_soup = soup_for_slide_kind('blueprint-table')
 for field, code_id in [('prompt_en', 'prompt-en'), ('prompt_zh', 'prompt-zh-Hant')]:
     assert required(blueprint_soup, '#' + code_id).get_text() == blueprint_activity[field]
@@ -325,6 +338,13 @@ assert f'current supplied file: {presentation_slide_count} slides' in resources_
 home = BeautifulSoup((SITE / 'index.html').read_text(), 'html.parser')
 assert required(home, '.page-heading .eyebrow').get_text(' ', strip=True) == 'HKMA K S LO COLLEGE'
 assert required(home, '.presenter-credit').get_text(' ', strip=True) == 'Presented by Ken Kum'
+assert required(home, '.subtitle').get_text() == '(Advanced Level)'
+assert required(home, 'title').get_text() == 'Gemini Notebook Workshop (Advanced Level)'
+assert required(home, 'meta[property="og:title"]').get('content') == 'Gemini Notebook Workshop (Advanced Level)'
+for filename in ('teacher-prompt-handout.md', 'hong-kong-prompt-examples.md'):
+    text = (SITE / 'downloads' / filename).read_text()
+    assert 'Gemini Notebook Workshop (Advanced Level)' in text
+    assert not re.search(r'\bintermediate\b', re.sub(r'https://\S+', '', text), re.I), filename
 crest = required(home, '.brand img')
 assert crest.get('src') == 'assets/school-logo.png'
 assert crest.get('alt') == 'HKMA K S Lo College school crest'

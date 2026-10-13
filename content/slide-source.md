@@ -1,7 +1,7 @@
 ## Slide 1
 CONTINUING PROFESSIONAL DEVELOPMENT
 Gemini Notebook Workshop
-(Intermediate Level)
+(Advanced Level)
 Beyond “Generate”
 01 Make outputs fit your lesson.
 02 Use your sources as evidence.

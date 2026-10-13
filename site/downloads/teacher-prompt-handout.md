@@ -2,6 +2,8 @@
 
 # 香港教師十大 Gemini Notebook 提示詞：雙語範本及實例
 
+**Gemini Notebook Workshop (Advanced Level) · 13 October 2026**
+
 **Concise, reusable prompts for subject preparation, HKDSE work and official-document reading**
 
 **How to use｜使用方法:** Copy either the English or the Traditional Chinese version—not both together. Each numbered section contains a reusable template and a concrete example. Every English prompt asks “Write in English.” Every Chinese prompt asks “請以繁體中文回答。” Choose the version matching the answer language you want. Original document titles, quotations and essential subject terms may remain in their source language.
@@ -24,7 +26,7 @@ The long warning “Do not invent weightings, marks or compulsory question types
 
 ## What changed after reviewing your playlist｜參考播放清單後的調整
 
-These prompts now draw on [Desmond EdTech’s Hong Kong teacher playlist](https://www.youtube.com/playlist?list=PLrxXwTbpDwrfb8_F7laoFdAUHrMbZf3ru), the trusted practical reference you selected. The main refinements are focused intermediate notes, briefing-to-revision material, error-to-reteaching tasks, staged worksheet design, and source checks before visual generation. The prompt wording is a workshop adaptation, not a transcript or an official EDB/HKEAA instruction.
+These prompts now draw on [Desmond EdTech’s Hong Kong teacher playlist](https://www.youtube.com/playlist?list=PLrxXwTbpDwrfb8_F7laoFdAUHrMbZf3ru), the trusted practical reference you selected. The main refinements are focused notes, briefing-to-revision material, error-to-reteaching tasks, staged worksheet design, and source checks before visual generation. The prompt wording is a workshop adaptation, not a transcript or an official EDB/HKEAA instruction.
 
 本提示詞參考你指定的Desmond EdTech香港教師播放清單，加入聚焦筆記、簡報轉化為溫習教學素材、錯誤分析連繫重教、分步工作紙設計，以及生成圖表前的來源核對。這些是工作坊改編，並非影片逐字稿或教育局／考評局官方指示。
 

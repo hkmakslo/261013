@@ -140,3 +140,15 @@ All site checks passed. Live verification confirmed Page 27 and 73 pages/assets/
 - [x] Move the former Slides 11 and 12, in that order, immediately before the hands-on Slide 16. The resulting sequence is 11 Chat format, 12 Blueprint prompt, 13 sample output, 14 Try Explore, 15 specific source searches, 16 hands-on. Add “Choose a Studio tool and customise its output for your teaching needs.” as a prominent instruction on Slide 16 and its matching website page. Preserve all 34 slides, prior revisions and branding; synchronize page order, navigation, footer numbers, route titles and the exported PowerPoint download, then publish and verify the website.
 
 Slides validation, all 34 exported footer numbers, reordered slide content and website content/navigation checks passed. Slide 16 was visually checked for spacing. Live verification confirmed 73 pages/assets/downloads exactly match the approved files, including the refreshed PowerPoint. Source commit: dccafb7; Pages commit: 432c920.
+
+## Save a response and reuse it as a source
+
+- [ ] Add one Try it Out! slide immediately after Slide 14, titled “Save a response. Reuse it as a source.” Use three concise instructions: “Under the chat response, click Save to note.”; “On the saved note, open ⋮.”; “Select Convert to source.” Include both supplied screenshots unchanged, with the interface labels 儲存至記事 and 轉換為來源資料. Do not reopen the attached images with a viewing tool. Preserve the established branding, update all subsequent numbers for 35 slides, mirror the new page and responsive screenshot links on the website, update global navigation and prompt-index returns, refresh the downloadable PowerPoint, then publish and verify the live site.
+
+## Prompt overview immediately after Padlet
+
+- [ ] Move the ten-prompts overview (Slide 34 after the new activity insertion) immediately after Slide 30, Post your Studio output on Padlet. It becomes Slide 31; the three worked-example pages become 32–34 and Q&A remains 35. Mirror this ordering, all global navigation and the prompt-page return links on the website and refresh the matching PowerPoint download.
+
+## Advanced Level workshop title
+
+- [ ] Rename the current workshop to “Gemini Notebook Workshop (Advanced Level)”. Replace the old level wording across the editable deck title/cover, website cover and page footers, browser/social titles, current workshop plan, activity brief and downloadable prompt materials. Preserve functioning link destinations, including the existing Padlet slug, and stable resource IDs; retain historical QA/baseline snapshots unchanged. Export a clearly named Advanced Level PowerPoint and publish the final website/downloads after completing the new activity and prompt-overview reorder.

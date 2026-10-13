@@ -50,6 +50,7 @@ paths += [str(p.relative_to(SITE)) for p in (SITE/'assets/studio-examples').rglo
 paths += [str(p.relative_to(SITE)) for p in (SITE/'downloads').glob('studio-*') if p.is_file()]
 paths += ['assets/workshop-social-school-20261012.jpg','manus-routes.json']
 paths += [str(p.relative_to(SITE)) for p in (SITE/'assets/blueprint-examples').rglob('*') if p.is_file()]
+paths += [str(p.relative_to(SITE)) for p in (SITE/'assets/note-examples').rglob('*') if p.is_file()]
 paths = list(dict.fromkeys(paths))
 
 def check(path: str) -> dict:

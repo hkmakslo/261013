@@ -26,7 +26,7 @@ EDB_URL = 'https://www.edb.gov.hk/en/edu-system/primary-secondary/applicable-to-
 ENGLISH_URL = 'https://www.edb.gov.hk/en/curriculum-development/kla/eng-edu/curriculum-documents.html'
 HKEAA_URL = 'https://www.hkeaa.edu.hk/en/hkdse/assessment/assessment_framework/'
 PADLET_URL = 'https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd'
-TITLE = 'Gemini Notebook Workshop (Intermediate Level)'
+TITLE = 'Gemini Notebook Workshop (Advanced Level)'
 PROMPT_TITLES = [
     'Check materials against HKDSE requirements',
     'Turn an HKEAA briefing into revision-teaching notes',
@@ -285,6 +285,13 @@ def slide_body(slide: dict, current: str) -> str:
         return list_numbered(slide['points']) + f'<section class="resource-list workshop-downloads" aria-label="Workshop document downloads">{links}</section>'
     if kind == 'explore-activity':
         return '<div class="split"><div>' + list_numbered(slide['points']) + '</div>' + shot(current, slide['image'], 'The Explore (探索) button in the Blueprint notebook’s Sources panel') + '</div>'
+    if kind == 'note-to-source':
+        steps = list_numbered(slide['points'])
+        for label in ('Save to note', '⋮', 'Convert to source'):
+            steps = steps.replace(label + '.', f'<strong>{label}.</strong>')
+        labels = f'<p class="image-hint note-ui-labels">{esc(slide["ui_labels"])}</p>'
+        images = ''.join(shot(current, image['file'], image['alt']) for image in slide['images'])
+        return '<div class="split note-to-source"><div>' + steps + labels + '</div><div class="example-gallery">' + images + '</div></div>'
     if kind == 'comparison':
         specific = esc(slide['specific']).replace('Hong Kong', '<strong class="hong-kong">Hong Kong</strong>')
         return f'''<div class="split"><div class="comparison"><p class="label">Too broad</p><p class="query">{esc(slide['broad'])}</p><p class="label specific">More specific</p><p class="query">{specific}</p></div>{shot(current,slide['image'],'Explore sources dialog in the Digital Education Blueprint notebook')}</div>'''
@@ -395,7 +402,7 @@ def layout(current: str, title: str, content: str, number: int | None = None, pr
 <body><a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar"><a class="brand" href="{href(current,slide_path(1))}" aria-label="Workshop overview"><img src="{href(current,'assets/school-logo.png')}" alt="HKMA K S Lo College school crest" width="34" height="34"><span class="brand-text">HKMA K S Lo College<span>Tech in Ed Task Force</span></span></a><span class="header-divider" aria-hidden="true"></span><a href="{href(current,slide_path(1))}" aria-label="Gemini Notebook Workshop overview"><img class="wordmark" src="{href(current,'assets/gemini-notebook-logo.svg')}" alt="Gemini Notebook" width="210" height="18"></a><div class="topbar-right"><span class="header-date">13 Oct 2026</span><button type="button" class="menu-button" data-open-menu aria-controls="contents-dialog" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span>Contents</button></div></header>
 <aside class="sidebar" aria-label="Workshop contents"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>Workshop pages</p><label for="sidebar-search" class="skip-link">Search workshop pages</label><input id="sidebar-search" class="nav-search" type="search" data-filter="sidebar-nav" placeholder="Find a page…" aria-label="Search workshop pages">{sidebar_nav}{utility_links(current)}</aside>
-	<div class="main-shell"><main id="main" class="main{' prompt-detail' if detail else ''}" tabindex="-1"><div class="page-meta"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>{section}</p>{page_tools}</div>{content}{page_navigation(current,number,prompt_number)}<footer class="site-footer"><span>HKMA K S Lo College Tech in Ed Task Force<br>Gemini Notebook Workshop (Intermediate Level) · 13 Oct 2026</span></footer></main></div>
+	<div class="main-shell"><main id="main" class="main{' prompt-detail' if detail else ''}" tabindex="-1"><div class="page-meta"><p class="eyebrow"><span class="orange-square" aria-hidden="true"></span>{section}</p>{page_tools}</div>{content}{page_navigation(current,number,prompt_number)}<footer class="site-footer"><span>HKMA K S Lo College Tech in Ed Task Force<br>{esc(TITLE)} · 13 Oct 2026</span></footer></main></div>
 <dialog class="contents-dialog" id="contents-dialog" aria-labelledby="contents-title"><div class="dialog-header"><h2 id="contents-title">Workshop contents</h2><button class="close-button" type="button" data-close-menu aria-label="Close contents">×</button></div><input class="nav-search" id="dialog-search" type="search" data-filter="dialog-nav" placeholder="Find a page…" aria-label="Search contents">{dialog_nav}{utility_links(current)}</dialog><div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 </body></html>'''
 

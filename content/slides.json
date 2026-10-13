@@ -2,7 +2,7 @@
   {
     "number": 1,
     "title": "Gemini Notebook Workshop",
-    "accent": "(Intermediate Level)",
+    "accent": "(Advanced Level)",
     "kind": "cover",
     "nav": "Workshop overview",
     "points": [
@@ -231,6 +231,31 @@
   },
   {
     "number": 15,
+    "id": "note_to_source",
+    "title": "Save a response.",
+    "accent": "Reuse it as a source.",
+    "kind": "note-to-source",
+    "nav": "Save a response as a source",
+    "participant_action": true,
+    "points": [
+      "Under the chat response, click Save to note.",
+      "On the saved note, open ⋮.",
+      "Select Convert to source."
+    ],
+    "ui_labels": "Save to note: 儲存至記事 · Convert to source: 轉換為來源資料",
+    "images": [
+      {
+        "file": "note-examples/save-to-note.png",
+        "alt": "Supplied screenshot showing the 儲存至記事 (Save to note) button below a chat response."
+      },
+      {
+        "file": "note-examples/convert-to-source.png",
+        "alt": "Supplied screenshot showing 轉換為來源資料 (Convert to source) in a saved note’s three-dot menu."
+      }
+    ]
+  },
+  {
+    "number": 16,
     "title": "Explore sources",
     "accent": "What specific sources are required?",
     "kind": "comparison",
@@ -240,7 +265,7 @@
     "image": "explore-digital-education.png"
   },
   {
-    "number": 16,
+    "number": 17,
     "title": "Hands-on: generate,",
     "accent": "customise, compare.",
     "kind": "practice",
@@ -274,7 +299,7 @@
     "participant_action": true
   },
   {
-    "number": 17,
+    "number": 18,
     "id": "info_default",
     "title": "Studio example",
     "accent": "Infographic: default output.",
@@ -301,7 +326,7 @@
     "callout": "What would you keep, remove or emphasise?"
   },
   {
-    "number": 18,
+    "number": 19,
     "id": "info_prompt",
     "title": "Studio example",
     "accent": "Infographic: custom prompt & settings.",
@@ -322,7 +347,7 @@
     ]
   },
   {
-    "number": 19,
+    "number": 20,
     "id": "info_custom",
     "title": "Studio example",
     "accent": "Infographic: narrowed student focus.",
@@ -349,7 +374,7 @@
     "callout": "More suitable for the purpose—not automatically more accurate."
   },
   {
-    "number": 20,
+    "number": 21,
     "id": "info_detail",
     "title": "Studio example",
     "accent": "Infographic: readable detail.",
@@ -370,7 +395,7 @@
     "callout": "Which change helps your intended audience most?"
   },
   {
-    "number": 21,
+    "number": 22,
     "id": "deck_default",
     "title": "Studio example",
     "accent": "Slide deck: default output.",
@@ -401,7 +426,7 @@
     "callout": "What does an English teacher need most?"
   },
   {
-    "number": 22,
+    "number": 23,
     "id": "deck_prompt",
     "title": "Studio example",
     "accent": "Slide deck: custom prompt.",
@@ -420,7 +445,7 @@
     ]
   },
   {
-    "number": 23,
+    "number": 24,
     "id": "deck_custom",
     "title": "Studio example",
     "accent": "Slide deck: English-teacher focus.",
@@ -447,7 +472,7 @@
     "callout": "Clearer purpose—not a guaranteed slide count."
   },
   {
-    "number": 24,
+    "number": 25,
     "id": "deck_detail",
     "title": "Studio example",
     "accent": "Slide deck: readable detail.",
@@ -463,7 +488,7 @@
     "draft_note": "Supplied AI-generated draft. Check policy claims, figures and dates against the sources before use."
   },
   {
-    "number": 25,
+    "number": 26,
     "id": "video_default",
     "title": "Video overview:",
     "accent": "default output.",
@@ -481,7 +506,7 @@
     "callout": "What would you change for your colleagues?"
   },
   {
-    "number": 26,
+    "number": 27,
     "id": "video_prompt",
     "title": "Video overview:",
     "accent": "the custom prompt.",
@@ -498,7 +523,7 @@
     ]
   },
   {
-    "number": 27,
+    "number": 28,
     "id": "video_custom",
     "title": "Video overview:",
     "accent": "wording is not the voice.",
@@ -531,7 +556,7 @@
     ]
   },
   {
-    "number": 28,
+    "number": 29,
     "id": "video_cantonese",
     "title": "Quick workaround:",
     "accent": "Cantonese with HeyGen.",
@@ -562,7 +587,7 @@
     "tip": "For slide-based videos, audio-only translation may be enough; lip sync is only relevant to visible speakers."
   },
   {
-    "number": 29,
+    "number": 30,
     "title": "Post your Studio output",
     "accent": "on Padlet.",
     "kind": "padlet",
@@ -575,7 +600,14 @@
     "participant_action": true
   },
   {
-    "number": 30,
+    "number": 31,
+    "title": "Ten useful prompts",
+    "accent": "for teachers.",
+    "kind": "prompt-index",
+    "nav": "Ten useful prompts"
+  },
+  {
+    "number": 32,
     "title": "Example",
     "accent": "Check S6 English reading materials.",
     "kind": "context",
@@ -588,28 +620,21 @@
     ]
   },
   {
-    "number": 31,
+    "number": 33,
     "title": "Example",
     "accent": "English prompt",
     "kind": "english-example",
     "nav": "Example: English prompt"
   },
   {
-    "number": 32,
+    "number": 34,
     "title": "Example",
     "accent": "繁體中文提示詞",
     "kind": "chinese-example",
     "nav": "Example: Chinese prompt"
   },
   {
-    "number": 33,
-    "title": "Ten useful prompts",
-    "accent": "for teachers.",
-    "kind": "prompt-index",
-    "nav": "Ten useful prompts"
-  },
-  {
-    "number": 34,
+    "number": 35,
     "title": "Q&A.",
     "accent": "What will you try next week?",
     "kind": "bullets",

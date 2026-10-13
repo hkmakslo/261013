@@ -58,82 +58,86 @@
     },
     {
       "path": "/pages/15/",
-      "title": "Make source searches specific"
+      "title": "Save a response as a source"
     },
     {
       "path": "/pages/16/",
-      "title": "Generate, customise, compare"
+      "title": "Make source searches specific"
     },
     {
       "path": "/pages/17/",
-      "title": "Infographic: default"
+      "title": "Generate, customise, compare"
     },
     {
       "path": "/pages/18/",
-      "title": "Infographic: custom prompt"
+      "title": "Infographic: default"
     },
     {
       "path": "/pages/19/",
-      "title": "Infographic: student focus"
+      "title": "Infographic: custom prompt"
     },
     {
       "path": "/pages/20/",
-      "title": "Infographic: detail"
+      "title": "Infographic: student focus"
     },
     {
       "path": "/pages/21/",
-      "title": "Slide deck: default"
+      "title": "Infographic: detail"
     },
     {
       "path": "/pages/22/",
-      "title": "Slide deck: custom prompt"
+      "title": "Slide deck: default"
     },
     {
       "path": "/pages/23/",
-      "title": "Slide deck: English focus"
+      "title": "Slide deck: custom prompt"
     },
     {
       "path": "/pages/24/",
-      "title": "Slide deck: detail"
+      "title": "Slide deck: English focus"
     },
     {
       "path": "/pages/25/",
-      "title": "Video: default output"
+      "title": "Slide deck: detail"
     },
     {
       "path": "/pages/26/",
-      "title": "Video: custom prompt"
+      "title": "Video: default output"
     },
     {
       "path": "/pages/27/",
-      "title": "Video: wording and voice"
+      "title": "Video: custom prompt"
     },
     {
       "path": "/pages/28/",
-      "title": "Video: Cantonese with HeyGen"
+      "title": "Video: wording and voice"
     },
     {
       "path": "/pages/29/",
-      "title": "Post Studio output on Padlet"
+      "title": "Video: Cantonese with HeyGen"
     },
     {
       "path": "/pages/30/",
-      "title": "Example: situation & sources"
+      "title": "Post Studio output on Padlet"
     },
     {
       "path": "/pages/31/",
-      "title": "Example: English prompt"
-    },
-    {
-      "path": "/pages/32/",
-      "title": "Example: Chinese prompt"
-    },
-    {
-      "path": "/pages/33/",
       "title": "Ten useful prompts"
     },
     {
+      "path": "/pages/32/",
+      "title": "Example: situation & sources"
+    },
+    {
+      "path": "/pages/33/",
+      "title": "Example: English prompt"
+    },
+    {
       "path": "/pages/34/",
+      "title": "Example: Chinese prompt"
+    },
+    {
+      "path": "/pages/35/",
       "title": "Q&A & next steps"
     },
     {
