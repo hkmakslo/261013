@@ -125,4 +125,6 @@ Verified reordered PowerPoint text, all nineteen slide numbers, matching web pag
 
 ## Caption, HeyGen home link and Padlet prompt description
 
-- [ ] Remove the photo caption from Slide 15 and matching website page, while retaining the enlargeable sample image. Add the visible, clickable HeyGen home URL https://www.heygen.com to Slide 28 and its website page, retaining the existing translation link. Replace Slide 29’s second point with “Briefly describe the prompt you used to customise this output.” in both formats. Preserve the 34-slide sequence and existing branding, refresh the PowerPoint download, and publish and verify the hkmakslo GitHub Pages site.
+- [x] Remove the photo caption from Slide 15 and matching website page, while retaining the enlargeable sample image. Add the visible, clickable HeyGen home URL https://www.heygen.com to Slide 28 and its website page, retaining the existing translation link. Replace Slide 29’s second point with “Briefly describe the prompt you used to customise this output.” in both formats. Preserve the 34-slide sequence and existing branding, refresh the PowerPoint download, and publish and verify the hkmakslo GitHub Pages site.
+
+The 34-slide deck passed Slides validation and exported PowerPoint text/hyperlink checks. All 45 website pages passed content, navigation and download checks; live verification confirmed exact bytes for 73 pages/assets/downloads, including pages 15, 28, 29 and the refreshed PowerPoint. Published source commit: e99feff; Pages commit: 3e0d2ad.
