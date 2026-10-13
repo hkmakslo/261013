@@ -287,7 +287,8 @@ assert len(note_soup.select('.content ol.numbered li')) == 3
 assert len(note_soup.select('a.shot')) == 2
 assert '儲存至記事' in required(note_soup, '.note-ui-labels').get_text()
 assert '轉換為來源資料' in required(note_soup, '.note-ui-labels').get_text()
-for filename, original in [('save-to-note.png', 'pasted_file_pFnMAC_image.png'), ('convert-to-source.png', 'pasted_file_YM0vX7_image.png')]:
+assert not any('note-examples/save-to-note.png' in str(link.get('href')) for link in note_soup.select('a.shot'))
+for filename, original in [('save-to-note-v2.png', 'pasted_file_VwTj3g_image.png'), ('convert-to-source.png', 'pasted_file_YM0vX7_image.png')]:
     assert sha256((SITE / 'assets/note-examples' / filename).read_bytes()).digest() == sha256((Path('/home/ubuntu/upload') / original).read_bytes()).digest()
     assert any(filename in str(link.get('href')) and link.get('target') == '_blank' for link in note_soup.select('a.shot'))
 blueprint_soup = soup_for_slide_kind('blueprint-table')

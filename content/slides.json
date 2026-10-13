@@ -245,7 +245,7 @@
     "ui_labels": "Save to note: 儲存至記事 · Convert to source: 轉換為來源資料",
     "images": [
       {
-        "file": "note-examples/save-to-note.png",
+        "file": "note-examples/save-to-note-v2.png",
         "alt": "Supplied screenshot showing the 儲存至記事 (Save to note) button below a chat response."
       },
       {
