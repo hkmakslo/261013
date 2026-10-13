@@ -131,4 +131,6 @@ The 34-slide deck passed Slides validation and exported PowerPoint text/hyperlin
 
 ## Page 27 neutral sample wording
 
-- [ ] Sync website Page 27’s introduction to Slide 27: “In this sample, the narration is still Mandarin.” Remove the separate quote “AI識寫文，仲使乜中文老師？” from the web page, preserve the existing video/screenshot and language limitation, and publish to the established hkmakslo GitHub Pages site. No PowerPoint change is requested.
+- [x] Sync website Page 27’s introduction to Slide 27: “In this sample, the narration is still Mandarin.” Remove the separate quote “AI識寫文，仲使乜中文老師？” from the web page, preserve the existing video/screenshot and language limitation, and publish to the established hkmakslo GitHub Pages site. No PowerPoint change is requested.
+
+All site checks passed. Live verification confirmed Page 27 and 73 pages/assets/downloads exactly match the published files. Source commit: 4379c9c; Pages commit: 0c7c78d.
