@@ -166,3 +166,8 @@ Slide 15 was validated, exported and visually checked as a complete slide. The t
 - [x] Move the current Slide 14, Try Explore, immediately before the current Slide 16, Explore sources. The saved-response activity becomes Slide 14, Try Explore becomes Slide 15, and Explore sources remains Slide 16. Preserve all other content, the refined screenshots and 35-slide count. Synchronize the website’s page order, displayed numbers, navigation and routes, refresh the downloadable PowerPoint, then publish and verify the live site.
 
 Slides validation, all 35 exported footer numbers, the new 14–16 sequence and website navigation/content checks passed. Live verification confirmed exact bytes for 77 pages/assets/downloads, including the refreshed PowerPoint. Source commit: a4e2a27; Pages commit: 325cae5.
+
+## Organisation publishing through ksloenglish
+
+- [x] Keep ksloenglish connected and install Manus Connector on hkmakslo for all current and future repositories after explicit approval. Verify that the connection retains ksloenglish identity and gains organisation repository admin/write access. Leave the personal installation and organisation-wide OAuth restrictions unchanged; do not grant Pipedream access.
+- [ ] Publish the latest 35-slide Advanced Level participant companion at https://hkmakslo.github.io/261013/ using a new public hkmakslo/261013 repository. Preserve all content, relative navigation, screenshots and current downloads. Update canonical/social metadata and publication scripts to /261013/. Do not modify or push to the old hkmakslo-admin site. Confirm the new live pages and downloadable files match the intended copy.

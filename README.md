@@ -1,42 +1,59 @@
 # Gemini Notebook Workshop — Participant Companion
 
-Participant reference for HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The web companion contains 33 sequenced workshop pages, including eight supplied Studio-output comparison pages and four video-comparison pages, plus ten bilingual prompt detail pages. The downloadable PowerPoint is the matching 33-slide export.
+Participant reference for **Gemini Notebook Workshop (Advanced Level)**, HKMA K S Lo College Tech in Ed Task Force, 13 Oct 2026. The companion contains **35 sequenced workshop pages**, ten bilingual prompt pages and a resource page. Its downloadable PowerPoint is the matching 35-slide editable export.
 
 ## Structure
 
-- `content/slides.json`: faithful, structured slide-page content.
-- `content/prompt-texts.json`: latest concise bilingual examples and reusable templates.
-- `content/prompt-examples-source.md`: situations and source-selection guidance for all ten examples.
-- `src/styles.css` and `src/app.js`: responsive Swiss Minimal design and progressive enhancements.
-- `scripts/build.py`: dependency-free static HTML generator, producing `site/`.
-- `public/assets/`: supplied logos, screenshots, local video posters and compressed WebP/JPEG Studio display images.
-- `public/downloads/`: supplied Blueprint PDFs, presentation, bilingual prompt handouts and byte-preserved original Studio outputs.
+- `content/slides.json`: authoritative slide-page content and ordering.
+- `content/prompt-texts.json`: concise bilingual examples and reusable templates.
+- `content/prompt-examples-source.md`: situations and source-selection guidance.
+- `src/styles.css` and `src/app.js`: responsive Swiss Minimal styling and progressive enhancements.
+- `scripts/build.py`: static HTML generator, producing `site/`.
+- `public/assets/`: supplied branding, screenshots, video posters and Studio display images.
+- `public/downloads/`: Blueprint PDFs, presentation, bilingual handouts and original Studio outputs.
 
-## Build and preview
+## Build and checks
 
 ```sh
 python3 scripts/build.py
+python3 scripts/check_site.py
+python3 -m py_compile scripts/build.py scripts/check_site.py scripts/verify_live.py
+node --check src/app.js
+```
+
+The builder needs Python 3.10+ and the standard library. The optional validation script additionally uses Beautiful Soup and Pillow. No application dependencies, database, AI service or participant login are required. HTML content and navigation remain usable without JavaScript; JavaScript enhances menus, filtering, copying, keyboard navigation and participant-controlled YouTube playback.
+
+For local preview:
+
+```sh
 python3 -m http.server 3000 --bind 0.0.0.0 --directory site
 ```
 
-Python 3.10+ is sufficient. No Node packages, database, AI service or login are needed. Page contents are delivered as static HTML and remain readable without JavaScript. JavaScript enhances the contents dialog, filtering, copying, keyboard shortcuts, deferred YouTube playback and printing. The video pages show local posters until a participant explicitly selects playback; a prominent YouTube link remains available without JavaScript.
-
 ## GitHub Pages
 
-The destination is `https://hkmakslo.github.io/tie-261013/`. Source code lives on `main`; GitHub Pages serves the static-only `gh-pages` branch from its root. Every internal link and asset reference is relative, so nested pages work at `/tie-261013` without a client-side fallback or rewriting rules. `.nojekyll` is supplied. No custom GitHub Actions workflow is required.
+The publication repository is **hkmakslo/261013** and the intended public URL is **https://hkmakslo.github.io/261013/**. Source lives on `main`; GitHub Pages serves `gh-pages` from the branch root. Internal navigation and asset paths are relative, including nested pages. `.nojekyll` is supplied, and no custom GitHub Actions workflow is required.
 
-After reviewing source changes, rebuild and run the checks, commit them on `main`, and push `main`. Then update the publishing branch without rewriting history:
+After checking intended source changes and integrating any remote changes without overwriting work:
 
 ```sh
-git subtree split --prefix=site -b gh-pages
-git push origin gh-pages:refs/heads/gh-pages
+python3 scripts/build.py
+python3 scripts/check_site.py
+git add README.md TODO.md content scripts src public site
+git commit -m "Update workshop companion"
+git push origin main
+PAGES_COMMIT=$(git subtree split --prefix=site HEAD)
+git push origin "$PAGES_COMMIT":gh-pages
 python3 scripts/verify_live.py
 ```
 
-The public site includes only the approved workshop content and supplied public documents, not a private Notebook link, student work or sign-in credentials. Official reference links direct participants to the applicable documents; teachers must add their own subject notes where indicated.
+Use normal pushes, never force-push. The bounded verifier waits for the expected homepage and then checks the published pages, assets and downloads against local bytes.
 
-The original PPT is not modified by this project. The supplied Studio outputs are AI-generated drafts for comparison, not independently verified policy: figures, dates, mandates, strategies, funding and curriculum claims within them must be checked against original sources. Prompt examples are source-aware workshop adaptations, not official EDB or HKEAA instructions or a guarantee of AI accuracy.
+## Account and organisation access
 
-## Independent publication
+The authenticated personal account remains **ksloenglish**. The **Manus Connector** GitHub App is installed on both ksloenglish and **hkmakslo**, with the organisation installation approved for all current and future repositories on 15 Oct 2026. Choose the appropriate repository owner when publishing; no account switch is needed for these authorised destinations. Repository administration and write access were verified through the existing connection. Organisation-wide OAuth restrictions were retained, and Pipedream was not granted organisation access.
 
-This repository is the independent hkmakslo copy requested by the owner. The previous ksloenglish repository and its Pages site are unchanged. The Manus website project is still linked to the previous repository; updates to this copy must be committed and pushed here explicitly.
+This is an **independent GitHub Pages copy**. The former website under the renamed **hkmakslo-admin** personal account was not modified. The managed website connection was not switched; future changes to this organisation copy must be pushed explicitly to **hkmakslo/261013**.
+
+## Content boundaries
+
+Only approved workshop content and supplied public documents are included—not private Notebook links, identifiable student work or credentials. Teachers must add their own authorised subject notes where indicated. Original Studio outputs remain AI-generated drafts for comparison, not independently verified policy. Check embedded figures, dates, mandates and curriculum claims against original sources before use. Prompts are workshop adaptations, not official EDB/HKEAA instructions or guarantees of accuracy.

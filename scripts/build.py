@@ -25,6 +25,7 @@ SCHOOL_URL = 'https://kslo.tech/nb-teachers'
 EDB_URL = 'https://www.edb.gov.hk/en/edu-system/primary-secondary/applicable-to-primary-secondary/it-in-edu/debp.html'
 ENGLISH_URL = 'https://www.edb.gov.hk/en/curriculum-development/kla/eng-edu/curriculum-documents.html'
 HKEAA_URL = 'https://www.hkeaa.edu.hk/en/hkdse/assessment/assessment_framework/'
+PUBLIC_BASE = 'https://hkmakslo.github.io/261013/'
 PADLET_URL = 'https://padlet.com/thehkmakslocollege/tech-in-ed-gemini-notebook-workshop-intermediate-level-13-oc-s024b3yqp5avekkd7yhd'
 TITLE = 'Gemini Notebook Workshop (Advanced Level)'
 PROMPT_TITLES = [
@@ -389,9 +390,9 @@ def layout(current: str, title: str, content: str, number: int | None = None, pr
     if current == 'index.html':
         page_title = TITLE
         description = 'Workshop overview — participant reference for the Gemini Notebook Workshop on 13 October 2026, HKMA K S Lo College Tech in Ed Task Force.'
-        social_image = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-school-20261012.jpg'
+        social_image = PUBLIC_BASE + 'assets/workshop-social-school-20261012.jpg'
         social_alt = 'HKMA K S Lo College school crest on an off-white background'
-        sharing_tags = f'''<meta property="og:type" content="website"><meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="https://hkmakslo.github.io/tie-261013/"><meta property="og:site_name" content="HKMA K S Lo College Tech in Ed Task Force"><meta property="og:image" content="{social_image}"><meta property="og:image:secure_url" content="{social_image}"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(social_alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(page_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{social_image}"><meta name="twitter:image:alt" content="{esc(social_alt)}"><link rel="canonical" href="https://hkmakslo.github.io/tie-261013/">'''
+        sharing_tags = f'''<meta property="og:type" content="website"><meta property="og:title" content="{esc(page_title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{PUBLIC_BASE}"><meta property="og:site_name" content="HKMA K S Lo College Tech in Ed Task Force"><meta property="og:image" content="{social_image}"><meta property="og:image:secure_url" content="{social_image}"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(social_alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(page_title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{social_image}"><meta name="twitter:image:alt" content="{esc(social_alt)}"><link rel="canonical" href="{PUBLIC_BASE}">'''
     sidebar_nav = navigation_list(current, number, 'sidebar-nav')
     dialog_nav = navigation_list(current, number, 'dialog-nav')
     nojs_nav = '<noscript><nav class="nojs-contents" aria-label="Workshop page links"><details><summary>Workshop contents</summary>' + navigation_list(current, number, 'nojs-nav') + utility_links(current) + '</details></nav></noscript>'

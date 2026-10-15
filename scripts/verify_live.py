@@ -11,7 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
-BASE = 'https://hkmakslo.github.io/tie-261013/'
+BASE = 'https://hkmakslo.github.io/261013/'
 DEADLINE = 480
 start = time.monotonic()
 last_progress = start
@@ -51,6 +51,7 @@ paths += [str(p.relative_to(SITE)) for p in (SITE/'downloads').glob('studio-*') 
 paths += ['assets/workshop-social-school-20261012.jpg','manus-routes.json']
 paths += [str(p.relative_to(SITE)) for p in (SITE/'assets/blueprint-examples').rglob('*') if p.is_file()]
 paths += [str(p.relative_to(SITE)) for p in (SITE/'assets/note-examples').rglob('*') if p.is_file()]
+paths += [str(p.relative_to(SITE)) for p in SITE.rglob('*') if p.is_file() and not any(part.startswith('.') for part in p.relative_to(SITE).parts)]
 paths = list(dict.fromkeys(paths))
 
 def check(path: str) -> dict:

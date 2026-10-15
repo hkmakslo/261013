@@ -350,7 +350,10 @@ crest = required(home, '.brand img')
 assert crest.get('src') == 'assets/school-logo.png'
 assert crest.get('alt') == 'HKMA K S Lo College school crest'
 assert required(home, 'link[rel=icon]').get('href') == 'assets/school-logo.png'
-social_url = 'https://hkmakslo.github.io/tie-261013/assets/workshop-social-school-20261012.jpg'
+assert required(home, 'link[rel=canonical]').get('href') == 'https://hkmakslo.github.io/261013/'
+assert required(home, 'meta[property="og:url"]').get('content') == 'https://hkmakslo.github.io/261013/'
+assert not any('hkmakslo.github.io/tie-261013' in path.read_text() for path in pages)
+social_url = 'https://hkmakslo.github.io/261013/assets/workshop-social-school-20261012.jpg'
 for property_name, expected in [
     ('og:image', social_url),
     ('og:image:secure_url', social_url),
