@@ -42,7 +42,7 @@ git add README.md TODO.md content scripts src public site
 git commit -m "Update workshop companion"
 git push origin main
 PAGES_COMMIT=$(git subtree split --prefix=site HEAD)
-git push origin "$PAGES_COMMIT":gh-pages
+git push origin "$PAGES_COMMIT":refs/heads/gh-pages
 python3 scripts/verify_live.py
 ```
 
@@ -51,6 +51,8 @@ Use normal pushes, never force-push. The bounded verifier waits for the expected
 ## Account and organisation access
 
 The authenticated personal account remains **ksloenglish**. The **Manus Connector** GitHub App is installed on both ksloenglish and **hkmakslo**, with the organisation installation approved for all current and future repositories on 15 Oct 2026. Choose the appropriate repository owner when publishing; no account switch is needed for these authorised destinations. Repository administration and write access were verified through the existing connection. Organisation-wide OAuth restrictions were retained, and Pipedream was not granted organisation access.
+
+Repository creation and code pushes succeeded. The Pages-creation API request returned HTTP 403, but the owner settings screen already showed the required `gh-pages` / root publishing source, and all 92 public files were subsequently verified live. For a future repository, a one-time Pages source setting may need to be enabled in GitHub’s owner interface; that is separate from switching the connected personal account. Subsequent updates to an already configured site use the normal branch pushes above.
 
 This is an **independent GitHub Pages copy**. The former website under the renamed **hkmakslo-admin** personal account was not modified. The managed website connection was not switched; future changes to this organisation copy must be pushed explicitly to **hkmakslo/261013**.
 
